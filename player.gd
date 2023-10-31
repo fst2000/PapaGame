@@ -7,11 +7,13 @@ var _lerpInput = Vector3.ZERO
 var _gravity = -10;
 var _jumpForce = 6;
 var _speed = 4
-
+var state = load("res://idleState.gd").new(self)
 func _ready():
 	pass
 
-
+func _process(delta):
+	state = state.nextState()
+	state.update(delta)
 func _physics_process(delta):
 	var isJump = is_on_floor() && Input.is_action_pressed("jump")
 	
