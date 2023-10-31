@@ -5,15 +5,9 @@
 [node name="Papa" instance=ExtResource("1_0o36t")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(-0.000549239, 1.02792, -0.0529649)
-bones/0/rotation = Quaternion(-0.678948, 0.415285, -0.043854, 0.603859)
-bones/1/rotation = Quaternion(0.685276, -0.13989, 0.0177763, 0.714501)
-bones/2/rotation = Quaternion(0.181839, -0.253204, -0.921742, 0.230681)
-bones/3/rotation = Quaternion(0.558795, -0.0758936, -0.0707456, 0.82279)
-bones/4/rotation = Quaternion(0.143004, -0.135572, 0.14809, 0.969144)
-bones/5/rotation = Quaternion(0.257207, 0.350084, 0.896772, 0.0841762)
-bones/6/rotation = Quaternion(0.768766, 0.109751, 0.060368, 0.627144)
-bones/7/rotation = Quaternion(-0.412077, 0.273577, -0.697548, 0.518436)
-bones/8/rotation = Quaternion(0.00958226, 0.0045857, 0.252722, 0.967481)
-bones/9/rotation = Quaternion(-0.358464, 0.61233, -0.655454, 0.25872)
-bones/10/rotation = Quaternion(-0.0173694, -0.0101481, 0.632137, 0.774595)
+bones/0/position = Vector3(0, 0.976208, -0.0228621)
+bones/2/rotation = Quaternion(0.00471163, -0.0262809, -0.987876, 0.152934)
+bones/7/rotation = Quaternion(-0.531678, 0.425946, -0.440877, 0.584393)
+bones/8/rotation = Quaternion(0.000225001, -0.00207708, 0.107789, 0.994172)
+bones/9/rotation = Quaternion(-0.530651, 0.429285, -0.669169, 0.293829)
+bones/10/rotation = Quaternion(-0.111351, -0.0218209, 0.502934, 0.856844)
