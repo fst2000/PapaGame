@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxp5hgxcvl0b2"]
+[gd_scene load_steps=3 format=3 uid="uid://djx1kiu445bdr"]
 
-[ext_resource type="PackedScene" uid="uid://bf7mgcctr3sgl" path="res://Papa.blend" id="1_0o36t"]
+[ext_resource type="PackedScene" uid="uid://q5gf0d2blxy4" path="res://Papa.blend" id="1_bsfdc"]
+[ext_resource type="Script" path="res://AnimationPlayer.gd" id="2_mh55v"]
 
-[node name="Papa" instance=ExtResource("1_0o36t")]
+[node name="Papa" instance=ExtResource("1_bsfdc")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(0, 0.976208, -0.0228621)
@@ -11,3 +12,6 @@ bones/7/rotation = Quaternion(-0.531678, 0.425946, -0.440877, 0.584393)
 bones/8/rotation = Quaternion(0.000225001, -0.00207708, 0.107789, 0.994172)
 bones/9/rotation = Quaternion(-0.530651, 0.429285, -0.669169, 0.293829)
 bones/10/rotation = Quaternion(-0.111351, -0.0218209, 0.502934, 0.856844)
+
+[node name="AnimationPlayer" parent="." index="1"]
+script = ExtResource("2_mh55v")
