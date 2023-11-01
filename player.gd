@@ -1,40 +1,49 @@
 extends CharacterBody3D
 
 @export var _camera: Camera3D
-var moveVelocity = Vector3.ZERO
-var fallVelocity = Vector3.ZERO
-var _lerpInput = Vector3.ZERO
-var _gravity = -10;
-var _jumpForce = 6;
-var _speed = 4
-var state = load("res://idleState.gd").new(self)
-func _ready():
-	pass
+@export var _animatorPath: String
+const _gravity = -10;
+const _jumpForce = 6;
+const _speed = 4
+var _hasMoved = false
+@onready var _animPlayer : AnimationPlayer = get_node(_animatorPath)
+@onready var _state = load("res://idleState.gd").new(self)
+@onready var _input = load("res://playerInput.gd").new(self)
 
+func getCamRotation():
+	return _camera.rotation
+
+func getInput():
+	return _input
+
+func isOnFloor():
+	return is_on_floor()
+
+func animPlayer():
+	return _animPlayer
+
+func jumpForce():
+	return _jumpForce
+	
 func _process(delta):
-	state = state.nextState()
-	state.update(delta)
-func _physics_process(delta):
-	var isJump = is_on_floor() && Input.is_action_pressed("jump")
+	_state = _state.nextState()
+	_state.update(delta)
 	
-	var input = Vector3(
-		Input.get_axis("right", "left"),
-		0,
-		Input.get_axis("down", "up")).normalized()
-	_lerpInput = lerp(_lerpInput, input, 0.1)
+	if is_on_floor() && !_input.isJumping(): velocity.y = 0;
+	else: velocity.y += _gravity * delta
+	if _hasMoved:
+		move_and_slide()
+		_hasMoved = false
+
+func move(v: Vector3):
+	v = v.normalized()
+	velocity.x = lerp(velocity.x, v.x * _speed, 0.1)
+	velocity.z = lerp(velocity.z, v.z * _speed, 0.1)
+	var lookDir = Vector3(velocity.x, 0, velocity.z)
+	if lookDir.length() != 0:
+		look_at(position - lookDir)
+	_hasMoved = true
+	print(velocity)
 	
-	var lookRotation = _camera.rotation.y + PI
-	moveVelocity = _lerpInput.rotated(Vector3.UP, lookRotation) * _speed * delta * 50
-	
-	if is_on_floor(): fallVelocity.y = 0
-	else: fallVelocity.y += _gravity * delta
-	
-	if isJump:
-		fallVelocity.y += _jumpForce
-		
-	if moveVelocity.length() > 0.1:
-		var playerRotation = position - moveVelocity
-		look_at(playerRotation)
-	
-	velocity = moveVelocity + fallVelocity
-	move_and_slide()
+func jump():
+	velocity.y += _jumpForce

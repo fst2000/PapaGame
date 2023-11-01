@@ -11,7 +11,6 @@
 [node name="Player" parent="." node_paths=PackedStringArray("_camera") instance=ExtResource("2_o5jo5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40388, 0)
 _camera = NodePath("../Camera3D")
-_animatorPath = "Papa/AnimationPlayer"
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("_origin")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.38836, 5)
