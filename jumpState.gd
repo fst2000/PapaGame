@@ -1,13 +1,19 @@
 var _character
 var _animPlayer
+var _input
+
 func _init(character):
 	_character = character
+	_input = character.getInput()
 	_animPlayer = character.animPlayer()
 	_animPlayer.play("Jump")
 	character.jump()
+	character.getSounds().get_node("jump").play()
+	
 func update(delta : float):
-	_character.move(_character._input.moveInput())
-	print("jumping")
+	var moveSpeed = 4
+	_character.move(_input.moveInput() * moveSpeed)
+	#print("jumping")
 	
 func nextState():
 	if !_animPlayer.is_playing():

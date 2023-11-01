@@ -6,8 +6,9 @@ func _init(character):
 	character.animPlayer().play("Walk")
 	
 func update(delta : float):
-	_character.move(_input.moveInput())
-	print("walk")
+	var moveSpeed = 4
+	_character.move(_input.moveInput() * moveSpeed)
+	#print("walk")
 	
 func nextState():
 	if !_character.is_on_floor():

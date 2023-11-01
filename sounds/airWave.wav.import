@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c8n7x8jyflf5d"
-path="res://.godot/imported/airLight.wav-7ac2fa338a4897645ab092887ca3a2aa.sample"
+path="res://.godot/imported/airWave.wav-539b1bc05e1294657bb83158d75d2d3c.sample"
 
 [deps]
 
-source_file="res://sounds/airLight.wav"
-dest_files=["res://.godot/imported/airLight.wav-7ac2fa338a4897645ab092887ca3a2aa.sample"]
+source_file="res://sounds/airWave.wav"
+dest_files=["res://.godot/imported/airWave.wav-539b1bc05e1294657bb83158d75d2d3c.sample"]
 
 [params]
 

@@ -7,7 +7,8 @@ func _init(character):
 	character.move(Vector3.ZERO)
 	
 func update(delta : float):
-	print("idle")
+	#print("idle")
+	pass
 	
 func nextState():
 	if !_character.is_on_floor():
