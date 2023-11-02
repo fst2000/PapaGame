@@ -13,7 +13,7 @@ func moveInput() -> Vector3:
 		0,
 		Input.get_axis("down", "up")).rotated(Vector3.UP, camRotation).normalized()
 
-func isPunchung():
+func isPunching():
 	return Input.is_action_pressed("punch")
 	
 func isKicking():

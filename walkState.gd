@@ -17,4 +17,6 @@ func nextState():
 		return load("res://idleState.gd").new(_character)
 	if _input.isJumping():
 		return load("res://jumpState.gd").new(_character)
+	if _input.isPunching():
+		return load("res://punch1State.gd").new(_character)
 	return self

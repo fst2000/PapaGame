@@ -1,35 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://djx1kiu445bdr"]
+[gd_scene load_steps=3 format=3 uid="uid://djx1kiu445bdr"]
 
 [ext_resource type="PackedScene" uid="uid://q5gf0d2blxy4" path="res://Papa.blend" id="1_bsfdc"]
 [ext_resource type="Material" uid="uid://bwjaxxgk5m614" path="res://papaMaterial.tres" id="2_rnpdt"]
 
-[sub_resource type="GDScript" id="GDScript_752i6"]
-script/source = "extends AnimationPlayer
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	play(\"Walk\")
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
-
 [node name="Papa" instance=ExtResource("1_bsfdc")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, 0.976208, -0.0228621)
-bones/2/rotation = Quaternion(0.00471163, -0.0262809, -0.987876, 0.152934)
-bones/7/rotation = Quaternion(-0.531678, 0.425946, -0.440877, 0.584393)
-bones/8/rotation = Quaternion(0.000225001, -0.00207708, 0.107789, 0.994172)
-bones/9/rotation = Quaternion(-0.530651, 0.429285, -0.669169, 0.293829)
-bones/10/rotation = Quaternion(-0.111351, -0.0218209, 0.502934, 0.856844)
+bones/0/position = Vector3(0, 0.59158, -0.0228621)
+bones/1/rotation = Quaternion(0.842575, -3.40345e-17, 3.39314e-17, 0.538578)
+bones/2/rotation = Quaternion(-0.191381, 0.0114839, -0.787114, 0.586253)
+bones/5/rotation = Quaternion(-0.205672, -0.00081434, 0.783501, 0.586365)
+bones/7/rotation = Quaternion(-0.672828, -0.209627, -0.687582, 0.174901)
+bones/8/rotation = Quaternion(-0.00250665, 0.0225567, 0.896064, 0.443345)
+bones/9/rotation = Quaternion(0.682065, -0.173184, 0.67842, 0.211048)
+bones/10/rotation = Quaternion(-0.00300276, -0.0270701, 0.896062, 0.443092)
 
 [node name="Papa" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_rnpdt")
-
-[node name="AnimationPlayer" parent="." index="1"]
-script = SubResource("GDScript_752i6")

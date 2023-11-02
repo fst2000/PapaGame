@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var _camera: Camera3D
 @export var _animatorPath: String
+@export var _moveInertion = 0.1
 const _gravity = -10;
 const _jumpForce = 5;
 var _hasMoved = false
@@ -35,12 +36,10 @@ func _process(delta):
 		_hasMoved = false
 
 func move(v: Vector3):
-	velocity.x = lerp(velocity.x, v.x, 0.1)
-	velocity.z = lerp(velocity.z, v.z, 0.1)
-	var lookDir = Vector3(velocity.x, 0, velocity.z)
-	if lookDir.length() != 0:
-		look_at(position - lookDir)
-	_hasMoved = true
-	
+	velocity.x = v.x
+	velocity.z = v.z
+	if v.length() != 0:
+		look_at(position - v)
+	_hasMoved = true	
 func jump():
 	velocity.y += _jumpForce
