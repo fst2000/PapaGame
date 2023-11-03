@@ -4,14 +4,15 @@ func _init(player):
 	_player = player
 
 func isMoving():
-	return moveInput().length() > 0
+	return moveDirection().length() > 0
 	
-func moveInput() -> Vector3:
+func moveDirection() -> Vector3:
 	var camRotation = _player.getCamRotation().y + PI
-	return Vector3(
+	_moveInput = Vector3(
 		Input.get_axis("right", "left"),
 		0,
-		Input.get_axis("down", "up")).rotated(Vector3.UP, camRotation).normalized()
+		Input.get_axis("down", "up"))
+	return _moveInput.rotated(Vector3.UP, camRotation).normalized()
 
 func isPunching():
 	return Input.is_action_pressed("punch")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://kcitbrqc4c4w"]
+[gd_scene load_steps=12 format=3 uid="uid://kcitbrqc4c4w"]
 
 [ext_resource type="PackedScene" uid="uid://duug0fs235wm2" path="res://floor.tscn" id="1_x28mb"]
-[ext_resource type="PackedScene" uid="uid://cls2ovc4xgap4" path="res://player.tscn" id="2_o5jo5"]
+[ext_resource type="Script" path="res://playerController.gd" id="2_4e5oi"]
+[ext_resource type="PackedScene" uid="uid://cdsx0e6ggm7rf" path="res://player.tscn" id="2_o5jo5"]
 [ext_resource type="Script" path="res://camera.gd" id="3_mbivt"]
 [ext_resource type="PackedScene" uid="uid://uvmo2828gbpt" path="res://enemy.tscn" id="4_34flo"]
 
@@ -35,7 +36,7 @@ environment = SubResource("Environment_6mbsu")
 [node name="Player" parent="." node_paths=PackedStringArray("_camera") instance=ExtResource("2_o5jo5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.478475, 0)
 _camera = NodePath("../Camera3D")
-_animatorPath = "Papa/AnimationPlayer"
+_controllerRes = ExtResource("2_4e5oi")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("_origin")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.38836, 5)

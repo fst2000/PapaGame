@@ -1,10 +1,10 @@
 var _character
 var _animPlayer
-var _input
+var _controller
 
 func _init(character):
 	_character = character
-	_input = character.getInput()
+	_controller = character.getController()
 	_animPlayer = character.animPlayer()
 	_animPlayer.play("Jump")
 	character.jump()
@@ -12,7 +12,7 @@ func _init(character):
 	
 func update(delta : float):
 	var moveSpeed = 4
-	_character.move(_input.moveInput() * moveSpeed)
+	_character.move(_controller.moveDirection() * moveSpeed)
 	#print("jumping")
 	
 func nextState():

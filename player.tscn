@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cls2ovc4xgap4"]
+[gd_scene load_steps=8 format=3 uid="uid://cdsx0e6ggm7rf"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_2g7ah"]
+[ext_resource type="Script" path="res://character.gd" id="1_mgjxn"]
 [ext_resource type="PackedScene" uid="uid://djx1kiu445bdr" path="res://papa.tscn" id="2_egbld"]
+[ext_resource type="Script" path="res://playerController.gd" id="3_lve3i"]
 [ext_resource type="AudioStream" uid="uid://cinnyv4t3u0yc" path="res://sounds/jump.wav" id="3_x4jpu"]
 [ext_resource type="AudioStream" uid="uid://ckm7iqel0hp4u" path="res://sounds/land.wav" id="4_5c16r"]
 [ext_resource type="AudioStream" uid="uid://c8n7x8jyflf5d" path="res://sounds/airWave.wav" id="5_cppnm"]
@@ -10,7 +11,9 @@
 height = 1.8
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
-script = ExtResource("1_2g7ah")
+script = ExtResource("1_mgjxn")
+_controllerRes = ExtResource("3_lve3i")
+_animPlayerPath = "Papa/AnimationPlayer"
 
 [node name="Papa" parent="." instance=ExtResource("2_egbld")]
 
