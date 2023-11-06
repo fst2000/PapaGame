@@ -1,3 +1,5 @@
+class_name IdleState
+
 var _character
 var _controller
 func _init(character):
@@ -10,11 +12,11 @@ func update(delta : float):
 	
 func nextState():
 	if !_character.is_on_floor():
-		return load("res://fallState.gd").new(_character)
-	if _controller.isMoving():
-		return load("res://walkState.gd").new(_character)
-	if _controller.isJumping():
-		return load("res://jumpState.gd").new(_character)
+		return FallState.new(_character)
 	if _controller.isPunching():
-		return load("res://punch1State.gd").new(_character)
+		return PunchState.new(_character, 1, _character.getComboLength())
+	if _controller.isMoving():
+		return WalkState.new(_character)
+	if _controller.isJumping():
+		return JumpState.new(_character)
 	return self

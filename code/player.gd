@@ -1,17 +1,20 @@
+class_name Player
+
 extends CharacterBody3D
 
 @export var _camera: Camera3D
 @export var _controllerRes : Resource
-@export var _animPlayerPath : String
-@export var _moveInertion = 0.1
+@export var _startState : Resource
 
 const _gravity = -10;
 const _jumpForce = 5;
 var _hasMoved = false
-@onready var _animPlayer : AnimationPlayer = get_node(_animPlayerPath)
-@onready var _state = load("res://idleState.gd").new(self)
-@onready var _controller = _controllerRes.new(self)
+
+@onready var _animPlayer : AnimationPlayer = $AnimationPlayer
 @onready var _sounds = $Sounds
+@onready var _controller = _controllerRes.new(self)
+@onready var _state = _startState.new(self)
+
 func getCamRotation():
 	return _camera.rotation
 
@@ -20,6 +23,8 @@ func getController():
 
 func getSounds() -> Node:
 	return _sounds
+	
+func getComboLength(): return 3
 
 func isOnFloor():
 	return is_on_floor()
@@ -40,8 +45,12 @@ func _process(delta):
 func move(v: Vector3):
 	velocity.x = v.x
 	velocity.z = v.z
-	if v.length() != 0:
-		look_at(position - v)
-	_hasMoved = true	
+	if v.length() > 0.1:
+		look_at(global_position - v)
+	_hasMoved = true
+	
 func jump():
 	velocity.y += _jumpForce
+	
+func hit():
+	print("hit")

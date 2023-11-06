@@ -1,3 +1,5 @@
+class_name PlayerController
+
 var _moveInput = Vector3.ZERO
 var _player
 func _init(player):

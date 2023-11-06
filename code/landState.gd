@@ -1,3 +1,5 @@
+class_name  LandState
+
 var _character
 var _controller
 
@@ -5,7 +7,7 @@ func _init(character):
 	_character = character
 	_controller = character.getController()
 	character.animPlayer().play("Land")
-	character.getSounds().get_node("land").play()
+	character.getSounds().get_node("Land").play()
 func update(delta : float):
 	var moveSpeed = 1
 	_character.move(_controller.moveDirection() * moveSpeed)
@@ -14,4 +16,4 @@ func update(delta : float):
 func nextState():
 	if _character.animPlayer().is_playing():
 		return self
-	return load("res://idleState.gd").new(_character)
+	return IdleState.new(_character)

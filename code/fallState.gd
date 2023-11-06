@@ -1,3 +1,5 @@
+class_name  FallState
+
 var _character
 var _controller
 func _init(character):
@@ -12,5 +14,5 @@ func update(delta : float):
 	
 func nextState():
 	if _character.isOnFloor():
-		return load("res://landState.gd").new(_character)
+		return LandState.new(_character)
 	else: return self

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://q5gf0d2blxy4"
-path="res://.godot/imported/Papa.blend-05c47e0b752e71503f483ab47c87e4f3.scn"
+uid="uid://42m2lrla5dh1"
+path="res://.godot/imported/bully.blend-d1141e87d5a25437988d0c26b03bb68b.scn"
 
 [deps]
 
-source_file="res://Papa.blend"
-dest_files=["res://.godot/imported/Papa.blend-05c47e0b752e71503f483ab47c87e4f3.scn"]
+source_file="res://models/characters/bully.blend"
+dest_files=["res://.godot/imported/bully.blend-d1141e87d5a25437988d0c26b03bb68b.scn"]
 
 [params]
 
