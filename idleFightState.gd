@@ -16,4 +16,6 @@ func nextState():
 		return AttackState.new(character)
 	if character.controller.shouldMove():
 		return WalkState.new(character)
+	if character.controller.shouldJump():
+		return JumpState.new(character)
 	else: return self

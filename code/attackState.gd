@@ -8,15 +8,14 @@ func _init(character):
 	self.character = character
 	attack = character.fightSystem.attack()
 	character.animPlayer.play(attack.animName)
-	
+	character.sounds.get_node("AirWave").play()
 func update(delta):
 	timePassed += delta
 	if timePassed >= attack.hitTime && !hasHit:
 		character.hitSystem.hit(attack.damage)
 		hasHit = true
-	
 	var inertion = clamp(attack.endTime - timePassed, 0, 1)
-	character.move(character.forward() * inertion * 4)
+	character.move(character.controller.moveDirection() * inertion * 5)
 
 func nextState():
 	if timePassed >= attack.endTime:

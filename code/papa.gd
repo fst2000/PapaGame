@@ -10,7 +10,7 @@ var hasMoved = false
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
 @onready var sounds = $Sounds
 @onready var controller : PapaController = PapaController.new(self)
-@onready var hitSystem : HitSystem = HitSystem.new($RayCast3D)
+@onready var hitSystem : HitSystem = HitSystem.new(sounds.get_node("Hit"),$RayCast3D)
 @onready var punches : Array[Attack] = [
 	Attack.new("Punch1", 10, 0.2, 0.33),
 	Attack.new("Punch2", 10, 0.2, 0.33),

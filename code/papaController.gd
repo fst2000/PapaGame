@@ -19,7 +19,7 @@ func moveDirection() -> Vector3:
 		else:
 			smoothDir = lerp(forward, moveDir, 0.3)
 		return smoothDir
-	else: return Vector3.ZERO
+	else: return papa.forward()
 
 func shouldPunch():
 	return Input.is_action_pressed("punch")
