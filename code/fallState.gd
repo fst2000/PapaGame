@@ -1,18 +1,18 @@
 class_name  FallState
 
-var _character
-var _controller
+var character
+var controller
 func _init(character):
-	_character = character
-	_controller = character.getController()
-	character.animPlayer().play("Fall")
+	self.character = character
+	self.controller = character.controller
+	character.animPlayer.play("Fall")
 	
 func update(delta : float):
 	var moveSpeed = 4
-	_character.move(_controller.moveDirection() * moveSpeed)
+	character.move(controller.moveDirection() * moveSpeed)
 	#print("falling")
 	
 func nextState():
-	if _character.isOnFloor():
-		return LandState.new(_character)
+	if character.is_on_floor():
+		return LandState.new(character)
 	else: return self

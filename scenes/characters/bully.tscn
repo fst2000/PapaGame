@@ -1,9 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://cjsvwmb8hiid6"]
+[gd_scene load_steps=23 format=3 uid="uid://cjsvwmb8hiid6"]
 
-[ext_resource type="Script" path="res://code/player.gd" id="1_luihr"]
-[ext_resource type="Script" path="res://code/enemyController.gd" id="2_4od7m"]
+[ext_resource type="Script" path="res://code/enemy.gd" id="1_06fu2"]
 [ext_resource type="Texture2D" uid="uid://3v51clarmja" path="res://textures/bully1.png" id="2_te427"]
-[ext_resource type="Script" path="res://code/idleState.gd" id="3_rs6er"]
 [ext_resource type="AudioStream" uid="uid://cinnyv4t3u0yc" path="res://sounds/jump.wav" id="5_emctp"]
 [ext_resource type="AudioStream" uid="uid://c8n7x8jyflf5d" path="res://sounds/airWave.wav" id="6_tphp8"]
 [ext_resource type="AudioStream" uid="uid://b70fjpstwkt4r" path="res://sounds/hit.wav" id="7_2r03m"]
@@ -11,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://4coj5m3hwhdp" path="res://sounds/slap2.wav" id="9_oofm1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nwmd2"]
-radius = 0.4
 height = 1.65
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j471b"]
@@ -885,9 +882,7 @@ _data = {
 }
 
 [node name="Bully" type="CharacterBody3D"]
-script = ExtResource("1_luihr")
-_controllerRes = ExtResource("2_4od7m")
-_startState = ExtResource("3_rs6er")
+script = ExtResource("1_06fu2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)

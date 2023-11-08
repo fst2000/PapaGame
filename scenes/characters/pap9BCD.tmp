@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://d1nev575hjihp"]
+[gd_scene load_steps=33 format=3 uid="uid://d1nev575hjihp"]
 
-[ext_resource type="Script" path="res://code/papa.gd" id="1_f75ya"]
+[ext_resource type="Script" path="res://code/player.gd" id="1_u6du4"]
+[ext_resource type="Script" path="res://code/playerController.gd" id="2_pbw5r"]
 [ext_resource type="Texture2D" uid="uid://bssn8osoo2if4" path="res://textures/skin1.png" id="2_uvit0"]
 [ext_resource type="AudioStream" uid="uid://cinnyv4t3u0yc" path="res://sounds/jump.wav" id="2_vd512"]
+[ext_resource type="Script" path="res://code/idleState.gd" id="3_8i1pp"]
 [ext_resource type="AudioStream" uid="uid://b70fjpstwkt4r" path="res://sounds/hit.wav" id="4_limpo"]
 [ext_resource type="AudioStream" uid="uid://ckm7iqel0hp4u" path="res://sounds/land.wav" id="5_it4mj"]
 [ext_resource type="AudioStream" uid="uid://4coj5m3hwhdp" path="res://sounds/slap2.wav" id="6_eyegc"]
@@ -784,14 +786,13 @@ tracks/11/keys = PackedFloat32Array(0, 1, -0.0567276, -0.0255373, 0.16841, 0.983
 [sub_resource type="Animation" id="Animation_esha5"]
 resource_name = "Kick2"
 length = 0.333333
-step = 0.033
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
 tracks/0/path = NodePath("Armature/Skeleton3D:Root")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.165842, 0.933904, -0.00185317, 0.0333333, 1, -0.152356, 0.954352, -0.00185317, 0.0666667, 1, -0.125879, 0.9748, -0.00185317, 0.1, 1, -0.0930949, 0.981107, -0.00185317, 0.133333, 1, -0.0595773, 0.97135, -0.00185317, 0.166667, 1, -0.0297909, 0.955826, -0.00185317, 0.2, 1, -0.0127992, 0.94458, -0.00185317, 0.233333, 1, -0.00433546, 0.939068, -0.00185317, 0.266667, 1, -0.000489485, 0.936604, -0.00185317, 0.3, 1, 0.00113766, 0.935561, -0.00185317, 0.33, 1, 0.0014335, 0.935372, -0.00185317)
+tracks/0/keys = PackedFloat32Array(0, 1, -0.165842, 0.933904, -0.00185317, 0.0333333, 1, -0.152356, 0.954352, -0.00185317, 0.0666667, 1, -0.125879, 0.9748, -0.00185317, 0.1, 1, -0.0930949, 0.981107, -0.00185317, 0.133333, 1, -0.0595773, 0.97135, -0.00185317, 0.166667, 1, -0.0297909, 0.955826, -0.00185317, 0.2, 1, -0.0127992, 0.94458, -0.00185317, 0.233333, 1, -0.00433546, 0.939068, -0.00185317, 0.266667, 1, -0.000489485, 0.936604, -0.00185317, 0.3, 1, 0.00113766, 0.935561, -0.00185317, 0.333333, 1, 0.0014335, 0.935372, -0.00185317)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = true
 tracks/1/enabled = true
@@ -1596,7 +1597,9 @@ _data = {
 }
 
 [node name="Papa" type="CharacterBody3D"]
-script = ExtResource("1_f75ya")
+script = ExtResource("1_u6du4")
+_controllerRes = ExtResource("2_pbw5r")
+_startState = ExtResource("3_8i1pp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -1721,10 +1724,9 @@ max_distance = 30.0
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-target_position = Vector3(0, 0, 1.2)
+target_position = Vector3(0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_default_blend_time = 0.1
 libraries = {
 "": SubResource("AnimationLibrary_3uusg")
 }

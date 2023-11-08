@@ -1,22 +1,23 @@
 class_name IdleState
 
-var _character
-var _controller
+var character
+var controller
+
 func _init(character):
-	_character = character
-	_controller = character.getController()
-	character.animPlayer().play("Idle")
+	self.character = character
+	self.controller = character.controller
+	character.animPlayer.play("Idle")
+	
 func update(delta : float):
-	#print("idle")
 	pass
 	
 func nextState():
-	if !_character.is_on_floor():
-		return FallState.new(_character)
-	if _controller.isPunching():
-		return PunchState.new(_character, 1, _character.getComboLength())
-	if _controller.isMoving():
-		return WalkState.new(_character)
-	if _controller.isJumping():
-		return JumpState.new(_character)
+	if !character.is_on_floor():
+		return FallState.new(character)
+	if controller.shouldAttack():
+		return AttackState.new(character)
+	if controller.shouldMove():
+		return WalkState.new(character)
+	if controller.shouldJump():
+		return JumpState.new(character)
 	return self

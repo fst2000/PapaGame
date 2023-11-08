@@ -1,23 +1,23 @@
 class_name JumpState
 
-var _character
-var _animPlayer
-var _controller
+var character
+var animPlayer
+var controller
 
 func _init(character):
-	_character = character
-	_controller = character.getController()
-	_animPlayer = character.animPlayer()
-	_animPlayer.play("Jump")
+	self.character = character
+	self.controller = character.controller
+	self.animPlayer = character.animPlayer
+	self.animPlayer.play("Jump")
 	character.jump()
-	character.getSounds().get_node("Jump").play()
+	character.sounds.get_node("Jump").play()
 	
 func update(delta : float):
 	var moveSpeed = 4
-	_character.move(_controller.moveDirection() * moveSpeed)
+	character.move(controller.moveDirection() * moveSpeed)
 	#print("jumping")
 	
 func nextState():
-	if !_animPlayer.is_playing():
-		return FallState.new(_character)
+	if !animPlayer.is_playing():
+		return FallState.new(character)
 	else: return self
