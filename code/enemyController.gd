@@ -1,31 +1,38 @@
 class_name EnemyController
 
-extends NavigationAgent3D
+var minDistance = 1.2
+var enemy
+var navigation
+var target
 
-@export var target : Node3D
-var minDistance = 1.5
-var character
-
-func _init(character):
-	self.character = character
+func _init(enemy, target, navigation):
+	self.enemy = enemy
+	self.navigation = navigation
+	self.target = target
 
 func moveDirection() -> Vector3:
-	target_position = target.global_position
-	var moveVector = get_next_path_position() - character.global_position
-	var distance = (character.global_position - target.global_position).length()
+	navigation.target_position = target.global_position
+	var moveVector = navigation.get_next_path_position() - enemy.global_position
+	moveVector.y = 0
 	var moveDirection = moveVector.normalized()
-	if distance > minDistance:
+	if distance() > minDistance:
 		return moveDirection
 	return Vector3.ZERO
-	
+
+func distance():
+	return (enemy.global_position - target.global_position).length()
+
 func shouldJump():
 	return false
 
 func shouldPunch():
-	return false
+	return distance() <= minDistance
 
 func shouldKick():
 	return false
+
+func shouldAttack():
+	return shouldPunch() || shouldKick()
 
 func shouldMove():
 	return moveDirection().length() > 0.1

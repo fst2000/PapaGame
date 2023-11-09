@@ -8,11 +8,13 @@ func _init(character):
 	character.animPlayer.play("Walk")
 	
 func update(delta : float):
-	var moveSpeed = 4
-	character.move(controller.moveDirection() * moveSpeed)
+	character.move(controller.moveDirection() * character.walkSpeed)
+	character.lookDir(controller.moveDirection())
 	#print("walk")
 	
 func nextState():
+	if character.status.hasDamaged:
+		return StunState.new(character)
 	if !character.is_on_floor():
 		return FallState.new(character)
 	if character.controller.shouldAttack():

@@ -14,12 +14,17 @@ func update(delta):
 	if timePassed >= attack.hitTime && !hasHit:
 		character.hitSystem.hit(attack.damage)
 		hasHit = true
-	var inertion = clamp(attack.endTime - timePassed, 0, 1)
+	var inertion = clamp(character.animPlayer.current_animation_length - timePassed, 0, 1)
 	character.move(character.controller.moveDirection() * inertion * 5)
+	character.lookDir(character.controller.moveDirection())
 
 func nextState():
-	if timePassed >= attack.endTime:
-		if character.controller.shouldAttack(): return AttackState.new(character)
+	if character.status.hasDamaged:
+		return StunState.new(character)
+	
+	if !character.animPlayer.is_playing():
+		if character.controller.shouldAttack():
+			return AttackState.new(character)
 		else:
 			character.fightSystem.reset()
 			return IdleFightState.new(character)

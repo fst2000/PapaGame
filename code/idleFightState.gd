@@ -12,6 +12,8 @@ func update(delta : float):
 	pass
 	
 func nextState():
+	if character.status.hasDamaged:
+		return StunState.new(character)
 	if character.controller.shouldAttack():
 		return AttackState.new(character)
 	if character.controller.shouldMove():

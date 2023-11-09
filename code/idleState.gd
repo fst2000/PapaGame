@@ -12,6 +12,8 @@ func update(delta : float):
 	pass
 	
 func nextState():
+	if character.status.hasDamaged:
+		return StunState.new(character)
 	if !character.is_on_floor():
 		return FallState.new(character)
 	if controller.shouldAttack():
@@ -20,4 +22,5 @@ func nextState():
 		return WalkState.new(character)
 	if controller.shouldJump():
 		return JumpState.new(character)
+
 	return self

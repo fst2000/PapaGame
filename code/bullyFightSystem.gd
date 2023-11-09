@@ -1,7 +1,7 @@
-class_name PapaFightSystem
+class_name BullyFightSystem
 
 var animPlayer : AnimationPlayer
-var controller : PapaController
+var controller : EnemyController
 var hitSystem
 var moveSystem
 var punches : Array[Attack]
@@ -10,10 +10,10 @@ var attackTimer : Timer = Timer.new()
 var punchCount = 0
 var kickCount = 0
 
-func _init(papa : Papa, punches : Array[Attack], kicks : Array[Attack]):
-	self.animPlayer = papa.animPlayer
-	self.controller = papa.controller
-	self.hitSystem = papa.hitSystem
+func _init(bully : Enemy, punches : Array[Attack], kicks : Array[Attack]):
+	self.animPlayer = bully.animPlayer
+	self.controller = bully.controller
+	self.hitSystem = bully.hitSystem
 	self.punches = punches
 	self.kicks = kicks
 

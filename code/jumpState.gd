@@ -15,9 +15,11 @@ func _init(character):
 func update(delta : float):
 	var moveSpeed = 4
 	character.move(controller.moveDirection() * moveSpeed)
-	#print("jumping")
+	character.lookDir(controller.moveDirection())
 	
 func nextState():
+	if character.status.hasDamaged:
+		return StunState.new(character)
 	if !animPlayer.is_playing():
 		return FallState.new(character)
 	else: return self

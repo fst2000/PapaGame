@@ -14,6 +14,8 @@ func update(delta : float):
 	#print("landing")
 	
 func nextState():
+	if character.status.hasDamaged:
+		return StunState.new(character)
 	if character.animPlayer.is_playing():
 		return self
 	return IdleState.new(character)

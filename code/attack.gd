@@ -4,7 +4,7 @@ var animName : String
 var damage : int
 var hitTime : float
 var endTime : float
-func _init(animName : String, damage : int, hitTime : float, endTime : float):
+func _init(animName : String, damage : int, hitTime : float):
 	self.animName = animName
 	self.damage = damage
 	self.hitTime = hitTime
