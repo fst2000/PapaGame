@@ -10,17 +10,21 @@ func _init(character):
 func update(delta : float):
 	character.move(controller.moveDirection() * character.walkSpeed)
 	character.lookDir(controller.moveDirection())
-	#print("walk")
 	
 func nextState():
 	if character.status.hasDamaged:
 		return StunState.new(character)
+		
 	if !character.is_on_floor():
 		return FallState.new(character)
+		
 	if character.controller.shouldAttack():
 		return AttackState.new(character)
+		
 	if !controller.shouldMove():
 		return IdleState.new(character)
+		
 	if controller.shouldJump():
 		return JumpState.new(character)
+		
 	return self

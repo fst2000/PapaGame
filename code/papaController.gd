@@ -8,12 +8,12 @@ func shouldMove():
 	return moveInput().length() > 0.1
 	
 func moveDirection() -> Vector3:
-	var camRotation = papa.camera.rotation.y + PI
 	var moveInput = moveInput()
 	if moveInput.length() > 0.01:
-		var moveDir = moveInput.rotated(Vector3.UP, camRotation).normalized()
+		var moveDir = (papa.camera.quaternion * moveInput())
+		moveDir = Vector3(moveDir.x, 0, moveDir.z).normalized()
 		var smoothDir = moveDir
-		var forward = Vector3.BACK.rotated(Vector3.UP, papa.rotation.y)
+		var forward = papa.quaternion * Vector3.BACK
 		if forward.angle_to(moveDir) >= 3.14:
 			smoothDir = smoothDir.rotated(Vector3.UP, 0.1)
 		else:
@@ -38,6 +38,6 @@ func shouldAct():
 	
 func moveInput() -> Vector3:
 	return Vector3(
-		Input.get_axis("right", "left"),
+		Input.get_axis("left", "right"),
 		0,
-		Input.get_axis("down", "up"))
+		Input.get_axis("up", "down"))

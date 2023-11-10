@@ -1,6 +1,7 @@
 class_name EnemyController
 
 var minDistance = 1.2
+var attackDistance = 1.5
 var enemy
 var navigation
 var target
@@ -26,7 +27,7 @@ func shouldJump():
 	return false
 
 func shouldPunch():
-	return distance() <= minDistance
+	return distance() <= attackDistance
 
 func shouldKick():
 	return false

@@ -12,7 +12,7 @@ var hasMoved = false
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
 @onready var sounds = $Sounds
 @onready var controller : PapaController = PapaController.new(self)
-@onready var hitSystem : HitSystem = HitSystem.new(self, $RayCast3D)
+@onready var hitSystem := HitAreaSystem.new(self, $Area3D)
 @onready var punches : Array[Attack] = [
 	Attack.new("Punch1", 10, 0.2),
 	Attack.new("Punch2", 10, 0.2),
@@ -29,7 +29,7 @@ func _process(delta):
 	state = state.nextState()
 	state.update(delta)
 
-	if is_on_floor() && !controller.shouldJump(): velocity.y = 0;
+	if is_on_floor() && velocity.y < 0: velocity.y = 0;
 	else: velocity.y += gravity * delta
 	if hasMoved:
 		move_and_slide()
@@ -48,4 +48,4 @@ func jump():
 	velocity.y += jumpForce
 
 func forward() -> Vector3:
-	return Vector3.BACK.rotated(Vector3.UP, rotation.y)
+	return quaternion * Vector3.BACK

@@ -16,7 +16,7 @@ func update(delta):
 
 func nextState():
 	if character.status.hp <= 0:
-		return KOState.new(character)
+		return FlyoffState.new(character)
 		
 	if character.status.hasDamaged:
 		return StunState.new(character)

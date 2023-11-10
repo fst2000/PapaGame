@@ -13,7 +13,7 @@ var hasMoved = false
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
 @onready var sounds = $Sounds
 @onready var controller = EnemyController.new(self, target, $NavigationAgent3D)
-@onready var hitSystem := HitSystem.new(self, $RayCast3D)
+@onready var hitSystem := HitRaySystem.new(self, $RayCast3D)
 @onready var punches : Array[Attack] = [
 	Attack.new("Punch1", 5, 0.24),
 	Attack.new("Punch2", 5, 0.24),
@@ -28,7 +28,7 @@ func _process(delta):
 	state = state.nextState()
 	state.update(delta)
 
-	if is_on_floor() && !controller.shouldJump(): velocity.y = 0;
+	if is_on_floor() && velocity.y < 0: velocity.y = 0;
 	else: velocity.y += gravity * delta
 	if hasMoved:
 		move_and_slide()
