@@ -6,7 +6,6 @@ extends CharacterBody3D
 var walkSpeed = 4
 var gravity = -10
 var jumpForce = 5
-var hasMoved = false
 
 @onready var status = CharacterStatus.new()
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
@@ -31,18 +30,16 @@ func _process(delta):
 
 	if is_on_floor() && velocity.y < 0: velocity.y = 0;
 	else: velocity.y += gravity * delta
-	if hasMoved:
-		move_and_slide()
-		hasMoved = false
+	move_and_slide()
 	status.update(delta)
 
 func move(v: Vector3):
 	velocity.x = v.x
 	velocity.z = v.z
-	hasMoved = true
 
 func lookDir(direction : Vector3):
-	look_at(global_position - direction)
+	if direction.length() > 0:
+		look_at(global_position - direction)
 
 func jump():
 	velocity.y += jumpForce

@@ -6,6 +6,7 @@ var controller
 func _init(character):
 	self.character = character
 	self.controller = character.controller
+	character.move(Vector3.ZERO)
 	character.animPlayer.play("Land")
 	character.sounds.get_node("Land").play()
 func update(delta : float):

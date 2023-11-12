@@ -6,6 +6,7 @@ func _init(character):
 	self.character = character
 	character.animPlayer.stop()
 	character.animPlayer.play("Stun")
+	#character.sounds.get_node("Damage").play()
 	character.status.hasDamaged = false
 	dir = character.status.hitVelocity
 	character.lookDir(-dir)
