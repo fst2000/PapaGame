@@ -22,7 +22,7 @@ func moveDirection() -> Vector3:
 	else: return Vector3.ZERO
 
 func shouldPunch():
-	return Input.is_action_pressed("punch")
+	return Input.is_action_pressed("punch") && papa.is_on_floor()
 	
 func shouldKick():
 	return Input.is_action_pressed("kick")

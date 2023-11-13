@@ -20,8 +20,11 @@ var jumpForce = 5
 	Attack.new("Kick1", 5, 0.1),
 	Attack.new("Kick2", 10, 0.2),
 	Attack.new("Kick3", 20, 0.4)]
-
-@onready var fightSystem := PapaFightSystem.new(self, punches, kicks)
+@onready var fallKicks : Array[Attack] = [Attack.new("FallKick", 20, 0.2)]
+@onready var punchSystem := AttackSystem.new(punches)
+@onready var kickSystem := AttackSystem.new(kicks)
+@onready var fallKickSystem := AttackSystem.new(fallKicks)
+@onready var fightSystem := PapaFightSystem.new(self, punchSystem, kickSystem, fallKickSystem)
 @onready var state = IdleState.new(self)
 
 func _process(delta):

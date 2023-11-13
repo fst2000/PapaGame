@@ -4,7 +4,7 @@ extends Camera3D
 
 var distance = 5.0
 var originHeight = 1.5
-var minHeight = 4.0
+var minHeight = 3.0
 var maxHeight = 4.0
 
 func _ready():

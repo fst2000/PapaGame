@@ -19,4 +19,6 @@ func nextState():
 		return StunState.new(character)
 	if character.is_on_floor():
 		return LandState.new(character)
+	if character.controller.shouldAttack():
+		return AttackState.new(character)
 	else: return self

@@ -27,13 +27,11 @@ func nextState():
 	if character.status.hasDamaged:
 		character.fightSystem.reset()
 		return StunState.new(character)
-	if !character.is_on_floor():
-		character.fightSystem.reset()
-		return FallState.new(character)
+
 	if !character.animPlayer.is_playing():
-		if character.controller.shouldAttack():
-			return AttackState.new(character)
+		if character.is_on_floor():
+			return IdleFightState.new(character)
 		else:
 			character.fightSystem.reset()
-			return IdleFightState.new(character)
+			return FallState.new(character)
 	else: return self

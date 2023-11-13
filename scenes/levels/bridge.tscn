@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://6bci2kk7u5ew"]
+[gd_scene load_steps=18 format=3 uid="uid://6bci2kk7u5ew"]
 
 [ext_resource type="PackedScene" uid="uid://d1nev575hjihp" path="res://scenes/characters/papa.tscn" id="1_7531e"]
 [ext_resource type="Script" path="res://code/platform.gd" id="1_ixkeb"]
 [ext_resource type="Script" path="res://code/camera.gd" id="2_p0ldb"]
 [ext_resource type="Texture2D" uid="uid://1mopsmlqn4wl" path="res://textures/SkyDaySunny.png" id="3_irxkr"]
+[ext_resource type="PackedScene" uid="uid://dgqxybbvj3ydi" path="res://scenes/levels/hood.tscn" id="5_ee21u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjfle"]
 
@@ -90,11 +91,13 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.5
 fog_enabled = true
-fog_light_color = Color(1, 1, 0.909804, 1)
-fog_density = 0.005
+fog_light_color = Color(0.372549, 0.537255, 0.576471, 1)
 fog_sky_affect = 0.0
 
 [node name="Bridge" type="Node3D"]
+
+[node name="hood" parent="." instance=ExtResource("5_ee21u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -104.172, 0.853699, 98.0947)
 
 [node name="Platform" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25.6172)
@@ -123,15 +126,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cqula")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.15201, 6.92701)
 camera = NodePath("../Camera3D")
 
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("origin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54205, 12.7673)
+script = ExtResource("2_p0ldb")
+origin = NodePath("../papa")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e8lnq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.599195, 0.306144, 0.739758, -0.777069, 4.73402e-07, 0.629416, 0.192692, -0.951985, 0.237895, -5.08086, 6.61615, 0)
+light_color = Color(0.996078, 0.996078, 0.905882, 1)
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
-
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("origin")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54205, 12.7673)
-script = ExtResource("2_p0ldb")
-origin = NodePath("../papa")
