@@ -20,8 +20,9 @@ var hasMoved = false
 	Attack.new("Punch3", 5, 0.24)]
 @onready var kicks : Array[Attack] = [
 	Attack.new("Kick1", 10, 0.24)]
-
-@onready var fightSystem := BullyFightSystem.new(self, punches, kicks)
+@onready var punchSystem = AttackSystem.new(punches)
+@onready var kickSystem = AttackSystem.new(kicks)
+@onready var fightSystem := BullyFightSystem.new(self, punchSystem, kickSystem)
 @onready var state = IdleState.new(self)
 
 func _process(delta):

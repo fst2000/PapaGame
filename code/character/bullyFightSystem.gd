@@ -1,16 +1,16 @@
 class_name BullyFightSystem
 
-var papa : Papa
+var bully
 var punchSystem
 var kickSystem
 
-func _init(papa : Papa, punchSystem : AttackSystem, kickSystem : AttackSystem):
-	self.papa = papa
+func _init(bully, punchSystem : AttackSystem, kickSystem : AttackSystem):
+	self.bully = bully
 	self.punchSystem = punchSystem
 	self.kickSystem = kickSystem
 	
 func attack() -> Attack:
-	var controller = papa.controller
+	var controller = bully.controller
 	var attack
 	if controller.shouldPunch():
 		attack = punchSystem.attack()

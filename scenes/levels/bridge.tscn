@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://6bci2kk7u5ew"]
+[gd_scene load_steps=19 format=3 uid="uid://6bci2kk7u5ew"]
 
 [ext_resource type="PackedScene" uid="uid://d1nev575hjihp" path="res://scenes/characters/papa.tscn" id="1_7531e"]
 [ext_resource type="Script" path="res://code/platform.gd" id="1_ixkeb"]
 [ext_resource type="Script" path="res://code/camera.gd" id="2_p0ldb"]
 [ext_resource type="Texture2D" uid="uid://1mopsmlqn4wl" path="res://textures/SkyDaySunny.png" id="3_irxkr"]
+[ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="5_4nvve"]
 [ext_resource type="PackedScene" uid="uid://dgqxybbvj3ydi" path="res://scenes/levels/hood.tscn" id="5_ee21u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjfle"]
@@ -83,16 +84,15 @@ sky_material = SubResource("PanoramaSkyMaterial_x04xa")
 radiance_size = 4
 
 [sub_resource type="Environment" id="Environment_e8lnq"]
-background_mode = 2
-background_color = Color(1, 1, 1, 1)
+background_color = Color(0.388235, 0.337255, 0.294118, 1)
 sky = SubResource("Sky_jxc3f")
 sky_rotation = Vector3(0, 1.5708, 0)
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.701961, 0.854902, 0.94902, 1)
 ambient_light_energy = 0.5
 fog_enabled = true
-fog_light_color = Color(0.372549, 0.537255, 0.576471, 1)
-fog_sky_affect = 0.0
+fog_light_color = Color(0.419608, 0.419608, 0.419608, 1)
+fog_density = 0.02
 
 [node name="Bridge" type="Node3D"]
 
@@ -104,6 +104,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25.6172)
 script = ExtResource("1_ixkeb")
 amplitude = 2.0
 speed = 100.0
+direction = Vector3(1, 0, 0)
 
 [node name="Platform_mesh" type="MeshInstance3D" parent="Platform"]
 mesh = SubResource("ArrayMesh_8583i")
@@ -128,14 +129,56 @@ camera = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("origin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54205, 12.7673)
+current = true
+far = 200.0
 script = ExtResource("2_p0ldb")
 origin = NodePath("../papa")
+
+[node name="snow" parent="Camera3D" instance=ExtResource("5_4nvve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29827, -4.61152)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e8lnq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.599195, 0.306144, 0.739758, -0.777069, 4.73402e-07, 0.629416, 0.192692, -0.951985, 0.237895, -5.08086, 6.61615, 0)
+visible = false
 light_color = Color(0.996078, 0.996078, 0.905882, 1)
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -116.212, 24.8299, 151.342)
+light_color = Color(0.941176, 0.698039, 0.392157, 1)
+light_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_specular = 16.0
+shadow_enabled = true
+distance_fade_begin = 10.0
+distance_fade_length = 5.0
+spot_range = 28.9349
+spot_angle = 62.2465
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.37647, 26.12, 130.234)
+light_color = Color(0.941176, 0.698039, 0.392157, 1)
+light_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_specular = 16.0
+shadow_enabled = true
+distance_fade_begin = 10.0
+distance_fade_length = 5.0
+spot_range = 28.9349
+spot_angle = 62.2465
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.5231, 8.5969)
+light_color = Color(0.941176, 0.698039, 0.392157, 1)
+light_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_specular = 16.0
+shadow_enabled = true
+distance_fade_begin = 10.0
+distance_fade_length = 5.0
+spot_range = 28.9349
+spot_angle = 62.2465

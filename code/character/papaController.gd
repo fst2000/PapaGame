@@ -22,19 +22,19 @@ func moveDirection() -> Vector3:
 	else: return Vector3.ZERO
 
 func shouldPunch():
-	return Input.is_action_pressed("punch") && papa.is_on_floor()
+	return Input.is_action_just_pressed("punch") && papa.is_on_floor()
 	
 func shouldKick():
-	return Input.is_action_pressed("kick")
+	return Input.is_action_just_pressed("kick")
 
 func shouldAttack():
 	return shouldPunch() || shouldKick()
 
 func shouldJump():
-	return Input.is_action_pressed("jump")
+	return Input.is_action_just_pressed("jump")
 
 func shouldAct():
-	return Input.is_action_pressed("action")
+	return Input.is_action_just_pressed("action")
 	
 func moveInput() -> Vector3:
 	return Vector3(

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://denogdcpvnmm4"]
+
+[ext_resource type="Material" uid="uid://cq58uuxn1cew2" path="res://materials/terek_material.tres" id="1_sksqp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w0l03"]
+size = Vector2(10, 10)
+subdivide_width = 100
+subdivide_depth = 100
+
+[node name="waterMaterial" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_w0l03")
+surface_material_override/0 = ExtResource("1_sksqp")
