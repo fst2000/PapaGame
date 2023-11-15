@@ -1,7 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://6bci2kk7u5ew"]
+[gd_scene load_steps=21 format=3 uid="uid://6bci2kk7u5ew"]
 
 [ext_resource type="PackedScene" uid="uid://d1nev575hjihp" path="res://scenes/characters/papa.tscn" id="1_7531e"]
 [ext_resource type="Script" path="res://code/platform.gd" id="1_ixkeb"]
+[ext_resource type="PackedScene" uid="uid://denogdcpvnmm4" path="res://scenes/test/waterMaterial.tscn" id="1_ofhqq"]
+[ext_resource type="PackedScene" uid="uid://dw21tgmuy80fi" path="res://scenes/test/iceMaterial.tscn" id="1_u1i2l"]
 [ext_resource type="Script" path="res://code/camera.gd" id="2_p0ldb"]
 [ext_resource type="Texture2D" uid="uid://1mopsmlqn4wl" path="res://textures/SkyDaySunny.png" id="3_irxkr"]
 [ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="5_4nvve"]
@@ -96,6 +98,12 @@ fog_density = 0.02
 
 [node name="Bridge" type="Node3D"]
 
+[node name="iceMaterial" parent="." instance=ExtResource("1_u1i2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45978, 1.80987, 2.47277)
+
+[node name="waterMaterial" parent="." instance=ExtResource("1_ofhqq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10763, 1.76532, 0.509017)
+
 [node name="hood" parent="." instance=ExtResource("5_ee21u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -104.172, 0.853699, 98.0947)
 
@@ -148,37 +156,37 @@ light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -116.212, 24.8299, 151.342)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -118.063, 25.1807, 151.342)
 light_color = Color(0.941176, 0.698039, 0.392157, 1)
-light_energy = 16.0
+light_energy = 2.0
 light_volumetric_fog_energy = 0.0
 light_specular = 16.0
 shadow_enabled = true
 distance_fade_begin = 10.0
 distance_fade_length = 5.0
-spot_range = 28.9349
-spot_angle = 62.2465
+spot_range = 21.7588
+spot_angle = 67.5
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.37647, 26.12, 130.234)
 light_color = Color(0.941176, 0.698039, 0.392157, 1)
-light_energy = 16.0
+light_energy = 4.0
 light_volumetric_fog_energy = 0.0
 light_specular = 16.0
 shadow_enabled = true
 distance_fade_begin = 10.0
 distance_fade_length = 5.0
-spot_range = 28.9349
-spot_angle = 62.2465
+spot_range = 16.3038
+spot_angle = 61.875
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.5231, 8.5969)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 11.8035, 8.5969)
 light_color = Color(0.941176, 0.698039, 0.392157, 1)
-light_energy = 16.0
+light_energy = 4.0
 light_volumetric_fog_energy = 0.0
 light_specular = 16.0
 shadow_enabled = true
 distance_fade_begin = 10.0
 distance_fade_length = 5.0
-spot_range = 28.9349
+spot_range = 16.7708
 spot_angle = 62.2465

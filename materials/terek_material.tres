@@ -1,8 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://cq58uuxn1cew2"]
 
 [ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="1_fp65h"]
-[ext_resource type="Texture2D" uid="uid://cffne3myexys3" path="res://textures/gravy.jpg" id="2_q1i2x"]
-[ext_resource type="Texture2D" uid="uid://bo3c8orx404ge" path="res://textures/water_noise_texture.tres" id="3_gdslv"]
+[ext_resource type="Texture2D" uid="uid://drkx4pkbsyuwp" path="res://textures/pebbles.png" id="2_4htbe"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1rf85"]
 noise_type = 3
@@ -18,7 +17,15 @@ bump_strength = 32.0
 noise = SubResource("FastNoiseLite_1rf85")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xg3pq"]
-noise_type = 4
+noise_type = 3
+seed = 1
+cellular_jitter = 0.965
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gsb56"]
+in_3d_space = true
+seamless = true
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_xg3pq")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b338a"]
 in_3d_space = true
@@ -38,7 +45,7 @@ shader_parameter/floorHeightMul = 0.5
 shader_parameter/speed = 0.2
 shader_parameter/waterClarity = 0.1
 shader_parameter/normalMap = SubResource("NoiseTexture2D_b338a")
-shader_parameter/heightMap = ExtResource("3_gdslv")
+shader_parameter/heightMap = SubResource("NoiseTexture2D_gsb56")
 shader_parameter/floorNormalMap = SubResource("NoiseTexture2D_l0uwf")
 shader_parameter/floorHeightMap = SubResource("NoiseTexture2D_a3ich")
-shader_parameter/floorTexture = ExtResource("2_q1i2x")
+shader_parameter/floorTexture = ExtResource("2_4htbe")

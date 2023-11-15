@@ -16,7 +16,7 @@ uniform float waterClarity;
 
 void vertex()
 {
-	float waveHeight = texture(heightMap, UV * tiling + direction * TIME * speed).r * waveHeightMul;
+	float waveHeight = texture(heightMap, UV * tiling + direction * TIME * speed).r * waveHeightMul; 
 	float floorHeight = texture(floorHeightMap, UV * tiling).r * floorHeightMul;
 	VERTEX.y += mix(waveHeight, floorHeight, 0.5);
 }
@@ -29,7 +29,7 @@ void fragment()
 	vec3 floorNormal = texture(floorNormalMap, UV * tiling).rgb;
 	float waterHeight = waveHeight + floorHeight;
 	vec3 waterNormal = mix(waveNormal, floorNormal, 0.5);
-	vec2 floorUV = mix(-waterNormal.xz, vec3(UV.x, -1.0, UV.y).xz, 0.66);
+	vec2 floorUV = mix(-waterNormal.xz, vec3(UV.x, -1.0, UV.y).xz, 0.8);
 	vec3 floorRGB = texture(floorTexture, floorUV * tiling).rgb;
 	SPECULAR = 1.0;
 	METALLIC = 0.0;

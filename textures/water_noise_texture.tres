@@ -2,6 +2,7 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xg3pq"]
 noise_type = 4
+frequency = 0.05
 
 [resource]
 in_3d_space = true

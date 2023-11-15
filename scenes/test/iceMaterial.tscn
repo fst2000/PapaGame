@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw21tgmuy80fi"]
+
+[ext_resource type="Material" uid="uid://2uo5djns8ey0" path="res://materials/ice_material.tres" id="1_wweth"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ed157"]
+size = Vector2(5, 5)
+
+[node name="iceMaterial" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ed157")
+surface_material_override/0 = ExtResource("1_wweth")
