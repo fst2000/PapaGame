@@ -73,3 +73,12 @@ skeleton = NodePath("../Box")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Box2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mhbld")
+
+[node name="Box3" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -1.31113, 0.688013, 1.62238)
+mesh = SubResource("BoxMesh_dg74p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Box3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Box3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mhbld")

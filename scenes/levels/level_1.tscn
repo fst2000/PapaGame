@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://ceohkc40j8vik"]
+
+[ext_resource type="PackedScene" uid="uid://d1nev575hjihp" path="res://scenes/characters/papa.tscn" id="2_vqgtg"]
+[ext_resource type="Script" path="res://code/camera.gd" id="3_6j4u4"]
+[ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="4_q0800"]
+[ext_resource type="PackedScene" uid="uid://882sgds5an0l" path="res://scenes/levels/hood.tscn" id="5_as4ur"]
+[ext_resource type="Texture2D" uid="uid://1mopsmlqn4wl" path="res://textures/SkyDaySunny.png" id="5_ce7qd"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_70m6a"]
+panorama = ExtResource("5_ce7qd")
+
+[sub_resource type="Sky" id="Sky_jxc3f"]
+sky_material = SubResource("PanoramaSkyMaterial_70m6a")
+radiance_size = 4
+
+[sub_resource type="Environment" id="Environment_632jp"]
+background_color = Color(0.388235, 0.337255, 0.294118, 1)
+sky = SubResource("Sky_jxc3f")
+sky_rotation = Vector3(0, 1.5708, 0)
+ambient_light_source = 2
+ambient_light_color = Color(0.701961, 0.854902, 0.94902, 1)
+ambient_light_energy = 0.5
+fog_enabled = true
+fog_light_color = Color(0.419608, 0.419608, 0.419608, 1)
+fog_density = 0.02
+
+[node name="level_1" type="Node3D"]
+
+[node name="papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_vqgtg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.37787, 0)
+camera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("origin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54205, 12.7673)
+current = true
+far = 200.0
+script = ExtResource("3_6j4u4")
+origin = NodePath("../papa")
+
+[node name="snow" parent="Camera3D" instance=ExtResource("4_q0800")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29827, -4.61152)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_632jp")
+
+[node name="hood" parent="." instance=ExtResource("5_as4ur")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://nx5l6fm2p8fn"
-path="res://.godot/imported/hood.blend-b4ea61ab70a802b373573165b7466032.scn"
+uid="uid://dgyj0m186rs2l"
+path="res://.godot/imported/lamp_post.blend-b656666e49b04da4465ca1ad547d2036.scn"
 
 [deps]
 
-source_file="res://models/levels/hood/hood.blend"
-dest_files=["res://.godot/imported/hood.blend-b4ea61ab70a802b373573165b7466032.scn"]
+source_file="res://models/levels/hood/lamp_post.blend"
+dest_files=["res://.godot/imported/lamp_post.blend-b656666e49b04da4465ca1ad547d2036.scn"]
 
 [params]
 

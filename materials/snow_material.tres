@@ -26,7 +26,7 @@ noise = SubResource("FastNoiseLite_lug6j")
 [resource]
 render_priority = 0
 shader = ExtResource("1_7igj0")
-shader_parameter/tiling = Vector2(2, 2)
+shader_parameter/tiling = Vector2(100, 100)
 shader_parameter/reflection_map = SubResource("NoiseTexture2D_ppgqw")
 shader_parameter/snowflake_normal_map = SubResource("NoiseTexture2D_t8pui")
 shader_parameter/height_map = ExtResource("2_e3uvo")

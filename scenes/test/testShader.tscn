@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://hamc2jbqeekg"]
+
+[ext_resource type="Material" uid="uid://dymuqcg8l1yvc" path="res://materials/frosen_material.tres" id="1_tmgny"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_00aw2"]
+size = Vector2(5, 5)
+subdivide_width = 100
+subdivide_depth = 100
+
+[node name="testShader" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_00aw2")
+surface_material_override/0 = ExtResource("1_tmgny")
