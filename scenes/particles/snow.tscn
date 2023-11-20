@@ -6,7 +6,7 @@
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23125, 1), 0.0, 0.0, 0, 0, Vector2(0.76875, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_vvjfm"]
+[sub_resource type="CurveTexture" id="CurveTexture_r6f6h"]
 curve = SubResource("Curve_6lx20")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4q0lh"]
@@ -21,9 +21,9 @@ angular_velocity_max = 360.0
 angle_max = 360.0
 scale_min = 0.05
 scale_max = 0.05
-scale_curve = SubResource("CurveTexture_vvjfm")
+scale_curve = SubResource("CurveTexture_r6f6h")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bp4vy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmpsa"]
 transparency = 1
 cull_mode = 2
 diffuse_mode = 3
@@ -32,12 +32,13 @@ metallic_specular = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_m51d5"]
 lightmap_size_hint = Vector2i(7, 7)
-material = SubResource("StandardMaterial3D_bp4vy")
+material = SubResource("StandardMaterial3D_mmpsa")
 
 [node name="snow" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 cast_shadow = 0
+visibility_range_end = 50.0
 amount = 500
 lifetime = 5.0
 trail_lifetime = 0.01

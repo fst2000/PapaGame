@@ -12,7 +12,7 @@ uniform float frozeness;
 void fragment()
 {
 	vec3 froze_col = texture(froze_texture, UV * tiling).rgb;
-	float froze_value = length(froze_col) / 3.0;
+	float froze_value = froze_col.b;
 	if(froze_value <= frozeness)
 	{
 		ALBEDO = mix(color, froze_col, 0.4);
