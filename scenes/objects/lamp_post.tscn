@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq82mhcafn02j"]
+
+[ext_resource type="PackedScene" uid="uid://dgyj0m186rs2l" path="res://models/levels/hood/lamp_post.blend" id="1_prq4t"]
+[ext_resource type="Material" uid="uid://dymuqcg8l1yvc" path="res://materials/frosen_material.tres" id="2_yyvmq"]
+[ext_resource type="PackedScene" uid="uid://bcw0resg5mp7s" path="res://scenes/particles/snow_lamps.tscn" id="3_8hgey"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhlvr"]
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(0.972549, 0.713726, 0.392157, 1)
+
+[node name="lamp_post" instance=ExtResource("1_prq4t")]
+
+[node name="lamp_post" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_yyvmq")
+surface_material_override/1 = SubResource("StandardMaterial3D_jhlvr")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.352707, 0.935734, 0, -0.935734, 0.352707, 0, 10.8519, -2.60791)
+light_color = Color(0.972549, 0.709804, 0.34902, 1)
+light_energy = 7.0
+light_specular = 0.2
+light_bake_mode = 1
+spot_range = 23.2745
+spot_angle = 28.5706
+
+[node name="snow_lamps" parent="." index="2" instance=ExtResource("3_8hgey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.3589, -2.71429)

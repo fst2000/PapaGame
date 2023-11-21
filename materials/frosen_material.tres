@@ -19,12 +19,14 @@ domain_warp_fractal_lacunarity = 0.885
 domain_warp_fractal_gain = 6.505
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_igw8e"]
+generate_mipmaps = false
 seamless = true
 as_normal_map = true
 color_ramp = SubResource("Gradient_x3mad")
 noise = SubResource("FastNoiseLite_1nyll")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dqj5e"]
+generate_mipmaps = false
 seamless = true
 color_ramp = SubResource("Gradient_x3mad")
 noise = SubResource("FastNoiseLite_1nyll")

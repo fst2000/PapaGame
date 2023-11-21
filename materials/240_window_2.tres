@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bhltpqp87ytm3"]
+
+[ext_resource type="Shader" path="res://materials/windows_lights_shader.gdshader" id="1_7ccvf"]
+[ext_resource type="Texture2D" uid="uid://b6jqfo5qnsv85" path="res://textures/khrushevka_windows_2_glass_map.png" id="2_evrqo"]
+[ext_resource type="Texture2D" uid="uid://dbfdvmdcvxlc5" path="res://textures/hood_khrushevka_windows_2_light_map.png" id="3_yoc5g"]
+[ext_resource type="Texture2D" uid="uid://b4qg4ulufb6wc" path="res://textures/16th_floor_240_windows_2.png" id="4_nrfdj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7ccvf")
+shader_parameter/glass_tiling = Vector2(1, 1)
+shader_parameter/light_tiling = Vector2(0.5, 0.5)
+shader_parameter/tex_tiling = Vector2(1, 1)
+shader_parameter/glass_map = ExtResource("2_evrqo")
+shader_parameter/light_map = ExtResource("3_yoc5g")
+shader_parameter/window_texture = ExtResource("4_nrfdj")

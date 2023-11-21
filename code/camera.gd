@@ -17,7 +17,8 @@ func _process(delta):
 	var clampedHeight = clamp(camHeight, minHeight, maxHeight)
 	var lerpHeight = lerp(camHeight, clampedHeight, 0.3)
 	global_position.y = origPos.y + lerpHeight
-	var camPos = origPos + (origPos.direction_to(global_position) * distance)
+	var rayDirection = (origPos.direction_to(global_position) * distance)
+	var camPos = origPos + rayDirection
 	global_position = camPos
 	
 	if global_position - origPos != Vector3.ZERO:

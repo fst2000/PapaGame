@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://t5gv3ux3svp2"]
+[gd_scene load_steps=9 format=3 uid="uid://t5gv3ux3svp2"]
 
 [ext_resource type="PackedScene" uid="uid://d1nev575hjihp" path="res://scenes/characters/papa.tscn" id="2_68lwa"]
-[ext_resource type="PackedScene" uid="uid://dppm4bdvd0vxv" path="res://scenes/objects/hood.tscn" id="2_qv0hw"]
+[ext_resource type="PackedScene" uid="uid://cjsvwmb8hiid6" path="res://scenes/characters/bully.tscn" id="2_uhq35"]
 [ext_resource type="Script" path="res://code/camera.gd" id="3_oyo00"]
+[ext_resource type="PackedScene" uid="uid://ck8u6whprksmu" path="res://scenes/objects/maple.tscn" id="4_bjsm6"]
+[ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="4_wk0lx"]
+[ext_resource type="PackedScene" uid="uid://dpo8e515j0jbd" path="res://scenes/objects/hood.tscn" id="5_esiru"]
+[ext_resource type="PackedScene" uid="uid://dq82mhcafn02j" path="res://scenes/objects/lamp_post.tscn" id="5_pe5xf"]
 
 [sub_resource type="Environment" id="Environment_a8b6q"]
 background_color = Color(0.466667, 0.439216, 0.403922, 1)
@@ -10,6 +14,7 @@ ambient_light_source = 2
 ambient_light_color = Color(0.639216, 0.815686, 0.929412, 1)
 ambient_light_energy = 0.5
 glow_enabled = true
+glow_intensity = 8.0
 fog_enabled = true
 fog_light_color = Color(0.419608, 0.419608, 0.419608, 1)
 fog_density = 0.03
@@ -21,13 +26,71 @@ fog_sky_affect = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03527, 1.20526, -7.56319)
 camera = NodePath("../Camera3D")
 
-[node name="hood" parent="." instance=ExtResource("2_qv0hw")]
+[node name="Bully" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_uhq35")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.51078, 0.999999, 10.319)
+target = NodePath("../Papa")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("origin")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.95833, -12.0974)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.95833, -11.5978)
+current = true
+fov = 70.0
 far = 200.0
 script = ExtResource("3_oyo00")
 origin = NodePath("../Papa")
 
+[node name="snow" parent="Camera3D" instance=ExtResource("4_wk0lx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98951e-07, 3.11273, -4.56346)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a8b6q")
+
+[node name="hood" parent="." instance=ExtResource("5_esiru")]
+
+[node name="trees" type="Node3D" parent="."]
+
+[node name="maple" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0007, 0.999999, 5.36456)
+
+[node name="maple2" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4307, 1, 58.2055)
+
+[node name="maple3" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0224, 0.999999, 68.9254)
+
+[node name="maple4" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17895, 0.443611, 75.4998)
+
+[node name="maple5" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.558, 0, -35.9552)
+
+[node name="maple6" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5024, 9.53674e-06, -24.1977)
+
+[node name="maple7" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.131, -4.76837e-06, -6.59985)
+
+[node name="maple8" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5883, 0, 9.11649)
+
+[node name="maple9" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6872, 0, 28.6206)
+
+[node name="maple10" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1431, 0, 43.9143)
+
+[node name="maple11" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1152, 1.46515, 61.2119)
+
+[node name="maple12" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2207, 2.38419e-06, 92.0974)
+
+[node name="maple13" parent="trees" instance=ExtResource("4_bjsm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85489, 0, 93.7463)
+
+[node name="lamp_post" parent="." instance=ExtResource("5_pe5xf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.9402, 1, 2.94061)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_energy = 0.0
+light_bake_mode = 1
+sky_mode = 2
