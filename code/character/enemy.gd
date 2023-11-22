@@ -26,6 +26,9 @@ var hasMoved = false
 @onready var state = IdleState.new(self)
 
 func _process(delta):
+	
+	controller.set_target(target)
+	
 	state = state.nextState()
 	state.update(delta)
 

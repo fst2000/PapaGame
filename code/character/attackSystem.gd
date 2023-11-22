@@ -9,7 +9,7 @@ func _init(attacks : Array[Attack]):
 
 func attack() -> Attack:
 	var attack = attacks[attackCount]
-	if attackCount == attacks.size() - 1: attackCount = 0
+	if attackCount == attacks.size() - 1: reset()
 	else : attackCount += 1
 	return attack
 

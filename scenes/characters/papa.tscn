@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d1nev575hjihp"]
+[gd_scene load_steps=35 format=3 uid="uid://d1nev575hjihp"]
 
 [ext_resource type="Script" path="res://code/character/papa.gd" id="1_q64hr"]
 [ext_resource type="Texture2D" uid="uid://bb57inm0yifdd" path="res://textures/skin_winter.png" id="2_ja6pg"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://diuxssgavwejm" path="res://sounds/papaDamage1.wav" id="7_3lwb8"]
 [ext_resource type="AudioStream" uid="uid://4ejrh7dcuarl" path="res://sounds/papaKO.wav" id="8_cxwf7"]
 [ext_resource type="AudioStream" uid="uid://caaenb4fg71hg" path="res://sounds/papaAttack1.wav" id="9_sos0u"]
+[ext_resource type="PackedScene" uid="uid://bbg8s0g0cypld" path="res://scenes/UI/text.tscn" id="10_yjxvn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jh5he"]
 height = 1.8
@@ -1597,9 +1598,13 @@ _data = {
 "WalkFigth": SubResource("Animation_6l2uo")
 }
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_c23wf"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Papa" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 3
+floor_snap_length = 0.2
 script = ExtResource("1_q64hr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1746,3 +1751,6 @@ playback_default_blend_time = 0.1
 libraries = {
 "": SubResource("AnimationLibrary_s3kr0")
 }
+
+[node name="text" parent="." instance=ExtResource("10_yjxvn")]
+texture = SubResource("ViewportTexture_c23wf")

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbg8s0g0cypld"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_stkwp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="GDScript" id="GDScript_hcrnf"]
+script/source = "extends Sprite3D
+
+@onready var label = $SubViewport/Label
+
+func write(text : String):
+	label.set_text(text)
+"
+
+[sub_resource type="GDScript" id="GDScript_xgg5q"]
+script/source = "extends SubViewport
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	size = $Label.size
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_yc7cj"]
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="text" type="Sprite3D"]
+pixel_size = 0.0015
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("ViewportTexture_stkwp")
+script = SubResource("GDScript_hcrnf")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size_2d_override_stretch = true
+script = SubResource("GDScript_xgg5q")
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+auto_translate = false
+label_settings = SubResource("LabelSettings_yc7cj")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 227

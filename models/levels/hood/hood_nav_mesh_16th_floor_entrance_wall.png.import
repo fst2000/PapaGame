@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wh3ryel23y44"
-path.s3tc="res://.godot/imported/12th_floor_240_windows_1.png-9e61bf3a04c66cd57a549ff6048f47a7.s3tc.ctex"
+uid="uid://cwdd7lfff2fle"
+path.s3tc="res://.godot/imported/hood_nav_mesh_16th_floor_entrance_wall.png-bb0a3594266a1e09f0fa9b53948507bb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/12th_floor_240_windows_1.png"
-dest_files=["res://.godot/imported/12th_floor_240_windows_1.png-9e61bf3a04c66cd57a549ff6048f47a7.s3tc.ctex"]
+source_file="res://models/levels/hood/hood_nav_mesh_16th_floor_entrance_wall.png"
+dest_files=["res://.godot/imported/hood_nav_mesh_16th_floor_entrance_wall.png-bb0a3594266a1e09f0fa9b53948507bb.s3tc.ctex"]
 
 [params]
 
