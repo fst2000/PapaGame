@@ -8,8 +8,14 @@ script/source = "extends Sprite3D
 
 @onready var label = $SubViewport/Label
 
+var text_time = 0.0
+
 func write(text : String):
+	text_time = 0.0
 	label.set_text(text)
+	
+func _process(delta):
+	text_time += delta
 "
 
 [sub_resource type="GDScript" id="GDScript_xgg5q"]

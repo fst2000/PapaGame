@@ -6,12 +6,10 @@ var distance = 5.0
 var originHeight = 1.5
 var minHeight = 3.0
 var maxHeight = 4.0
-
-func _ready():
-	pass
+var is_cutscene = false
 
 func _process(delta):
-	if origin is CharacterBody3D:
+	if !is_cutscene:
 		var origPos = origin.global_position
 		#var distance = origPos.distance_to(position)
 		var camHeight = global_position.y - origPos.y
@@ -20,9 +18,9 @@ func _process(delta):
 		global_position.y = origPos.y + lerpHeight
 		var rayDirection = (origPos.direction_to(global_position) * distance)
 		var camPos = origPos + rayDirection
-		global_position = camPos
+		global_position = lerp(global_position, camPos, delta * 10)
 		look_at(origPos + Vector3.UP * originHeight)
 	else:
 		global_position = lerp(global_position, origin.global_position, delta)
-		look_at(look_target.position)
-		
+		var look_dir = lerp(quaternion * Vector3.FORWARD, look_target.global_position - global_position, delta)
+		look_at(global_position + look_dir)

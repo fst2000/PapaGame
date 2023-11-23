@@ -33,7 +33,7 @@ func shouldJump():
 	return false
 
 func shouldPunch():
-	return distance() <= attackDistance && target is CharacterBody3D
+	return distance() <= attackDistance && target is Papa
 
 func shouldKick():
 	return false

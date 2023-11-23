@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dpo8e515j0jbd"]
+[gd_scene load_steps=62 format=3 uid="uid://dpo8e515j0jbd"]
 
 [ext_resource type="PackedScene" uid="uid://nk4y8b1xb8in" path="res://models/levels/hood/hood.blend" id="1_fxpot"]
 [ext_resource type="Material" uid="uid://bhl8sg582ucic" path="res://materials/snow_material.tres" id="2_01pru"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://bm1aoo77fp6cv" path="res://textures/kesaeva_fence.png" id="15_ygxwr"]
 [ext_resource type="Material" uid="uid://bjpipmq0mgnox" path="res://materials/240_A_window.tres" id="16_5x78v"]
 [ext_resource type="Texture2D" uid="uid://drkx4pkbsyuwp" path="res://textures/pebbles.png" id="18_ry48a"]
-[ext_resource type="Shader" path="res://materials/water_shader.gdshader" id="20_60f67"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gygi5"]
 albedo_texture = ExtResource("9_86l8g")
@@ -150,70 +149,6 @@ friction = 0.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_47pfq"]
 data = PackedVector3Array(15.0358, -1.3737, 6.9863, 3.0155, 0, 8.5298, 2.989, 0, 7.7034, 15.0358, -1.3737, 6.9863, 15.1359, -1.3738, 8.0161, 3.0155, 0, 8.5298, 15.2023, -1.3936, 6.9731, 16.1612, -1.5, 7.9733, 15.3038, -1.3935, 8.009, 15.2023, -1.3936, 6.9731, 16.0381, -1.5, 6.8813, 16.1612, -1.5, 7.9733, 15.0358, -1.3737, 6.9863, 15.3038, -1.3935, 8.009, 15.1359, -1.3738, 8.0161, 15.0358, -1.3737, 6.9863, 15.2023, -1.3936, 6.9731, 15.3038, -1.3935, 8.009)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1rf85"]
-noise_type = 3
-frequency = 0.0205
-fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a3ich"]
-seamless = true
-noise = SubResource("FastNoiseLite_1rf85")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l0uwf"]
-seamless = true
-as_normal_map = true
-bump_strength = 32.0
-noise = SubResource("FastNoiseLite_1rf85")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_o3ojo"]
-frequency = 0.0224
-fractal_lacunarity = 1.19
-fractal_gain = 1.01
-domain_warp_enabled = true
-domain_warp_frequency = 0.155
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_27f4t"]
-seamless = true
-noise = SubResource("FastNoiseLite_o3ojo")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xg3pq"]
-noise_type = 3
-seed = 1
-cellular_jitter = 0.965
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gsb56"]
-in_3d_space = true
-seamless = true
-bump_strength = 32.0
-noise = SubResource("FastNoiseLite_xg3pq")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b338a"]
-in_3d_space = true
-seamless = true
-as_normal_map = true
-bump_strength = 32.0
-noise = SubResource("FastNoiseLite_xg3pq")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2it6y"]
-render_priority = 0
-shader = ExtResource("20_60f67")
-shader_parameter/color = Vector3(0.1, 0.12, 0.12)
-shader_parameter/foam_color = Vector3(0.6, 0.8, 0.7)
-shader_parameter/tiling = Vector2(50, 50)
-shader_parameter/direction = Vector2(0, 1)
-shader_parameter/waveHeightMul = 0.05
-shader_parameter/floorHeightMul = 0.1
-shader_parameter/speed = 0.2
-shader_parameter/waterClarity = 1.39
-shader_parameter/minClarity = 0.9
-shader_parameter/shore_foam_mul = 0.5
-shader_parameter/wave_foam_mul = 0.105
-shader_parameter/normalMap = SubResource("NoiseTexture2D_b338a")
-shader_parameter/heightMap = SubResource("NoiseTexture2D_gsb56")
-shader_parameter/floorNormalMap = SubResource("NoiseTexture2D_l0uwf")
-shader_parameter/floorHeightMap = SubResource("NoiseTexture2D_a3ich")
-shader_parameter/foam_noise = SubResource("NoiseTexture2D_27f4t")
 
 [node name="hood" instance=ExtResource("1_fxpot")]
 
@@ -435,6 +370,3 @@ physics_material_override = SubResource("PhysicsMaterial_w2cob")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ice/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_47pfq")
-
-[node name="terek" parent="." index="21"]
-surface_material_override/0 = SubResource("ShaderMaterial_2it6y")
