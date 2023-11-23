@@ -1598,7 +1598,7 @@ _data = {
 "WalkFigth": SubResource("Animation_6l2uo")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_c23wf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fybhr"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Papa" type="CharacterBody3D"]
@@ -1753,4 +1753,4 @@ libraries = {
 }
 
 [node name="text" parent="." instance=ExtResource("10_yjxvn")]
-texture = SubResource("ViewportTexture_c23wf")
+texture = SubResource("ViewportTexture_fybhr")

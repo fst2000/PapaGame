@@ -12,6 +12,7 @@ var jumpForce = 5
 @onready var sounds = $Sounds
 @onready var controller : PapaController = PapaController.new(self)
 @onready var hitSystem := HitAreaSystem.new(self, $HitArea)
+@onready var speakSystem := TextSpeakSystem.new($text)
 @onready var punches : Array[Attack] = [
 	Attack.new("Punch1", 10, 0.2),
 	Attack.new("Punch2", 10, 0.2),

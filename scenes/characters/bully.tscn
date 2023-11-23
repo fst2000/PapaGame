@@ -1154,7 +1154,7 @@ _data = {
 "Walk": SubResource("Animation_yl2rr")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dbs63"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_f6tfn"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Bully" type="CharacterBody3D"]
@@ -1318,4 +1318,4 @@ libraries = {
 
 [node name="text" parent="." instance=ExtResource("11_sn5r6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38366, 0)
-texture = SubResource("ViewportTexture_dbs63")
+texture = SubResource("ViewportTexture_f6tfn")

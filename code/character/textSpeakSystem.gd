@@ -1,9 +1,9 @@
 class_name TextSpeakSystem
 
-var speaker : Node3D
+var text : Node3D
 
-func _init(speaker):
-	self.speaker = speaker
+func _init(text):
+	self.text = text
 
 func say(words : String):
-	speaker.text.write(words)
+	text.write(words)

@@ -14,6 +14,7 @@ var hasMoved = false
 @onready var sounds = $Sounds
 @onready var controller = EnemyController.new(self, target, $NavigationAgent3D)
 @onready var hitSystem := HitRaySystem.new(self, $RayCast3D)
+@onready var speakSystem := TextSpeakSystem.new($text)
 @onready var punches : Array[Attack] = [
 	Attack.new("Punch1", 5, 0.24),
 	Attack.new("Punch2", 5, 0.24),

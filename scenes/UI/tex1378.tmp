@@ -20,9 +20,7 @@ script/source = "extends SubViewport
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var text : String = label.text
-	size.x = text.length() * 20.0
-	size.y = 40 * (text.count(\"/n\") + 1)
+	size = label.text.length() * 32
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_rdlkv"]

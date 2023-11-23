@@ -1,14 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://denogdcpvnmm4"]
+[gd_scene load_steps=8 format=3 uid="uid://denogdcpvnmm4"]
 
 [ext_resource type="Material" uid="uid://cq58uuxn1cew2" path="res://materials/terek_material.tres" id="1_sksqp"]
+[ext_resource type="Texture2D" uid="uid://drkx4pkbsyuwp" path="res://textures/pebbles.png" id="2_ia0s4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w0l03"]
 size = Vector2(10, 10)
 subdivide_width = 100
 subdivide_depth = 100
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1leh6"]
+albedo_texture = ExtResource("2_ia0s4")
+
+[sub_resource type="SphereMesh" id="SphereMesh_7r2e8"]
+radius = 1.49
+height = 3.97
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8wpp"]
+albedo_texture = ExtResource("2_ia0s4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q027u"]
+size = Vector2(10, 10)
+
 [node name="waterMaterial" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.59179, 0)
 mesh = SubResource("PlaneMesh_w0l03")
 surface_material_override/0 = ExtResource("1_sksqp")
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.137203, -0.990543, 0, 0.990543, -0.137203, 0, 0, 0, 1, -1.03626, -1.63278, -0.850704)
+material_override = SubResource("StandardMaterial3D_1leh6")
+mesh = SubResource("SphereMesh_7r2e8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16625, 0)
+material_override = SubResource("StandardMaterial3D_l8wpp")
+mesh = SubResource("PlaneMesh_q027u")
