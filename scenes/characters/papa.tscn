@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d1nev575hjihp"]
+[gd_scene load_steps=37 format=3 uid="uid://d1nev575hjihp"]
 
 [ext_resource type="Script" path="res://code/character/papa.gd" id="1_q64hr"]
 [ext_resource type="Texture2D" uid="uid://bb57inm0yifdd" path="res://textures/skin_winter.png" id="2_ja6pg"]
@@ -78,11 +78,15 @@ bind/10/name = &"KneeR"
 bind/10/bone = -1
 bind/10/pose = Transform3D(0.0020167, -0.0758382, 0.997118, -0.0282407, -0.996727, -0.0757514, 0.999599, -0.0280065, -0.00415182, 0.00690836, 0.502166, 0.139231)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6p322"]
-radius = 0.608571
-height = 1.65614
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_68x4u"]
+height = 2.05461
+radius = 3.03626
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_eqi2i"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6p322"]
+radius = 0.75
+height = 1.5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1oq56"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_y5t2l"]
@@ -1692,7 +1696,7 @@ _data = {
 
 [node name="Papa" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 floor_snap_length = 0.2
 script = ExtResource("1_q64hr")
 
@@ -1826,18 +1830,26 @@ stream = ExtResource("9_sos0u")
 unit_size = 4.0
 max_distance = 30.0
 
+[node name="TargetArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TargetArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.899558, 0)
+shape = SubResource("CylinderShape3D_68x4u")
+
 [node name="HitArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0353258)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 1.0921, 1.10426)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 shape = SubResource("CapsuleShape3D_6p322")
 
 [node name="text" parent="." instance=ExtResource("10_yjxvn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00951, 0)
-texture = SubResource("ViewportTexture_eqi2i")
+texture = SubResource("ViewportTexture_1oq56")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_default_blend_time = 0.1

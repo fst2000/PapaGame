@@ -10,7 +10,6 @@ func _on_body_entered(body):
 	if body is Papa:
 		
 		var bully = bullies[0]
-		
 		action_list.add(
 			func():
 				$CollisionShape3D.disabled = true

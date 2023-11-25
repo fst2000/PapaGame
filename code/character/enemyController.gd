@@ -19,9 +19,8 @@ func set_target(target : Node3D):
 func moveDirection() -> Vector3:
 	if shouldMove():
 		navigation.target_position = target.global_position
-		var moveVector = navigation.get_next_path_position() - enemy.global_position
-		moveVector.y = 0
-		var moveDirection = moveVector.normalized()
+		var moveDirection = enemy.global_position.direction_to(navigation.get_next_path_position())
+		moveDirection.y = 0
 		return moveDirection
 	return Vector3.ZERO
 

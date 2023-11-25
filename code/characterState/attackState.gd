@@ -16,12 +16,11 @@ func update(delta):
 		hasHit = true
 
 	var inertion = clamp(character.animPlayer.current_animation_length - timePassed, 0, 1)
-	var moveDir
-	if character.controller.moveDirection().length() > 0:
-		moveDir = character.controller.moveDirection()
-	else: moveDir = character.forward()
-	character.move(moveDir * inertion * 5)
-	character.lookDir(character.controller.moveDirection())
+	character.move(character.forward() * inertion * 5)
+	if character.target != null:
+		character.lookDir(character.global_position.direction_to(character.target.global_position))
+	else:
+		character.lookDir(character.controller.moveDirection())
 
 func nextState():
 	if character.status.hasDamaged:

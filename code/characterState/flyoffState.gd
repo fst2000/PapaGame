@@ -1,7 +1,7 @@
 class_name FlyoffState
 
 var character
-var min_time = 0.5
+var min_time = 0.2
 var time_passed = 0.0
 
 func _init(character):

@@ -3,10 +3,13 @@ class_name Papa
 extends CharacterBody3D
 
 @export var camera: Camera3D
+var target : Node3D
 var walkSpeed = 4
 var gravity = -10
 var jumpForce = 5
 var hp = 100
+var max_target_angle = 45
+
 @onready var status = CharacterStatus.new(hp)
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
 @onready var sounds = $Sounds
@@ -26,6 +29,7 @@ var hp = 100
 @onready var kickSystem := AttackSystem.new(kicks)
 @onready var fallKickSystem := AttackSystem.new(fallKicks)
 @onready var fightSystem := PapaFightSystem.new(self, punchSystem, kickSystem, fallKickSystem)
+@onready var targetDefiner = AngleTargetDefiner.new(self, AreaHitDetector.new($TargetArea), max_target_angle)
 @onready var state = IdleState.new(self)
 
 func _process(delta):
@@ -36,6 +40,7 @@ func _process(delta):
 	else: velocity.y += gravity * delta
 	move_and_slide()
 	status.update(delta)
+	target = targetDefiner.get_target()
 
 func move(v: Vector3):
 	velocity.x = v.x
@@ -51,3 +56,7 @@ func jump():
 
 func forward() -> Vector3:
 	return quaternion * Vector3.BACK
+
+func set_active(value : bool):
+	set_collision_layer_value(2, value)
+	set_collision_mask_value(3, value)

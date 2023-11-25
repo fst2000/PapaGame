@@ -12,15 +12,7 @@ func shouldMove():
 func moveDirection() -> Vector3:
 	var moveInput = moveInput()
 	if moveInput.length() > 0.01 && is_active:
-		var moveDir = (papa.camera.quaternion * moveInput())
-		moveDir = Vector3(moveDir.x, 0, moveDir.z).normalized()
-		var smoothDir = moveDir
-		var forward = papa.quaternion * Vector3.BACK
-		if forward.angle_to(moveDir) >= 3.14:
-			smoothDir = smoothDir.rotated(Vector3.UP, 0.1)
-		else:
-			smoothDir = lerp(forward, moveDir, 0.3)
-		return smoothDir
+		return moveInput().rotated(Vector3.UP, papa.camera.rotation.y + PI).normalized()
 	else: return Vector3.ZERO
 
 func shouldPunch():
@@ -40,6 +32,6 @@ func shouldAct():
 	
 func moveInput() -> Vector3:
 	return Vector3(
-		Input.get_axis("left", "right"),
+		Input.get_axis("right", "left"),
 		0,
-		Input.get_axis("up", "down"))
+		Input.get_axis("down", "up"))

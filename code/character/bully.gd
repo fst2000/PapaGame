@@ -5,7 +5,7 @@ extends CharacterBody3D
 var walkSpeed = 2
 var gravity = -10
 var jumpForce = 5
-var hp = 100
+var hp = 60
 var attackTimer = DeltaTimer.new()
 
 @export var target : Node3D
@@ -49,4 +49,8 @@ func jump():
 	velocity.y += jumpForce
 
 func forward() -> Vector3:
-	return Vector3.BACK.rotated(Vector3.UP, rotation.y)
+	return quaternion * Vector3.BACK
+	
+func set_active(value : bool):
+	set_collision_layer_value(3, value)
+	set_collision_mask_value(2, value)
