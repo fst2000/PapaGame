@@ -13,25 +13,22 @@ func update(delta : float):
 	
 func nextState():
 	if character.status.hasDamaged:
-		character.fightSystem.reset()
+		if character.status.flyoff:
+			return FlyoffState.new(character)
 		return StunState.new(character)
 		
 	if !character.is_on_floor():
-		character.fightSystem.reset()
 		return FallState.new(character)
 	
-	if timer >= 0.5:
-		character.fightSystem.reset()
+	if timer >= 1.0:
 		return IdleState.new(character)
 	
 	if character.controller.shouldAttack():
 		return AttackState.new(character)
 		
 	if character.controller.shouldMove():
-		character.fightSystem.reset()
 		return WalkState.new(character)
 		
 	if character.controller.shouldJump():
-		character.fightSystem.reset()
 		return JumpState.new(character)
 	else: return self

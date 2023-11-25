@@ -11,4 +11,4 @@ func say(words : String):
 	
 func check():
 	var words_time = words.length() * 0.1
-	return label.text_time < clamp(words_time, 2, words_time)
+	return label.text_time < clamp(words_time, 3, words_time)

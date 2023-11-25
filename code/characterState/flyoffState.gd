@@ -1,26 +1,28 @@
 class_name FlyoffState
 
 var character
-var time = 0.0
-var inertion
+var min_time = 0.5
+var time_passed = 0.0
+
 func _init(character):
 	self.character = character
+	character.fightSystem.reset()
 	character.animPlayer.stop()
 	character.animPlayer.play("Flyoff")
 	character.status.hasDamaged = false
-	var velocity = character.status.hitVelocity
-	inertion = clamp(velocity.length() * 4, 0, 5) 
-	character.lookDir(-velocity)
-	character.lookDir(-velocity)
-	character.velocity.y = inertion
+	character.status.flyoff = false
+	var hit_velocity = character.status.hitVelocity
+	character.lookDir(-hit_velocity)
+	character.velocity = hit_velocity
 	
-func update(delta):
+func update(delta : float):
+	time_passed += delta
 	
-	character.move(character.status.hitVelocity * inertion)
-	time += delta
-	inertion -= delta * 2
-
 func nextState():
-	if character.is_on_floor() && time > 0.5:
-		return KOState.new(character)
+	if character.is_on_floor():
+		character.sounds.get_node("Land").play()
+		if time_passed > min_time:
+			if character.status.hp <= 0:
+				return KOState.new(character)
+			return StandUpState.new(character)
 	return self

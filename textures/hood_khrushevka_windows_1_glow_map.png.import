@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cc7p2ouchf44c"
 path.s3tc="res://.godot/imported/hood_khrushevka_windows_1_glow_map.png-bd6d193589f6b35688d6a6fcda650856.s3tc.ctex"
+path.etc2="res://.godot/imported/hood_khrushevka_windows_1_glow_map.png-bd6d193589f6b35688d6a6fcda650856.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/hood_khrushevka_windows_1_glow_map.png"
-dest_files=["res://.godot/imported/hood_khrushevka_windows_1_glow_map.png-bd6d193589f6b35688d6a6fcda650856.s3tc.ctex"]
+dest_files=["res://.godot/imported/hood_khrushevka_windows_1_glow_map.png-bd6d193589f6b35688d6a6fcda650856.s3tc.ctex", "res://.godot/imported/hood_khrushevka_windows_1_glow_map.png-bd6d193589f6b35688d6a6fcda650856.etc2.ctex"]
 
 [params]
 

@@ -12,10 +12,11 @@ func update(delta : float):
 	character.move(controller.moveDirection() * moveSpeed)
 	character.move(controller.moveDirection() * moveSpeed)
 	character.lookDir(controller.moveDirection())
-	#print("falling")
 	
 func nextState():
 	if character.status.hasDamaged:
+		if character.status.flyoff:
+			return FlyoffState.new(character)
 		return StunState.new(character)
 	if character.is_on_floor():
 		return LandState.new(character)

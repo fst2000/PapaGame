@@ -9,6 +9,7 @@ func _init(character):
 	character.move(Vector3.ZERO)
 	character.animPlayer.play("Land")
 	character.sounds.get_node("Land").play()
+	
 func update(delta : float):
 	var moveSpeed = 1
 	character.move(controller.moveDirection() * moveSpeed)

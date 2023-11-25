@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsjvg7hxcdtco"
 path.s3tc="res://.godot/imported/khrushevka_tile.png-8823f213d95e60dd732d754ef5661391.s3tc.ctex"
+path.etc2="res://.godot/imported/khrushevka_tile.png-8823f213d95e60dd732d754ef5661391.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/khrushevka_tile.png"
-dest_files=["res://.godot/imported/khrushevka_tile.png-8823f213d95e60dd732d754ef5661391.s3tc.ctex"]
+dest_files=["res://.godot/imported/khrushevka_tile.png-8823f213d95e60dd732d754ef5661391.s3tc.ctex", "res://.godot/imported/khrushevka_tile.png-8823f213d95e60dd732d754ef5661391.etc2.ctex"]
 
 [params]
 

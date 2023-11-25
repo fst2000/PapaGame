@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf47pbo0qikot"
 path.s3tc="res://.godot/imported/khrushevka_windows_2.png-d526f9ea607a101f91b7b887d539439e.s3tc.ctex"
+path.etc2="res://.godot/imported/khrushevka_windows_2.png-d526f9ea607a101f91b7b887d539439e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/khrushevka_windows_2.png"
-dest_files=["res://.godot/imported/khrushevka_windows_2.png-d526f9ea607a101f91b7b887d539439e.s3tc.ctex"]
+dest_files=["res://.godot/imported/khrushevka_windows_2.png-d526f9ea607a101f91b7b887d539439e.s3tc.ctex", "res://.godot/imported/khrushevka_windows_2.png-d526f9ea607a101f91b7b887d539439e.etc2.ctex"]
 
 [params]
 

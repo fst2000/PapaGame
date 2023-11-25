@@ -13,7 +13,15 @@ config_version=5
 config/name="Papa Game"
 run/main_scene="res://scenes/levels/level_hood.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
+boot_splash/bg_color=Color(0.176471, 0.32549, 0.368627, 1)
+boot_splash/show_image=false
 config/icon="res://icon.png"
+
+[display]
+
+window/size/viewport_width=1366
+window/size/viewport_height=768
+window/size/mode=3
 
 [dotnet]
 
@@ -70,3 +78,4 @@ action={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cffne3myexys3"
 path.s3tc="res://.godot/imported/gravy.jpg-befc89a056e1fc80b6479ecdedf67188.s3tc.ctex"
+path.etc2="res://.godot/imported/gravy.jpg-befc89a056e1fc80b6479ecdedf67188.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/gravy.jpg"
-dest_files=["res://.godot/imported/gravy.jpg-befc89a056e1fc80b6479ecdedf67188.s3tc.ctex"]
+dest_files=["res://.godot/imported/gravy.jpg-befc89a056e1fc80b6479ecdedf67188.s3tc.ctex", "res://.godot/imported/gravy.jpg-befc89a056e1fc80b6479ecdedf67188.etc2.ctex"]
 
 [params]
 

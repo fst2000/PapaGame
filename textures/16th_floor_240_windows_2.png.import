@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4qg4ulufb6wc"
 path.s3tc="res://.godot/imported/16th_floor_240_windows_2.png-a2e1b62be8751a8ac42566e8d809bed1.s3tc.ctex"
+path.etc2="res://.godot/imported/16th_floor_240_windows_2.png-a2e1b62be8751a8ac42566e8d809bed1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/16th_floor_240_windows_2.png"
-dest_files=["res://.godot/imported/16th_floor_240_windows_2.png-a2e1b62be8751a8ac42566e8d809bed1.s3tc.ctex"]
+dest_files=["res://.godot/imported/16th_floor_240_windows_2.png-a2e1b62be8751a8ac42566e8d809bed1.s3tc.ctex", "res://.godot/imported/16th_floor_240_windows_2.png-a2e1b62be8751a8ac42566e8d809bed1.etc2.ctex"]
 
 [params]
 

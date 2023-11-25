@@ -20,6 +20,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_jhlvr")
 transform = Transform3D(1, 0, 0, 0, 0.352707, 0.935734, 0, -0.935734, 0.352707, 0, 10.8519, -2.60791)
 light_color = Color(0.972549, 0.709804, 0.34902, 1)
 light_energy = 7.0
+light_volumetric_fog_energy = 0.0
 light_specular = 0.2
 light_bake_mode = 1
 spot_range = 23.2745

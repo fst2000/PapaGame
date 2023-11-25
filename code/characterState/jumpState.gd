@@ -19,6 +19,8 @@ func update(delta : float):
 	
 func nextState():
 	if character.status.hasDamaged:
+		if character.status.flyoff:
+			return FlyoffState.new(character)
 		return StunState.new(character)
 	if !animPlayer.is_playing():
 		return FallState.new(character)

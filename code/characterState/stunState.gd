@@ -4,12 +4,11 @@ var character
 var dir
 func _init(character):
 	self.character = character
+	character.fightSystem.reset()
 	character.animPlayer.stop()
 	character.animPlayer.play("Stun")
-	#character.sounds.get_node("Damage").play()
 	character.status.hasDamaged = false
 	dir = character.status.hitVelocity
-	character.lookDir(-dir)
 	
 	
 func update(delta):
@@ -20,6 +19,8 @@ func nextState():
 		return FlyoffState.new(character)
 		
 	if character.status.hasDamaged:
+		if character.status.flyoff:
+			return FlyoffState.new(character)
 		return StunState.new(character)
 		
 	if !character.animPlayer.is_playing():

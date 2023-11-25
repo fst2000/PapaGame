@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b37vlyhh6l6ki"
 path.s3tc="res://.godot/imported/shifer.png-c393e109d77ea987471434ef1a7ed1fb.s3tc.ctex"
+path.etc2="res://.godot/imported/shifer.png-c393e109d77ea987471434ef1a7ed1fb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/shifer.png"
-dest_files=["res://.godot/imported/shifer.png-c393e109d77ea987471434ef1a7ed1fb.s3tc.ctex"]
+dest_files=["res://.godot/imported/shifer.png-c393e109d77ea987471434ef1a7ed1fb.s3tc.ctex", "res://.godot/imported/shifer.png-c393e109d77ea987471434ef1a7ed1fb.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://3v51clarmja"
 path.bptc="res://.godot/imported/bully1.png-8ca61540905863e53a60b41ac1f167de.bptc.ctex"
+path.astc="res://.godot/imported/bully1.png-8ca61540905863e53a60b41ac1f167de.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/bully1.png"
-dest_files=["res://.godot/imported/bully1.png-8ca61540905863e53a60b41ac1f167de.bptc.ctex"]
+dest_files=["res://.godot/imported/bully1.png-8ca61540905863e53a60b41ac1f167de.bptc.ctex", "res://.godot/imported/bully1.png-8ca61540905863e53a60b41ac1f167de.astc.ctex"]
 
 [params]
 

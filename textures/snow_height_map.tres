@@ -2,15 +2,18 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vm3g3"]
 noise_type = 3
-seed = 2
-frequency = 0.0223
+seed = 62
+frequency = 0.0552
 fractal_type = 0
 domain_warp_type = 1
 domain_warp_amplitude = 10.0
 domain_warp_frequency = 0.66
 
 [resource]
+width = 128
+height = 128
 generate_mipmaps = false
 seamless = true
+seamless_blend_skirt = 0.2
 as_normal_map = true
 noise = SubResource("FastNoiseLite_vm3g3")

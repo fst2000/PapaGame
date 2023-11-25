@@ -39,8 +39,8 @@ material = SubResource("StandardMaterial3D_xfwpb")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 cast_shadow = 0
 visibility_range_end = 100.0
-amount = 50
+amount = 15
 lifetime = 5.0
-trail_lifetime = 0.01
+trail_lifetime = 0.92
 process_material = SubResource("ParticleProcessMaterial_vgigi")
 draw_pass_1 = SubResource("QuadMesh_xhy3p")

@@ -12,7 +12,7 @@ func _init(character):
 func update(delta):
 	timePassed += delta
 	if timePassed >= attack.hitTime && !hasHit:
-		character.hitSystem.hit(attack.damage)
+		character.hitSystem.hit(attack)
 		hasHit = true
 
 	var inertion = clamp(character.animPlayer.current_animation_length - timePassed, 0, 1)
@@ -25,13 +25,13 @@ func update(delta):
 
 func nextState():
 	if character.status.hasDamaged:
-		character.fightSystem.reset()
+		if character.status.flyoff:
+			return FlyoffState.new(character)
 		return StunState.new(character)
 		
 	if !character.animPlayer.is_playing():
 		if character.is_on_floor():
 			return IdleFightState.new(character)
 		else:
-			character.fightSystem.reset()
 			return FallState.new(character)
 	else: return self

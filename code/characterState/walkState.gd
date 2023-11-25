@@ -5,6 +5,7 @@ var controller
 func _init(character):
 	self.character = character
 	self.controller = character.controller
+	character.fightSystem.reset()
 	character.animPlayer.play("Walk")
 	
 func update(delta : float):
@@ -13,6 +14,8 @@ func update(delta : float):
 	
 func nextState():
 	if character.status.hasDamaged:
+		if character.status.flyoff:
+			return FlyoffState.new(character)
 		return StunState.new(character)
 		
 	if !character.is_on_floor():

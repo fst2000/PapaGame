@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bssn8osoo2if4"
 path.bptc="res://.godot/imported/skin1.png-3b7d5a3ac1439972c0670bf90d50eeaa.bptc.ctex"
+path.astc="res://.godot/imported/skin1.png-3b7d5a3ac1439972c0670bf90d50eeaa.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/skin1.png"
-dest_files=["res://.godot/imported/skin1.png-3b7d5a3ac1439972c0670bf90d50eeaa.bptc.ctex"]
+dest_files=["res://.godot/imported/skin1.png-3b7d5a3ac1439972c0670bf90d50eeaa.bptc.ctex", "res://.godot/imported/skin1.png-3b7d5a3ac1439972c0670bf90d50eeaa.astc.ctex"]
 
 [params]
 

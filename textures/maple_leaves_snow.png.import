@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgj07bxjt4d0g"
 path.s3tc="res://.godot/imported/maple_leaves_snow.png-9c98659644bdd5f3b43387bdf0f01234.s3tc.ctex"
+path.etc2="res://.godot/imported/maple_leaves_snow.png-9c98659644bdd5f3b43387bdf0f01234.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/maple_leaves_snow.png"
-dest_files=["res://.godot/imported/maple_leaves_snow.png-9c98659644bdd5f3b43387bdf0f01234.s3tc.ctex"]
+dest_files=["res://.godot/imported/maple_leaves_snow.png-9c98659644bdd5f3b43387bdf0f01234.s3tc.ctex", "res://.godot/imported/maple_leaves_snow.png-9c98659644bdd5f3b43387bdf0f01234.etc2.ctex"]
 
 [params]
 
