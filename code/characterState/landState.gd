@@ -13,7 +13,7 @@ func _init(character):
 func update(delta : float):
 	var moveSpeed = 1
 	character.move(controller.moveDirection() * moveSpeed)
-	#print("landing")
+	character.lookDir(controller.moveDirection())
 	
 func nextState():
 	if character.status.hasDamaged:

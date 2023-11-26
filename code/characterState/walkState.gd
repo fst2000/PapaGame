@@ -20,7 +20,10 @@ func nextState():
 		
 	if !character.is_on_floor():
 		return FallState.new(character)
-		
+	
+	if character.status.slide:
+		return SlideState.new(character)
+	
 	if character.controller.shouldAttack():
 		return AttackState.new(character)
 		

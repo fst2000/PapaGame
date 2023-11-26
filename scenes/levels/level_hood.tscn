@@ -39,7 +39,7 @@ sky_mode = 2
 [node name="hood" parent="." instance=ExtResource("5_esiru")]
 
 [node name="Papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_68lwa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55115, 1.20526, 40.4475)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.7845, 1.20526, 80.8522)
 camera = NodePath("../Camera3D")
 
 [node name="Bully" parent="." instance=ExtResource("2_uhq35")]

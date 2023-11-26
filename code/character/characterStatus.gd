@@ -5,6 +5,7 @@ var hp
 var hasDamaged = false
 var hitVelocity = Vector3.ZERO
 var flyoff = false
+var slide = false
 
 func _init(hp):
 	self.fullHP = hp

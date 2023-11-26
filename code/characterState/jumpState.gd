@@ -13,15 +13,14 @@ func _init(character):
 	character.sounds.get_node("Jump").play()
 	
 func update(delta : float):
-	var moveSpeed = 4
-	character.move(controller.moveDirection() * moveSpeed)
-	character.lookDir(controller.moveDirection())
+	pass
 	
 func nextState():
 	if character.status.hasDamaged:
 		if character.status.flyoff:
 			return FlyoffState.new(character)
 		return StunState.new(character)
+
 	if !animPlayer.is_playing():
 		return FallState.new(character)
 	else: return self

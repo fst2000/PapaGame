@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq82mhcafn02j"]
+[gd_scene load_steps=6 format=3 uid="uid://dq82mhcafn02j"]
 
 [ext_resource type="PackedScene" uid="uid://dgyj0m186rs2l" path="res://models/levels/hood/lamp_post.blend" id="1_prq4t"]
 [ext_resource type="Material" uid="uid://dymuqcg8l1yvc" path="res://materials/frosen_material.tres" id="2_yyvmq"]
@@ -9,6 +9,10 @@ metallic_specular = 0.0
 emission_enabled = true
 emission = Color(0.972549, 0.713726, 0.392157, 1)
 emission_energy_multiplier = 3.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_orlkk"]
+height = 10.3519
+radius = 0.210211
 
 [node name="lamp_post" instance=ExtResource("1_prq4t")]
 
@@ -28,3 +32,9 @@ spot_angle = 28.5706
 
 [node name="snow_lamps" parent="." index="2" instance=ExtResource("3_8hgey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.3589, -2.71429)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.83632, 0)
+shape = SubResource("CylinderShape3D_orlkk")

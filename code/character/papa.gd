@@ -30,16 +30,19 @@ var max_target_angle = 45
 @onready var fallKickSystem := AttackSystem.new(fallKicks)
 @onready var fightSystem := PapaFightSystem.new(self, punchSystem, kickSystem, fallKickSystem)
 @onready var targetDefiner = AngleTargetDefiner.new(self, AreaHitDetector.new($TargetArea), max_target_angle)
+@onready var slideCondition = IsSliding.new($GroundArea)
 @onready var state = IdleState.new(self)
 
 func _process(delta):
 	state = state.nextState()
 	state.update(delta)
-
 	if is_on_floor() && velocity.y < 0: velocity.y = 0;
 	else: velocity.y += gravity * delta
 	move_and_slide()
 	status.update(delta)
+
+func _physics_process(delta):
+	status.slide = slideCondition.check()
 	target = targetDefiner.get_target()
 
 func move(v: Vector3):

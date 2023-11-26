@@ -12,7 +12,7 @@ func _init(character):
 	
 func update(delta : float):
 	pass
-	
+
 func nextState():
 	if character.status.hasDamaged:
 		if character.status.flyoff:
@@ -21,6 +21,9 @@ func nextState():
 		
 	if !character.is_on_floor():
 		return FallState.new(character)
+	
+	if character.status.slide:
+		return SlideState.new(character)
 		
 	if controller.shouldAttack():
 		return AttackState.new(character)
