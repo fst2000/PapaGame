@@ -2,14 +2,13 @@ class_name IdleFightState
 
 var character
 var controller
-var timer = 0.0
 func _init(character):
 	self.character = character
 	self.controller = character.controller
 	character.animPlayer.play("IdleFight")
 	character.move(Vector3.ZERO)
 func update(delta : float):
-	timer += delta
+	pass
 	
 func nextState():
 	if character.status.hasDamaged:
@@ -20,9 +19,6 @@ func nextState():
 	if !character.is_on_floor():
 		return FallState.new(character)
 	
-	if timer >= 1.0:
-		return IdleState.new(character)
-	
 	if character.controller.shouldAttack():
 		return AttackState.new(character)
 		
@@ -31,4 +27,8 @@ func nextState():
 		
 	if character.controller.shouldJump():
 		return JumpState.new(character)
+	
+	if !character.target is CharacterBody3D:
+		return IdleState.new(character)
+		
 	else: return self

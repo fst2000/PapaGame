@@ -1,8 +1,9 @@
 class_name EnemyController
 
-var minDistance = 1.5
+var minDistance = 0.5
+var stopDistance = 1.5
 var attackDistance = 2.0
-var attack_time_interval = 0.8
+var attack_time_interval = 1.2
 var enemy
 var navigation
 var target
@@ -33,7 +34,7 @@ func shouldJump():
 	return false
 
 func shouldAttack():
-	if distance() <= attackDistance && target is Papa:
+	if distance() <= attackDistance && distance() > minDistance && target is Papa:
 		if target.status.isAlive():
 			if !attack_timer.is_active || attack_timer.time_passed() > attack_time_interval:
 				attack_timer.start()
@@ -41,7 +42,7 @@ func shouldAttack():
 	else: return false
 
 func shouldMove():
-	if distance() > minDistance:
+	if distance() > stopDistance:
 		if target is Papa:
 			return target.status.isAlive()
 		return true

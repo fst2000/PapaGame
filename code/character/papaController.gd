@@ -12,7 +12,9 @@ func shouldMove():
 func moveDirection() -> Vector3:
 	var moveInput = moveInput()
 	if moveInput.length() > 0.01 && is_active:
-		return moveInput().rotated(Vector3.UP, papa.camera.rotation.y + PI).normalized()
+		var direction = moveInput().rotated(Vector3.UP, papa.camera.rotation.y + PI).normalized()
+		var lerpDirection = lerp(papa.forward(), direction, 0.3)
+		return lerpDirection
 	else: return Vector3.ZERO
 
 func shouldPunch():

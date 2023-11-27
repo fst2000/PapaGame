@@ -13,7 +13,7 @@ func _init(character):
 	character.status.flyoff = false
 	var hit_velocity = character.status.hitVelocity
 	character.lookDir(-hit_velocity)
-	character.velocity = hit_velocity
+	character.velocity += hit_velocity
 	
 func update(delta : float):
 	time_passed += delta

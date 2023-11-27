@@ -8,11 +8,10 @@ func _init(character):
 	character.animPlayer.stop()
 	character.animPlayer.play("Stun")
 	character.status.hasDamaged = false
-	dir = character.status.hitVelocity
-	
+	character.velocity += character.status.hitVelocity
 	
 func update(delta):
-	character.move(dir)
+	pass
 
 func nextState():
 	if character.status.hp <= 0:

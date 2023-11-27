@@ -8,7 +8,7 @@ var walkSpeed = 4
 var gravity = -10
 var jumpForce = 5
 var hp = 100
-var max_target_angle = 45
+var max_target_angle = 60
 
 @onready var status = CharacterStatus.new(hp)
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer

@@ -12,9 +12,12 @@ func _init(character):
 	startVelocity = Vector3(character.velocity.x, 0, character.velocity.z)
 
 func update(delta : float):
-	var moveVelocity = startVelocity + controller.moveDirection()
-	character.lookDir(moveVelocity)
-	character.move(moveVelocity)
+	var moveVelocity = controller.moveDirection() * character.walkSpeed
+	var fallVelocity = startVelocity + moveVelocity
+	if fallVelocity.length() > startVelocity.length():
+		fallVelocity = fallVelocity.normalized() * max(startVelocity.length(), moveVelocity.length())
+	character.move(fallVelocity)
+	character.lookDir(lerp(character.forward(), fallVelocity, delta * 10))
 
 func nextState():
 	if character.status.hasDamaged:

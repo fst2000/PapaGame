@@ -3,6 +3,7 @@ class_name JumpState
 var character
 var animPlayer
 var controller
+var startVelocity
 
 func _init(character):
 	self.character = character
@@ -11,9 +12,15 @@ func _init(character):
 	self.animPlayer.play("Jump")
 	character.jump()
 	character.sounds.get_node("Jump").play()
+	startVelocity = Vector3(character.velocity.x, 0, character.velocity.z)
 	
 func update(delta : float):
-	pass
+	var moveVelocity = controller.moveDirection() * character.walkSpeed
+	var fallVelocity = startVelocity + moveVelocity
+	if fallVelocity.length() > startVelocity.length():
+		fallVelocity = fallVelocity.normalized() * max(startVelocity.length(), moveVelocity.length())
+	character.move(fallVelocity)
+	character.lookDir(lerp(character.forward(), fallVelocity, delta * 10))
 	
 func nextState():
 	if character.status.hasDamaged:

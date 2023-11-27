@@ -14,6 +14,8 @@ func nextState():
 	if character.status.hasDamaged:
 		if character.status.flyoff:
 			return FlyoffState.new(character)
+		return StunState.new(character)
+
 	if !character.is_on_floor():
 		return FallState.new(character)
 	if !character.animPlayer.is_playing():
