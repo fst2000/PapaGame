@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cjsvwmb8hiid6"]
+[gd_scene load_steps=33 format=3 uid="uid://cjsvwmb8hiid6"]
 
 [ext_resource type="Script" path="res://code/character/bully.gd" id="1_ynaif"]
 [ext_resource type="Texture2D" uid="uid://3v51clarmja" path="res://textures/bully1.png" id="2_te427"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://4coj5m3hwhdp" path="res://sounds/slap2.wav" id="9_oofm1"]
 [ext_resource type="AudioStream" uid="uid://bbp6gwvhujrg5" path="res://sounds/bullyAttack1.wav" id="10_s8rlf"]
 [ext_resource type="PackedScene" uid="uid://bbg8s0g0cypld" path="res://scenes/UI/text.tscn" id="11_sn5r6"]
+[ext_resource type="Script" path="res://scenes/characters/stepCondition.gd" id="12_vj7ep"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nwmd2"]
 radius = 0.4
@@ -1242,7 +1243,7 @@ _data = {
 "Walk": SubResource("Animation_5fnos")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_j3mwe"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0ebdp"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Bully" type="CharacterBody3D"]
@@ -1405,4 +1406,7 @@ libraries = {
 
 [node name="text" parent="." instance=ExtResource("11_sn5r6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38366, 0)
-texture = SubResource("ViewportTexture_j3mwe")
+texture = SubResource("ViewportTexture_0ebdp")
+
+[node name="StepCondition" type="Node3D" parent="."]
+script = ExtResource("12_vj7ep")

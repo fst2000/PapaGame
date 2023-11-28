@@ -1,10 +1,12 @@
 class_name SlideState
 
 var character
-
+var slide_sound
 func _init(character):
 	self.character = character
 	character.animPlayer.play("Slide")
+	slide_sound = character.sounds.get_node("Slide")
+	slide_sound.play()
 	
 func update(delta : float):
 	var normal = character.get_floor_normal()
@@ -18,6 +20,8 @@ func update(delta : float):
 	var look_direction = lerp(character.forward(), character.velocity, delta * 10)
 	character.look_at(character.global_position - look_direction)
 	
+	var sound_db = log(character.velocity.length()) - max_velocity
+	slide_sound.set_volume_db(sound_db)
 	
 func nextState():
 	if character.status.hasDamaged:
@@ -42,3 +46,4 @@ func nextState():
 
 func exit():
 	character.lookDir(character.forward())
+	slide_sound.stop()

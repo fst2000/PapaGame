@@ -1,5 +1,6 @@
 class_name EnemyController
 
+var is_active = true
 var minDistance = 0.5
 var stopDistance = 1.5
 var attackDistance = 2.0

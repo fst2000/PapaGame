@@ -11,6 +11,9 @@ func _init(character):
 func update(delta : float):
 	character.move(controller.moveDirection() * character.walkSpeed)
 	character.lookDir(controller.moveDirection())
+	if character.stepCondition:
+		if character.stepCondition.check():
+			character.sounds.get_node("Step").play()
 	
 func nextState():
 	if character.status.hasDamaged:

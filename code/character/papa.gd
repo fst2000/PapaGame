@@ -31,8 +31,8 @@ var max_target_angle = 60
 @onready var fightSystem := PapaFightSystem.new(self, punchSystem, kickSystem, fallKickSystem)
 @onready var targetDefiner = AngleTargetDefiner.new(self, AreaHitDetector.new($TargetArea), max_target_angle)
 @onready var slideCondition = IsSliding.new($GroundArea)
+@onready var stepCondition = $StepCondition
 @onready var state = IdleState.new(self)
-
 func _process(delta):
 	state = state.nextState()
 	state.update(delta)

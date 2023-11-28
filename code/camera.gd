@@ -13,7 +13,7 @@ func _process(delta):
 		var origin_to_camera = origin.global_position.direction_to(global_position).normalized() * distance
 		origin_to_camera.y = 0
 		var local_pos = origin_to_camera + Vector3.UP * camera_height
-		global_position = origin.position + local_pos
+		global_position = origin.global_position + local_pos
 		look_at(origin.global_position + Vector3.UP * origin_height)
 	else:
 		global_position = lerp(global_position, origin.global_position, delta)

@@ -21,6 +21,7 @@ var attackTimer = DeltaTimer.new()
 	Attack.new("Punch2",Vector2(2,0), 5, 0.4, false),
 	Attack.new("Kick1",Vector2(2,0), 10, 0.4, false)]
 @onready var fightSystem := AttackSystem.new(attacks)
+@onready var stepCondition = $StepCondition
 @onready var state = IdleState.new(self)
 
 func _process(delta):
