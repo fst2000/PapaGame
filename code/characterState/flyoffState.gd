@@ -25,4 +25,7 @@ func nextState():
 			if character.status.hp <= 0:
 				return KOState.new(character)
 			return StandUpState.new(character)
+	if character.status.hasDamaged:
+		return FlyoffState.new(character)
+
 	return self

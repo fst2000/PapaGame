@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmari1xexyvf"]
+
+[ext_resource type="PackedScene" uid="uid://ckm6h7igxmli8" path="res://scenes/objects/bridge.tscn" id="1_xy2bj"]
+[ext_resource type="Material" uid="uid://cq58uuxn1cew2" path="res://materials/terek_material.tres" id="2_amu0m"]
+[ext_resource type="Texture2D" uid="uid://drkx4pkbsyuwp" path="res://textures/pebbles.png" id="3_f6nbo"]
+[ext_resource type="PackedScene" uid="uid://x8j4m2lcolb4" path="res://scenes/objects/crane.tscn" id="4_6ssci"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f3b1l"]
+size = Vector2(500, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cje4h"]
+size = Vector2(200, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2cgn"]
+albedo_texture = ExtResource("3_f6nbo")
+uv1_scale = Vector3(20, 10, 1)
+
+[node name="level_bridge" type="Node3D"]
+
+[node name="bridge" parent="." instance=ExtResource("1_xy2bj")]
+
+[node name="water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -31.7577)
+mesh = SubResource("PlaneMesh_f3b1l")
+surface_material_override/0 = ExtResource("2_amu0m")
+
+[node name="bottom" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.8341)
+mesh = SubResource("PlaneMesh_cje4h")
+surface_material_override/0 = SubResource("StandardMaterial3D_c2cgn")
+
+[node name="crane" parent="." instance=ExtResource("4_6ssci")]
+transform = Transform3D(-0.235753, 0, -0.971813, 0, 1, 0, 0.971813, 0, -0.235753, 31.5367, 4.59789, -15.532)
+
+[node name="crane2" parent="." instance=ExtResource("4_6ssci")]
+transform = Transform3D(0.770558, 0, -0.63737, 0, 1, 0, 0.63737, 0, 0.770558, 21.5794, 2.75321, -56.2066)

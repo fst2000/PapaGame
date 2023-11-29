@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://p1jndlnag1hj"]
+
+[ext_resource type="Texture2D" uid="uid://bqsui2g3lynwk" path="res://textures/breath.png" id="1_0ga18"]
+
+[sub_resource type="Gradient" id="Gradient_noeox"]
+offsets = PackedFloat32Array(0, 0.154472)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4r10y"]
+gradient = SubResource("Gradient_noeox")
+
+[sub_resource type="Curve" id="Curve_b4wta"]
+max_value = 2.0
+_data = [Vector2(0, 0.277228), 0.0, 1.40368, 0, 0, Vector2(1, 2), 1.58416, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8koh2"]
+width = 64
+curve = SubResource("Curve_b4wta")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s2px0"]
+direction = Vector3(0, 1, 0)
+spread = 8.6
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_curve = SubResource("CurveTexture_8koh2")
+color_ramp = SubResource("GradientTexture1D_4r10y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsiy4"]
+transparency = 1
+albedo_texture = ExtResource("1_0ga18")
+metallic_specular = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_a1lr4"]
+material = SubResource("StandardMaterial3D_bsiy4")
+
+[node name="Breath" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 1
+lifetime = 3.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_s2px0")
+draw_pass_1 = SubResource("QuadMesh_a1lr4")
