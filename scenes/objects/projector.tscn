@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c66vjxl18fstj"]
+
+[ext_resource type="PackedScene" uid="uid://du5mfac04rv3r" path="res://models/levels/bridge/projector.blend" id="1_2slph"]
+
+[sub_resource type="GDScript" id="GDScript_t5eru"]
+script/source = "extends Node3D
+
+@export var angle : float
+
+func _ready():
+	$Stand/Projector.rotation_degrees.x = angle
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elqsa"]
+albedo_color = Color(0.752941, 0.752941, 0.752941, 1)
+emission_enabled = true
+emission = Color(0.992157, 0.788235, 0.458824, 1)
+emission_energy_multiplier = 3.0
+
+[node name="projector" instance=ExtResource("1_2slph")]
+script = SubResource("GDScript_t5eru")
+
+[node name="Stand" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Projector" parent="Stand" index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_elqsa")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Stand/Projector" index="0"]
+light_color = Color(0.996078, 0.8, 0.466667, 1)
+light_energy = 20.0
+spot_range = 100.0
+spot_angle = 20.0

@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=7 format=3 uid="uid://ctv7ucnk4g2ey"]
+
+[ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
+[ext_resource type="Script" path="res://code/camera.gd" id="2_2k0wg"]
+[ext_resource type="PackedScene" uid="uid://fffg5or0wqok" path="res://scenes/levels/level_hood.tscn" id="3_fn2n6"]
+[ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="3_rv8w5"]
+[ext_resource type="PackedScene" uid="uid://bmari1xexyvf" path="res://scenes/levels/level_bridge.tscn" id="4_7efnh"]
+[ext_resource type="Environment" uid="uid://kvvqmbm8s6b5" path="res://scenes/levels/winter_night_environment.tres" id="5_dij1p"]
 
 [node name="level_main" type="Node3D"]
+
+[node name="papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_wjhe6")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 2.72, 1.3169, -4.60372)
+camera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("origin")]
+transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 2.72, 3.73258, -10.3392)
+script = ExtResource("2_2k0wg")
+origin = NodePath("../papa")
+
+[node name="snow" parent="Camera3D" instance=ExtResource("3_rv8w5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-06, 1.46684, -3.92002)
+
+[node name="level_hood" parent="." instance=ExtResource("3_fn2n6")]
+
+[node name="level_bridge" parent="." instance=ExtResource("4_7efnh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 175.211, -25.7702, 71.6865)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_dij1p")
