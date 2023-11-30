@@ -49,7 +49,7 @@ void fragment()
   	vec3 world_position = world.xyz / world.w;
 	float water_depth = length(vertex_world - world_position);
 	float alpha = clamp(pow(water_depth * 0.1, waterClarity), minClarity ,1.0);
-	float foam = texture(foam_noise, UV * tiling + direction * TIME * speed * 0.2).r;
+	float foam = texture(foam_noise, UV * tiling).r;
 	if((water_depth >= shore_foam_mul * foam) && ((floorHeight * 0.5) * waveHeight < (1.0 - wave_foam_mul) * foam))
 	{
 		ALPHA = alpha;
@@ -58,7 +58,7 @@ void fragment()
 	else
 	{
 		ALBEDO = foam_color;
-		ALPHA = clamp(alpha + foam, 0, 1.0);
+		ROUGHNESS = 0.1;
 		METALLIC = 0.0;
 	}
 }

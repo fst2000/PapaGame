@@ -1,0 +1,19 @@
+[gd_scene load_steps=7 format=3 uid="uid://ng1hi0wn6fsu"]
+
+[ext_resource type="PackedScene" uid="uid://dswt57xty1gpi" path="res://models/levels/hood/house.blend" id="1_7dln6"]
+[ext_resource type="Texture2D" uid="uid://r8sjsqothcw" path="res://textures/house_windows_1.png" id="2_2odv0"]
+[ext_resource type="Material" uid="uid://bhl8sg582ucic" path="res://materials/snow_material.tres" id="3_4f7d8"]
+[ext_resource type="Texture2D" uid="uid://cbvrmefxohibm" path="res://textures/house_wall_1.png" id="4_mnkcf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rllo6"]
+albedo_texture = ExtResource("2_2odv0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a07rm"]
+albedo_texture = ExtResource("4_mnkcf")
+
+[node name="house1" instance=ExtResource("1_7dln6")]
+
+[node name="house" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rllo6")
+surface_material_override/1 = ExtResource("3_4f7d8")
+surface_material_override/2 = SubResource("StandardMaterial3D_a07rm")

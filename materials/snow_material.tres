@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://bhl8sg582ucic"]
 
 [ext_resource type="Shader" path="res://materials/snow_shader.gdshader" id="1_7igj0"]
-[ext_resource type="Texture2D" uid="uid://dhefvwjt4agxi" path="res://textures/snow_height_map.tres" id="2_e3uvo"]
+[ext_resource type="Texture2D" uid="uid://dhefvwjt4agxi" path="res://textures/snow_height_map.tres" id="2_bf5eg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0v3gd"]
 frequency = 0.0877
@@ -10,7 +10,7 @@ fractal_lacunarity = 1.0
 fractal_gain = 2.0
 fractal_weighted_strength = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ppgqw"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pvapi"]
 width = 128
 height = 128
 generate_mipmaps = false
@@ -20,7 +20,7 @@ noise = SubResource("FastNoiseLite_0v3gd")
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lug6j"]
 frequency = 0.8121
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t8pui"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cs8t1"]
 width = 128
 height = 128
 generate_mipmaps = false
@@ -32,7 +32,7 @@ noise = SubResource("FastNoiseLite_lug6j")
 [resource]
 render_priority = 0
 shader = ExtResource("1_7igj0")
-shader_parameter/tiling = Vector2(100, 100)
-shader_parameter/reflection_map = SubResource("NoiseTexture2D_ppgqw")
-shader_parameter/snowflake_normal_map = SubResource("NoiseTexture2D_t8pui")
-shader_parameter/height_map = ExtResource("2_e3uvo")
+shader_parameter/tiling = Vector2(5, 5)
+shader_parameter/reflection_map = SubResource("NoiseTexture2D_pvapi")
+shader_parameter/snowflake_normal_map = SubResource("NoiseTexture2D_cs8t1")
+shader_parameter/height_map = ExtResource("2_bf5eg")

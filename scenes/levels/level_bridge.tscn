@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmari1xexyvf"]
+[gd_scene load_steps=13 format=3 uid="uid://bmari1xexyvf"]
 
 [ext_resource type="PackedScene" uid="uid://ckm6h7igxmli8" path="res://scenes/objects/bridge.tscn" id="1_xy2bj"]
 [ext_resource type="Material" uid="uid://cq58uuxn1cew2" path="res://materials/terek_material.tres" id="2_amu0m"]
 [ext_resource type="Texture2D" uid="uid://drkx4pkbsyuwp" path="res://textures/pebbles.png" id="3_f6nbo"]
 [ext_resource type="PackedScene" uid="uid://x8j4m2lcolb4" path="res://scenes/objects/crane.tscn" id="4_6ssci"]
+[ext_resource type="AudioStream" uid="uid://dqu8nnguxy1jf" path="res://sounds/terek.wav" id="5_y2ooi"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f3b1l"]
 size = Vector2(500, 100)
@@ -92,3 +93,11 @@ libraries = {
 "": SubResource("AnimationLibrary_em5n1")
 }
 script = SubResource("GDScript_avoll")
+
+[node name="Terek" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.94435, -28.4023)
+stream = ExtResource("5_y2ooi")
+unit_size = 20.0
+max_db = 1.0
+autoplay = true
+max_distance = 70.0

@@ -8,7 +8,9 @@ height = 5.19675
 radius = 0.569842
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_saajj"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_galrq")
 metallic_specular = 0.0
 
