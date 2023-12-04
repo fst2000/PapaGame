@@ -8,4 +8,4 @@ func _init(time : float): #time in sec
 
 func check():
 	var cur_time = Time.get_ticks_msec() * 0.001
-	return cur_time - start_time < time
+	return (cur_time - start_time) < time

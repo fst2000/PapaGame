@@ -15,5 +15,4 @@ void fragment()
 	ROUGHNESS = 1.0 - roughness;
 	vec3 normal = texture(height_map, UV * tiling).rgb;
 	NORMAL_MAP = normal;
-	
 }

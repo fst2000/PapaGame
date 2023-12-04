@@ -14,7 +14,7 @@ var attackTimer = DeltaTimer.new()
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
 @onready var sounds = $Sounds
 @onready var controller = EnemyController.new(self, target, $NavigationAgent3D, attackTimer)
-@onready var hitSystem := CharacterHitSystem.new(self, RayHitDetector.new($RayCast3D))
+@onready var hitSystem := CharacterHitSystem.new(self, RayHitDetector.new($HitRay))
 @onready var speakSystem := TextSpeakSystem.new($text)
 @onready var attacks : Array[Attack] = [
 	Attack.new("Punch1", Vector2(2,0), 5, 0.4, false),

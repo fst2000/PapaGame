@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://fffg5or0wqok"]
+[gd_scene load_steps=18 format=3 uid="uid://fffg5or0wqok"]
 
 [ext_resource type="PackedScene" uid="uid://dpo8e515j0jbd" path="res://scenes/objects/hood.tscn" id="1_ywreg"]
 [ext_resource type="ArrayMesh" uid="uid://bskmftmngnsuf" path="res://navmeshes/hood_navmesh.res" id="2_psm6n"]
+[ext_resource type="PackedScene" uid="uid://c8r6b8sw402hg" path="res://scenes/objects/lamp_entrance.tscn" id="3_f8udy"]
 [ext_resource type="PackedScene" uid="uid://dq82mhcafn02j" path="res://scenes/objects/lamp_post.tscn" id="3_hjfqj"]
 [ext_resource type="PackedScene" uid="uid://ck8u6whprksmu" path="res://scenes/objects/maple.tscn" id="4_cw1op"]
 [ext_resource type="PackedScene" uid="uid://buq7fig27gyd2" path="res://scenes/objects/house4.tscn" id="5_a2xx5"]
@@ -77,6 +78,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1486, -1.19209e-06, 86.460
 
 [node name="lamp_post8" parent="NavigationRegion3D/Lights" instance=ExtResource("3_hjfqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.825, -15, 80.8725)
+
+[node name="lamp_entrance" parent="NavigationRegion3D/Lights" instance=ExtResource("3_f8udy")]
+transform = Transform3D(0.517489, 0, -0.85569, 0, 1, 0, 0.85569, 0, 0.517489, 1.93777, 9.19083, 34.1096)
+
+[node name="lamp_entrance2" parent="NavigationRegion3D/Lights" instance=ExtResource("3_f8udy")]
+transform = Transform3D(0.486945, 0, -0.873432, 0, 1, 0, 0.873432, 0, 0.486945, 1.93777, 9.19083, 52.0414)
+
+[node name="lamp_entrance3" parent="NavigationRegion3D/Lights" instance=ExtResource("3_f8udy")]
+transform = Transform3D(0.386824, 0, -0.922154, 0, 1, 0, 0.922154, 0, 0.386824, -12.6308, 8.17406, -5.40653)
 
 [node name="Trees" type="Node3D" parent="NavigationRegion3D"]
 

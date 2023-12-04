@@ -5,12 +5,14 @@ var attack : Attack
 var timePassed = 0.0
 var hasHit = false
 var startVelocity
+var starts_in_air
 func _init(character):
 	self.character = character
 	attack = character.fightSystem.attack()
 	character.animPlayer.play(attack.animName)
 	character.sounds.get_node("AirWave").play()
 	startVelocity = character.velocity
+	starts_in_air = !character.is_on_floor()
 
 func update(delta):
 	timePassed += delta
@@ -37,4 +39,8 @@ func nextState():
 			return IdleFightState.new(character)
 		else:
 			return FallState.new(character)
-	else: return self
+			
+	if starts_in_air && character.is_on_floor():
+		return LandState.new(character)
+		
+	return self

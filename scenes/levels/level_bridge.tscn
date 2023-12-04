@@ -8,8 +8,8 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f3b1l"]
 size = Vector2(500, 100)
-subdivide_width = 250
-subdivide_depth = 50
+subdivide_width = 500
+subdivide_depth = 100
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cje4h"]
 size = Vector2(200, 100)
@@ -44,8 +44,8 @@ tracks/1/path = NodePath("crane2:crane_rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 1, 1, 0, 0),
-"points": PackedFloat32Array(-7, -0.25, 0, 0.25, 0, -7, -0.25, 0, 0.25, 0, 16, 0, 0, 0, 0, 16, 0, 0, 0, 0, -7, -0.25, 0, 0.25, 0, -7, -0.25, 0, 0.25, 0),
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-7, -0.25, 0, 0.25, 0, -7, -0.25, 0, 0.25, 0, 22, 0, 0, 0, 0, 22, 0, 0, 0, 0, -7, -0.25, 0, 0.25, 0, -7, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 2, 8, 12, 18, 20)
 }
 
@@ -82,11 +82,11 @@ shape = SubResource("ConcavePolygonShape3D_leuws")
 
 [node name="crane" parent="." instance=ExtResource("4_6ssci")]
 transform = Transform3D(-0.235753, 0, -0.971813, 0, 1, 0, 0.971813, 0, -0.235753, 31.5367, 4.59789, -15.532)
-crane_rotation = -30.0
+crane_rotation = -24.0
 
 [node name="crane2" parent="." instance=ExtResource("4_6ssci")]
 transform = Transform3D(0.770558, 0, -0.63737, 0, 1, 0, 0.63737, 0, 0.770558, 21.5794, 2.75321, -56.2066)
-crane_rotation = 20.0
+crane_rotation = 18.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
