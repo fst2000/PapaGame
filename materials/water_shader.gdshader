@@ -37,7 +37,7 @@ void fragment()
 	vec3 waterNormal = mix(waveNormal, floorNormal, 0.5);
 	SPECULAR = 0.5;
 	METALLIC = 0.5;
-	ROUGHNESS = 0.0;
+	ROUGHNESS = 0.1;
 	NORMAL_MAP = waterNormal;
 	float depth = texture(depth_texture, SCREEN_UV).x;
   	vec3 ndc = vec3(SCREEN_UV * 2.0 - 1.0, depth);
@@ -58,7 +58,6 @@ void fragment()
 	else
 	{
 		ALBEDO = foam_color;
-		ROUGHNESS = 0.1;
 		METALLIC = 0.0;
 	}
 }

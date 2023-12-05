@@ -16,8 +16,13 @@ func update(delta : float):
 	character.lookDir(controller.moveDirection())
 	
 func nextState():
+	if character.status.slide:
+		return SlideState.new(character)
+		
 	if character.status.hasDamaged:
 		return StunState.new(character)
+		
 	if character.animPlayer.is_playing():
 		return self
+		
 	return IdleState.new(character)

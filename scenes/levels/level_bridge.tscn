@@ -82,11 +82,10 @@ shape = SubResource("ConcavePolygonShape3D_leuws")
 
 [node name="crane" parent="." instance=ExtResource("4_6ssci")]
 transform = Transform3D(-0.235753, 0, -0.971813, 0, 1, 0, 0.971813, 0, -0.235753, 31.5367, 4.59789, -15.532)
-crane_rotation = -24.0
 
 [node name="crane2" parent="." instance=ExtResource("4_6ssci")]
 transform = Transform3D(0.770558, 0, -0.63737, 0, 1, 0, 0.63737, 0, 0.770558, 21.5794, 2.75321, -56.2066)
-crane_rotation = 18.0
+crane_rotation = -7.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -2062,7 +2062,7 @@ margin = 0.01
 height = 1.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o1361"]
-radius = 0.4
+radius = 0.2
 height = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hu57p"]
@@ -2076,7 +2076,7 @@ stream_2/weight = 1.0
 stream_3/stream = ExtResource("11_iduy8")
 stream_3/weight = 1.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_an8qh"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_i1lcd"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sb5vd"]
@@ -2223,7 +2223,7 @@ max_distance = 50.0
 
 [node name="text" parent="." instance=ExtResource("10_yjxvn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01423, 0)
-texture = SubResource("ViewportTexture_an8qh")
+texture = SubResource("ViewportTexture_i1lcd")
 
 [node name="StepCondition" type="Node3D" parent="."]
 script = ExtResource("11_me5v8")

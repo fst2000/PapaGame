@@ -6,14 +6,13 @@ var walkSpeed = 2
 var gravity = -10
 var jumpForce = 5
 var hp = 60
-var attackTimer = DeltaTimer.new()
 
 @export var target : Node3D
 
 @onready var status = CharacterStatus.new(hp)
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
 @onready var sounds = $Sounds
-@onready var controller = EnemyController.new(self, target, $NavigationAgent3D, attackTimer)
+@onready var controller = EnemyController.new(self, target, $NavigationAgent3D)
 @onready var hitSystem := CharacterHitSystem.new(self, RayHitDetector.new($HitRay))
 @onready var speakSystem := TextSpeakSystem.new($text)
 @onready var attacks : Array[Attack] = [
@@ -35,7 +34,6 @@ func _process(delta):
 	else: velocity.y += gravity * delta
 	move_and_slide()
 	status.update(delta)
-	attackTimer.update(delta)
 
 func move(v: Vector3):
 	velocity.x = v.x

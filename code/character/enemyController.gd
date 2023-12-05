@@ -8,13 +8,12 @@ var attack_time_interval = 1.2
 var enemy
 var navigation
 var target
-var attack_timer
+var attack_time_condition = TimeCondition.new(attack_time_interval)
 
-func _init(enemy, target, navigation, attack_timer):
+func _init(enemy, target, navigation):
 	self.enemy = enemy
 	self.navigation = navigation
 	self.target = target
-	self.attack_timer = attack_timer
 func set_target(target : Node3D):
 	self.target = target
 	
@@ -37,10 +36,12 @@ func shouldJump():
 func shouldAttack():
 	if distance() <= attackDistance && distance() > minDistance && target is Papa:
 		if target.status.isAlive():
-			if !attack_timer.is_active || attack_timer.time_passed() > attack_time_interval:
-				attack_timer.start()
+			if enemy.status.hasDamaged:
+				attack_time_condition = TimeCondition.new(attack_time_interval)
+			if !attack_time_condition.check():
+				attack_time_condition = TimeCondition.new(attack_time_interval)
 				return true
-	else: return false
+	return false
 
 func shouldMove():
 	if distance() > stopDistance:

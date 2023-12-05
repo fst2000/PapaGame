@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=11 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
 [ext_resource type="Script" path="res://code/camera.gd" id="2_2k0wg"]
@@ -8,14 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://bmari1xexyvf" path="res://scenes/levels/level_bridge.tscn" id="4_7efnh"]
 [ext_resource type="Environment" uid="uid://kvvqmbm8s6b5" path="res://scenes/levels/winter_night_environment.tres" id="5_dij1p"]
 [ext_resource type="Script" path="res://code/cutsceneTrigger_1.gd" id="6_4w38b"]
+[ext_resource type="Script" path="res://code/cutsceneTrigget_2.gd" id="7_sbww8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wa1q7"]
-size = Vector3(14.242, 5.81368, 1)
+size = Vector3(13.8658, 5.81368, 1)
 
 [node name="level_main" type="Node3D"]
 
 [node name="papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_wjhe6")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 2.72, 1.3169, -4.60372)
+floor_snap_length = 0.3
 camera = NodePath("../Camera3D")
 
 [node name="bully" parent="." instance=ExtResource("2_8x5ck")]
@@ -62,6 +64,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61335, 1.45476, 3.5008)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23674, 1.55571, 1.04351)
 shape = SubResource("BoxShape3D_wa1q7")
 
+[node name="CutsceneTrigger2" type="Area3D" parent="level_hood" node_paths=PackedStringArray("camera", "papa", "look_target", "camera_origin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0893, 0, 81.6664)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("7_sbww8")
+camera = NodePath("../../Camera3D")
+papa = NodePath("../../papa")
+look_target = NodePath("LookTarget")
+camera_origin = NodePath("CameraOrigin")
+
+[node name="CameraOrigin" type="Node3D" parent="level_hood/CutsceneTrigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95464, 3.38166, -2.79547)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level_hood/CutsceneTrigger2"]
+transform = Transform3D(0.615318, 0, 0.788279, 0, 1, 0, -0.788279, 0, 0.615318, -0.886318, 1.55571, 1.64816)
+shape = SubResource("BoxShape3D_wa1q7")
+
+[node name="LookTarget" type="Node3D" parent="level_hood/CutsceneTrigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4325, 1.84498, -1.58978)
+
 [node name="level_bridge" parent="." instance=ExtResource("4_7efnh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 175.211, -25.7702, 71.6865)
 
@@ -72,3 +94,4 @@ visible = false
 environment = ExtResource("5_dij1p")
 
 [connection signal="body_entered" from="level_hood/CutsceneTrigger1" to="level_hood/CutsceneTrigger1" method="_on_body_entered"]
+[connection signal="body_entered" from="level_hood/CutsceneTrigger2" to="level_hood/CutsceneTrigger2" method="_on_body_entered"]

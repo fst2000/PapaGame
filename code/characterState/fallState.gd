@@ -26,8 +26,6 @@ func nextState():
 		return StunState.new(character)
 		
 	if character.is_on_floor():
-		if character.status.slide:
-			return SlideState.new(character)
 		return LandState.new(character)
 		
 	if character.controller.shouldAttack():
