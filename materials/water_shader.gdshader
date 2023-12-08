@@ -48,9 +48,9 @@ void fragment()
 	vec4 world = INV_VIEW_MATRIX * INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
   	vec3 world_position = world.xyz / world.w;
 	float water_depth = length(vertex_world - world_position);
-	float alpha = clamp(pow(water_depth * 0.1, waterClarity), minClarity ,1.0);
-	float foam = texture(foam_noise, UV * tiling).r;
-	if((water_depth >= shore_foam_mul * foam) && ((floorHeight * 0.5) * waveHeight < (1.0 - wave_foam_mul) * foam))
+	float alpha = clamp(water_depth * waterClarity + minClarity, minClarity, 1);
+	float foam = texture(foam_noise, UV * tiling + direction * TIME * speed * 0.5).r;
+	if((water_depth >= shore_foam_mul * foam) && (floorHeight + waveHeight + foam < 1.0 / wave_foam_mul))
 	{
 		ALPHA = alpha;
 		ALBEDO = color;

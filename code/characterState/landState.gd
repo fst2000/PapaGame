@@ -2,18 +2,16 @@ class_name  LandState
 
 var character
 var controller
-
+var inretion = 4.0
 func _init(character):
 	self.character = character
 	self.controller = character.controller
-	character.move(Vector3.ZERO)
 	character.animPlayer.play("Land")
 	character.sounds.get_node("Land").play()
 	
 func update(delta : float):
 	var moveSpeed = 1
-	character.move(controller.moveDirection() * moveSpeed)
-	character.lookDir(controller.moveDirection())
+	character.velocity = lerp(character.velocity, Vector3.ZERO, inretion * delta)
 	
 func nextState():
 	if character.status.slide:
