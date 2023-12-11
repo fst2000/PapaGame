@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=12 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
 [ext_resource type="Script" path="res://code/camera.gd" id="2_2k0wg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Environment" uid="uid://kvvqmbm8s6b5" path="res://scenes/levels/winter_night_environment.tres" id="5_dij1p"]
 [ext_resource type="Script" path="res://code/cutsceneTrigger_1.gd" id="6_4w38b"]
 [ext_resource type="Script" path="res://code/cutsceneTrigget_2.gd" id="7_sbww8"]
+[ext_resource type="PackedScene" uid="uid://dhkkw00fukjhm" path="res://scenes/levels/level_left_coast.tscn" id="9_4icev"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wa1q7"]
 size = Vector3(13.8658, 5.81368, 1)
@@ -86,6 +87,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4325, 1.84498, -1.58978)
 
 [node name="level_bridge" parent="." instance=ExtResource("4_7efnh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 175.211, -25.7702, 71.6865)
+
+[node name="level_left_coast" parent="." instance=ExtResource("9_4icev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243.431, -15.0571, 79.6505)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 visible = false

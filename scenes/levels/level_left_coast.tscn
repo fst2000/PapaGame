@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhkkw00fukjhm"]
+
+[ext_resource type="PackedScene" uid="uid://b4xwev78wsm38" path="res://scenes/objects/left_coast.tscn" id="1_c3d6t"]
+
+[node name="level_left_coast" type="Node3D"]
+
+[node name="left_coast" parent="." instance=ExtResource("1_c3d6t")]
+transform = Transform3D(-4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, 0, 0, 0)
