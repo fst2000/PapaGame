@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh7kht1roj4eu"
-path.s3tc="res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.s3tc.ctex"
-path.etc2="res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.etc2.ctex"
+uid="uid://ng6rs61bixi2"
+path.bptc="res://.godot/imported/house_lightmap.png-213c0874b58e8e4606c6671b393bcc92.bptc.ctex"
+path.astc="res://.godot/imported/house_lightmap.png-213c0874b58e8e4606c6671b393bcc92.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,13 +12,13 @@ metadata={
 
 [deps]
 
-source_file="res://textures/16th_floor_door.png"
-dest_files=["res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.s3tc.ctex", "res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.etc2.ctex"]
+source_file="res://textures/house_lightmap.png"
+dest_files=["res://.godot/imported/house_lightmap.png-213c0874b58e8e4606c6671b393bcc92.bptc.ctex", "res://.godot/imported/house_lightmap.png-213c0874b58e8e4606c6671b393bcc92.astc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

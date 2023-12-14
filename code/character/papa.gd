@@ -17,14 +17,14 @@ var max_target_angle = 60
 @onready var hitSystem := CharacterHitSystem.new(self, AreaHitDetector.new($HitArea))
 @onready var speakSystem := TextSpeakSystem.new($text)
 @onready var punches : Array[Attack] = [
-	Attack.new("Punch1", Vector2(1,0), 10, 0.15, false),
-	Attack.new("Punch2", Vector2(1,0), 10, 0.15, false),
-	Attack.new("Punch3", Vector2(1,6), 15, 0.2, true)]
+	Attack.new("Punch1", Vector3(0, 0, 1), Vector2(1,0), 10, 0.15, false),
+	Attack.new("Punch2", Vector3(0, 0, 2), Vector2(1,0), 10, 0.15, false),
+	Attack.new("Punch3", Vector3(0, 0, 2), Vector2(1,5.5), 15, 0.2, true)]
 @onready var kicks : Array[Attack] = [
-	Attack.new("Kick1", Vector2(1,0), 5, 0.08, false),
-	Attack.new("Kick2", Vector2(1,0), 10, 0.15, false),
-	Attack.new("Kick3", Vector2(8,5), 20, 0.4, true)]
-@onready var fallKicks : Array[Attack] = [Attack.new("FallKick", Vector2(5,5), 20, 0.2, true)]
+	Attack.new("Kick1", Vector3(0, 0, 1), Vector2(1,0), 5, 0.08, false),
+	Attack.new("Kick2", Vector3(0, 0, 2), Vector2(1,0), 10, 0.15, false),
+	Attack.new("Kick3", Vector3(0, 0, 2), Vector2(8,5), 20, 0.4, true)]
+@onready var fallKicks : Array[Attack] = [Attack.new("FallKick", Vector3(0, 0, 0), Vector2(5,5), 20, 0.2, true)]
 @onready var punchSystem := AttackSystem.new(punches)
 @onready var kickSystem := AttackSystem.new(kicks)
 @onready var fallKickSystem := AttackSystem.new(fallKicks)

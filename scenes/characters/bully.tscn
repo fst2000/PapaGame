@@ -1238,7 +1238,7 @@ _data = {
 radius = 0.4
 height = 1.7
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hdcwd"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5gstb"]
 viewport_path = NodePath("SubViewport")
 
 [node name="bully" type="CharacterBody3D"]
@@ -1369,4 +1369,4 @@ max_distance = 50.0
 
 [node name="text" parent="." instance=ExtResource("6_dry2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10433, 0)
-texture = SubResource("ViewportTexture_hdcwd")
+texture = SubResource("ViewportTexture_5gstb")

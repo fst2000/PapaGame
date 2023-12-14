@@ -6,4 +6,7 @@ func _init(ray : RayCast3D):
 	self.ray = ray
 
 func hit_objects() -> Array[Object]:
-	return [ray.get_collider()]
+	var collider = ray.get_collider()
+	if collider:
+		return [collider]
+	else: return []

@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh7kht1roj4eu"
-path.s3tc="res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.s3tc.ctex"
-path.etc2="res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.etc2.ctex"
+uid="uid://v5jglsi6svoe"
+path.s3tc="res://.godot/imported/watches.png-398561dec4e18be0e17616ddf41d9886.s3tc.ctex"
+path.etc2="res://.godot/imported/watches.png-398561dec4e18be0e17616ddf41d9886.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/16th_floor_door.png"
-dest_files=["res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.s3tc.ctex", "res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.etc2.ctex"]
+source_file="res://textures/watches.png"
+dest_files=["res://.godot/imported/watches.png-398561dec4e18be0e17616ddf41d9886.s3tc.ctex", "res://.godot/imported/watches.png-398561dec4e18be0e17616ddf41d9886.etc2.ctex"]
 
 [params]
 

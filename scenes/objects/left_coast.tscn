@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b4xwev78wsm38"]
+[gd_scene load_steps=50 format=3 uid="uid://b4xwev78wsm38"]
 
 [ext_resource type="PackedScene" uid="uid://0hqlhbmvpbfo" path="res://models/levels/left_coast/left_coast.blend" id="1_oxnrk"]
 [ext_resource type="Shader" path="res://materials/snow_shader.gdshader" id="2_ik7a0"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://r8sjsqothcw" path="res://textures/house_windows_1.png" id="4_u537d"]
 [ext_resource type="Texture2D" uid="uid://p44pk3jjkdgv" path="res://textures/house_windows_2.png" id="5_yv78u"]
 [ext_resource type="Texture2D" uid="uid://daeggg4upulvt" path="res://textures/house_windows_3.png" id="6_1rkf2"]
+[ext_resource type="Texture2D" uid="uid://d2b73g6lu0u4e" path="res://textures/house_glassmap.png" id="6_7hvwd"]
 [ext_resource type="Texture2D" uid="uid://d21nbnvvndki6" path="res://textures/house_windows_4.png" id="7_bl0f5"]
+[ext_resource type="Texture2D" uid="uid://ng6rs61bixi2" path="res://textures/house_lightmap.png" id="7_v22gs"]
 [ext_resource type="Texture2D" uid="uid://cbvrmefxohibm" path="res://textures/house_wall_1.png" id="8_5s6h5"]
 [ext_resource type="Texture2D" uid="uid://d25pdq5kbtpab" path="res://textures/house_wall_2.png" id="9_lw0wp"]
 [ext_resource type="Texture2D" uid="uid://m0mo1nshntoi" path="res://textures/house_wall_3.png" id="10_5cwq7"]
@@ -59,26 +61,53 @@ uv1_scale = Vector3(20, 20, 20)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lwdlm"]
 data = PackedVector3Array(-21.9648, -0.0086, -6.7345, -50, 2, -19.1712, -21.9648, 2, -19.1712, -21.9648, -0.0086, -6.7345, -50, -0.0086, -6.7345, -50, 2, -19.1712, -0.9502, 2, -30.6901, -18.8475, 2, -29.1911, -18.8475, 2, -30.6901, -0.9502, 2, -30.6901, -0.9502, 2, -29.1911, -18.8475, 2, -29.1911, -18.8475, 2, -30.6901, -0.9502, 2, -60, -0.9502, 2, -30.6901, -18.8475, 2, -30.6901, -18.8475, 2, -60, -0.9502, 2, -60, 0.5488, 2, -20.6702, 30, 2, -29.1911, 30, 2, -20.6702, 0.5488, 2, -20.6702, 0.5488, 2, -29.1911, 30, 2, -29.1911, -18.8475, -0.0086, -6.7345, -0.9502, 2, -19.1712, -0.9502, -0.0086, -6.7345, -18.8475, -0.0086, -6.7345, -18.8475, 2, -19.1712, -0.9502, 2, -19.1712, -0.9502, 2, -20.6702, -18.8475, 2, -19.1712, -18.8475, 2, -20.6702, -0.9502, 2, -20.6702, -0.9502, 2, -19.1712, -18.8475, 2, -19.1712, -50, 2, -20.6702, -21.9648, 2, -29.1911, -21.9648, 2, -20.6702, -50, 2, -20.6702, -50, 2, -29.1911, -21.9648, 2, -29.1911, 0.5488, 2, -30.6901, 30, 2, -60, 30, 2, -30.6901, 0.5488, 2, -30.6901, 0.5488, 2, -60, 30, 2, -60, -0.9502, 2, -30.6901, 0.5488, 2, -29.1911, -0.9502, 2, -29.1911, -0.9502, 2, -30.6901, 0.5488, 2, -30.6901, 0.5488, 2, -29.1911, 0.5488, 2, -20.6702, -0.9502, 2, -19.1712, -0.9502, 2, -20.6702, 0.5488, 2, -20.6702, 0.5488, 2, -19.1712, -0.9502, 2, -19.1712, 0.5488, 2, -30.6901, -0.9502, 2, -60, 0.5488, 2, -60, 0.5488, 2, -30.6901, -0.9502, 2, -30.6901, -0.9502, 2, -60, 0.5488, 2, -20.6702, -0.9502, 2, -29.1911, 0.5488, 2, -29.1911, 0.5488, 2, -20.6702, -0.9502, 2, -20.6702, -0.9502, 2, -29.1911, 30, 2, -30.6901, 0.5488, 2, -29.1911, 0.5488, 2, -30.6901, 30, 2, -30.6901, 30, 2, -29.1911, 0.5488, 2, -29.1911, -21.9648, 2, -30.6901, -50, 2, -29.1911, -50, 2, -30.6901, -21.9648, 2, -30.6901, -21.9648, 2, -29.1911, -50, 2, -29.1911, -18.8475, 2, -20.6702, -0.9502, 2, -29.1911, -0.9502, 2, -20.6702, -18.8475, 2, -20.6702, -18.8475, 2, -29.1911, -0.9502, 2, -29.1911, -21.9648, 2, -20.6702, -50, 2, -19.1712, -50, 2, -20.6702, -21.9648, 2, -20.6702, -21.9648, 2, -19.1712, -50, 2, -19.1712, 30, 2, -20.6702, 0.5488, 2, -19.1712, 0.5488, 2, -20.6702, 30, 2, -20.6702, 30, 2, -19.1712, 0.5488, 2, -19.1712, 0.5488, -0.0086, -6.7345, 30, 2, -19.1712, 30, -0.0086, -6.7345, 0.5488, -0.0086, -6.7345, 0.5488, 2, -19.1712, 30, 2, -19.1712, -21.9648, 2, -30.6901, -18.8475, 2, -29.1911, -21.9648, 2, -29.1911, -21.9648, 2, -30.6901, -18.8475, 2, -30.6901, -18.8475, 2, -29.1911, -18.8475, 2, -19.1712, -21.9648, 2, -20.6702, -18.8475, 2, -20.6702, -18.8475, 2, -19.1712, -21.9648, 2, -19.1712, -21.9648, 2, -20.6702, -21.9648, -0.0086, -6.7345, -18.8475, 0, 0, -21.9648, 0, 0, -21.9648, -0.0086, -6.7345, -18.8475, -0.0086, -6.7345, -18.8475, 0, 0, -21.9648, 2, -60, -18.8475, 2, -30.6901, -21.9648, 2, -30.6901, -21.9648, 2, -60, -18.8475, 2, -60, -18.8475, 2, -30.6901, -18.8475, 2, -20.6702, -21.9648, 2, -29.1911, -18.8475, 2, -29.1911, -18.8475, 2, -20.6702, -21.9648, 2, -20.6702, -21.9648, 2, -29.1911, -50, 2, -30.6901, -21.9648, 2, -60, -21.9648, 2, -30.6901, -50, 2, -30.6901, -50, 2, -60, -21.9648, 2, -60, -21.9648, 2, -19.1712, -18.8475, -0.0086, -6.7345, -21.9648, -0.0086, -6.7345, -21.9648, 2, -19.1712, -18.8475, 2, -19.1712, -18.8475, -0.0086, -6.7345, 0.5488, 0, 0, 30, -0.0086, -6.7345, 30, 0, 0, 0.5488, 0, 0, 0.5488, -0.0086, -6.7345, 30, -0.0086, -6.7345, 0.5488, 0, 0, -0.9502, -0.0086, -6.7345, 0.5488, -0.0086, -6.7345, 0.5488, 0, 0, -0.9502, 0, 0, -0.9502, -0.0086, -6.7345, -18.8475, 0, 0, -0.9502, -0.0086, -6.7345, -0.9502, 0, 0, -18.8475, 0, 0, -18.8475, -0.0086, -6.7345, -0.9502, -0.0086, -6.7345, -21.9648, 0, 0, -50, -0.0086, -6.7345, -21.9648, -0.0086, -6.7345, -21.9648, 0, 0, -50, 0, 0, -50, -0.0086, -6.7345, -0.9502, 0, 0, -18.8475, -2, 0, -18.8475, 0, 0, -0.9502, 0, 0, -0.9502, -2, 0, -18.8475, -2, 0, -21.9648, 0, 0, -50, -2, 0, -50, 0, 0, -21.9648, 0, 0, -21.9648, -2, 0, -50, -2, 0, 30, 0, 0, 0.5488, -2, 0, 0.5488, 0, 0, 30, 0, 0, 30, -2, 0, 0.5488, -2, 0, -0.9502, 0, 0, 0.5488, -2, 0, -0.9502, -2, 0, -0.9502, 0, 0, 0.5488, 0, 0, 0.5488, -2, 0, -21.9648, 0, 0, -18.8475, -2, 0, -21.9648, -2, 0, -21.9648, 0, 0, -18.8475, 0, 0, -18.8475, -2, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63ins"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fls27"]
 albedo_texture = ExtResource("4_u537d")
+roughness_texture = ExtResource("6_7hvwd")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_on_uv2 = true
+emission_texture = ExtResource("7_v22gs")
+uv2_scale = Vector3(0.5, 0.5, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go4i7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6ywq"]
 albedo_texture = ExtResource("5_yv78u")
+roughness_texture = ExtResource("6_7hvwd")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_on_uv2 = true
+emission_texture = ExtResource("7_v22gs")
+uv2_scale = Vector3(0.5, 0.5, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bntr6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7b82"]
 albedo_texture = ExtResource("6_1rkf2")
+roughness_texture = ExtResource("6_7hvwd")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_on_uv2 = true
+emission_texture = ExtResource("7_v22gs")
+uv2_scale = Vector3(0.5, 0.5, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cob8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64mny"]
 albedo_texture = ExtResource("7_bl0f5")
+roughness_texture = ExtResource("6_7hvwd")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_on_uv2 = true
+emission_texture = ExtResource("7_v22gs")
+uv2_scale = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ai5w"]
 albedo_texture = ExtResource("8_5s6h5")
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ua7ql"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wi5io"]
 albedo_texture = ExtResource("9_lw0wp")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc2la"]
 albedo_texture = ExtResource("10_5cwq7")
+emission_on_uv2 = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcdho"]
 albedo_texture = ExtResource("11_ts0a2")
@@ -151,12 +180,12 @@ surface_material_override/1 = SubResource("StandardMaterial3D_ujnvp")
 shape = SubResource("ConcavePolygonShape3D_lwdlm")
 
 [node name="house_2_floor_type_2_001" parent="." index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_63ins")
-surface_material_override/1 = SubResource("StandardMaterial3D_go4i7")
-surface_material_override/2 = SubResource("StandardMaterial3D_bntr6")
-surface_material_override/3 = SubResource("StandardMaterial3D_7cob8")
+surface_material_override/0 = SubResource("StandardMaterial3D_fls27")
+surface_material_override/1 = SubResource("StandardMaterial3D_u6ywq")
+surface_material_override/2 = SubResource("StandardMaterial3D_d7b82")
+surface_material_override/3 = SubResource("StandardMaterial3D_64mny")
 surface_material_override/4 = SubResource("StandardMaterial3D_6ai5w")
-surface_material_override/5 = SubResource("StandardMaterial3D_ua7ql")
+surface_material_override/5 = SubResource("StandardMaterial3D_wi5io")
 surface_material_override/6 = SubResource("StandardMaterial3D_gc2la")
 surface_material_override/7 = SubResource("StandardMaterial3D_vcdho")
 surface_material_override/8 = SubResource("ShaderMaterial_hpuq0")

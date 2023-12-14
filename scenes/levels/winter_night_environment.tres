@@ -1,7 +1,8 @@
 [gd_resource type="Environment" format=3 uid="uid://kvvqmbm8s6b5"]
 
 [resource]
-background_color = Color(0.419608, 0.419608, 0.419608, 1)
+background_mode = 1
+background_color = Color(0.333333, 0.309804, 0.278431, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.639216, 0.815686, 0.929412, 1)
 ambient_light_energy = 0.5
@@ -13,7 +14,7 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.6
 glow_hdr_scale = 0.2
 fog_enabled = true
-fog_light_color = Color(0.419608, 0.419608, 0.419608, 1)
+fog_light_color = Color(0.333333, 0.309804, 0.278431, 1)
 fog_density = 0.03
 volumetric_fog_density = 0.1
 volumetric_fog_emission = Color(0.376471, 0.376471, 0.376471, 1)

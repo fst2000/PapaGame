@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dpo8e515j0jbd"]
+[gd_scene load_steps=80 format=3 uid="uid://dpo8e515j0jbd"]
 
 [ext_resource type="PackedScene" uid="uid://nk4y8b1xb8in" path="res://models/levels/hood/hood.blend" id="1_fxpot"]
 [ext_resource type="Material" uid="uid://bhl8sg582ucic" path="res://materials/snow_material.tres" id="2_01pru"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://bhltpqp87ytm3" path="res://materials/240_window_2.tres" id="4_tebwm"]
 [ext_resource type="Material" uid="uid://d3kynv0fxh4se" path="res://materials/khr_window_1.tres" id="5_37nc6"]
 [ext_resource type="Material" uid="uid://2uo5djns8ey0" path="res://materials/ice_material.tres" id="5_r1olq"]
+[ext_resource type="Texture2D" uid="uid://dh7kht1roj4eu" path="res://textures/16th_floor_door.png" id="6_4ygju"]
 [ext_resource type="Texture2D" uid="uid://20kejlqjg50" path="res://textures/16th_floor_entrance_wall.png" id="6_awiyl"]
 [ext_resource type="Material" uid="uid://dveohk0wbjnn8" path="res://materials/khr_window_2.tres" id="6_odqnh"]
 [ext_resource type="Texture2D" uid="uid://ckd5rlq5gixl4" path="res://textures/entrance_door_1.png" id="8_wn3q3"]
@@ -30,8 +31,8 @@ albedo_texture = ExtResource("9_86l8g")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwi52"]
 albedo_texture = ExtResource("9_86l8g")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8w3h"]
-albedo_texture = ExtResource("8_wn3q3")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h14j6"]
+albedo_texture = ExtResource("6_4ygju")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iud1j"]
 albedo_texture = ExtResource("6_awiyl")
@@ -265,7 +266,7 @@ surface_material_override/3 = SubResource("StandardMaterial3D_gygi5")
 [node name="entrance" parent="16th_floor" index="0"]
 surface_material_override/0 = ExtResource("2_01pru")
 surface_material_override/1 = SubResource("StandardMaterial3D_vwi52")
-surface_material_override/2 = SubResource("StandardMaterial3D_n8w3h")
+surface_material_override/2 = SubResource("StandardMaterial3D_h14j6")
 surface_material_override/3 = SubResource("StandardMaterial3D_iud1j")
 surface_material_override/4 = ExtResource("2_01pru")
 surface_material_override/5 = SubResource("StandardMaterial3D_3jgwh")

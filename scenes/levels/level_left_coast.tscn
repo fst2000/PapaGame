@@ -1,8 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhkkw00fukjhm"]
+[gd_scene load_steps=3 format=3 uid="uid://dhkkw00fukjhm"]
 
 [ext_resource type="PackedScene" uid="uid://b4xwev78wsm38" path="res://scenes/objects/left_coast.tscn" id="1_c3d6t"]
+[ext_resource type="PackedScene" uid="uid://dq82mhcafn02j" path="res://scenes/objects/lamp_post.tscn" id="2_avusn"]
 
 [node name="level_left_coast" type="Node3D"]
 
 [node name="left_coast" parent="." instance=ExtResource("1_c3d6t")]
 transform = Transform3D(-4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, 0, 0, 0)
+
+[node name="lights" type="Node3D" parent="."]
+
+[node name="lamp_post" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.7459, -0.167534, 5.45992)
+
+[node name="lamp_post2" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.4672, 0.202153, 5.78468)
+
+[node name="lamp_post3" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.21295, -0.167038, 7.01675)
+
+[node name="lamp_post4" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.578, 5.15497, 5.92743)
+
+[node name="lamp_post5" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.514, 11.3196, 5.2746)
+
+[node name="lamp_post6" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.814, 17.2285, 5.09336)
+
+[node name="lamp_post7" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.937, 20, 4.60128)
+
+[node name="lamp_post8" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.878, 20, 4.98253)
+
+[node name="lamp_post9" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.106, 20, 4.6564)
+
+[node name="lamp_post10" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 334.868, 20, 4.34195)
+
+[node name="lamp_post11" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 290.372, 20, 30.6616)
+
+[node name="lamp_post12" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 304.669, 20, -10.324)
+
+[node name="lamp_post13" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 304.827, 20, -52.8676)
+
+[node name="lamp_post14" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 304.641, 20, -86.3543)
+
+[node name="lamp_post15" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 305.054, 20, -127.002)
+
+[node name="lamp_post16" parent="lights" instance=ExtResource("2_avusn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 305.031, 20, -155.58)

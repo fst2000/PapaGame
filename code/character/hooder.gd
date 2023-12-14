@@ -1,4 +1,4 @@
-class_name Bully
+class_name Hooder
 
 extends CharacterBody3D
 
@@ -12,13 +12,11 @@ var hp = 60
 @onready var status = CharacterStatus.new(hp)
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
 @onready var sounds = $Sounds
-@onready var controller = BullyController.new(self, target, $NavigationAgent3D)
-@onready var hitSystem := CharacterHitSystem.new(self, RayHitDetector.new($HitRay))
+@onready var controller = HooderController.new(self, target, $NavigationAgent3D)
+@onready var hitSystem := CharacterHitSystem.new(self, AreaHitDetector.new($HitArea))
 @onready var speakSystem := TextSpeakSystem.new($text)
 @onready var attacks : Array[Attack] = [
-	Attack.new("Punch1", Vector3(0, 0, 1), Vector2(2,0), 5, 0.4, false),
-	Attack.new("Punch2", Vector3(0, 0, 1), Vector2(2,0), 5, 0.4, false),
-	Attack.new("Kick1", Vector3(0, 0, 1), Vector2(2,0), 10, 0.4, false)]
+	Attack.new("SlideKick", Vector3(0, 0, 5), Vector2(6,3), 15, 0.15, true)]
 @onready var fightSystem := AttackSystem.new(attacks)
 @onready var stepCondition = $StepCondition
 @onready var state = IdleState.new(self)

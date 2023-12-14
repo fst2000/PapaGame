@@ -15,7 +15,17 @@ func moveDirection() -> Vector3:
 		var direction = moveInput().rotated(Vector3.UP, papa.camera.rotation.y + PI).normalized()
 		var lerpDirection = lerp(papa.forward(), direction, 0.3)
 		return lerpDirection
-	else: return Vector3.ZERO
+	return Vector3.ZERO
+
+func attackDirection() -> Vector3:
+	var dir = moveDirection()
+	if dir.length() > 0.1:
+		return moveDirection()
+	if papa.target:
+		var direction = papa.target.global_position - papa.global_position
+		direction.y = 0
+		return direction.normalized()
+	return papa.forward()
 
 func shouldPunch():
 	return Input.is_action_just_pressed("punch") && papa.is_on_floor() && is_active

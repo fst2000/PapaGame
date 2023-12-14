@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh7kht1roj4eu"
-path.s3tc="res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.s3tc.ctex"
-path.etc2="res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.etc2.ctex"
+uid="uid://b80mwgvvt6yor"
+path.s3tc="res://.godot/imported/kitchen_locker_3.png-1db6b280566f64113ca6c0871ea0855c.s3tc.ctex"
+path.etc2="res://.godot/imported/kitchen_locker_3.png-1db6b280566f64113ca6c0871ea0855c.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/16th_floor_door.png"
-dest_files=["res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.s3tc.ctex", "res://.godot/imported/16th_floor_door.png-c589a23da38211e09a1a9c2f0626cd48.etc2.ctex"]
+source_file="res://textures/kitchen_locker_3.png"
+dest_files=["res://.godot/imported/kitchen_locker_3.png-1db6b280566f64113ca6c0871ea0855c.s3tc.ctex", "res://.godot/imported/kitchen_locker_3.png-1db6b280566f64113ca6c0871ea0855c.etc2.ctex"]
 
 [params]
 

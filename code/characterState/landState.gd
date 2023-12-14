@@ -2,7 +2,7 @@ class_name  LandState
 
 var character
 var controller
-var inretion = 4.0
+var inretion = 8.0
 func _init(character):
 	self.character = character
 	self.controller = character.controller

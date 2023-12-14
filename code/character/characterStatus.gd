@@ -3,6 +3,7 @@ class_name CharacterStatus
 var fullHP
 var hp
 var hasDamaged = false
+var hasHit = false
 var hitVelocity = Vector3.ZERO
 var flyoff = false
 var slide = false

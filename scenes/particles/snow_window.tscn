@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvkkf55bo1prv"]
+
+[ext_resource type="Texture2D" uid="uid://dfa7hh37lewsn" path="res://textures/snowflake.png" id="1_gigve"]
+
+[sub_resource type="Curve" id="Curve_6lx20"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23125, 1), 0.0, 0.0, 0, 0, Vector2(0.76875, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_r6f6h"]
+curve = SubResource("Curve_6lx20")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6d6am"]
+emission_shape = 3
+emission_box_extents = Vector3(3, 3, 0)
+particle_flag_rotate_y = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_max = 360.0
+angle_max = 360.0
+scale_min = 0.05
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_r6f6h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmpsa"]
+transparency = 1
+cull_mode = 2
+diffuse_mode = 3
+albedo_texture = ExtResource("1_gigve")
+metallic_specular = 1.0
+roughness = 0.25
+
+[sub_resource type="QuadMesh" id="QuadMesh_m51d5"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_mmpsa")
+
+[node name="snow" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+visibility_range_end = 50.0
+amount = 1000
+lifetime = 5.0
+trail_lifetime = 2.53
+process_material = SubResource("ParticleProcessMaterial_6d6am")
+draw_pass_1 = SubResource("QuadMesh_m51d5")

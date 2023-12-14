@@ -28,7 +28,7 @@ light_bake_mode = 1
 shadow_enabled = true
 distance_fade_enabled = true
 spot_range = 23.2745
-spot_angle = 28.5706
+spot_angle = 59.48
 
 [node name="snow_lamps" parent="." index="2" instance=ExtResource("3_8hgey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.3589, -2.71429)

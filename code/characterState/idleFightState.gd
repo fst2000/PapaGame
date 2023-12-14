@@ -9,6 +9,7 @@ func _init(character):
 	self.controller = character.controller
 	character.animPlayer.play("IdleFight")
 	character.move(Vector3.ZERO)
+	
 func update(delta : float):
 	pass
 	
