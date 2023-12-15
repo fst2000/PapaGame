@@ -1,15 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://lkje1xqi7uns"]
+[gd_scene load_steps=5 format=3 uid="uid://lkje1xqi7uns"]
 
 [ext_resource type="Shader" path="res://materials/windows_lights_shader.gdshader" id="1_1mf4l"]
 [ext_resource type="Texture2D" uid="uid://cok13vpvfidp7" path="res://textures/khrushevka_windows_1_glass_map.png" id="2_nan3g"]
-[ext_resource type="Texture2D" uid="uid://cxm2q1a60uq3y" path="res://textures/hood_khrushevka_windows_1.png" id="3_a7jnx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qvjrx"]
 render_priority = 0
 shader = ExtResource("1_1mf4l")
-shader_parameter/size = Vector2(1, 1)
+shader_parameter/glass_tiling = Vector2(1, 1)
+shader_parameter/light_tiling = Vector2(1, 1)
+shader_parameter/tex_tiling = Vector2(1, 1)
 shader_parameter/glass_map = ExtResource("2_nan3g")
-shader_parameter/window_texture = ExtResource("3_a7jnx")
 
 [sub_resource type="BoxMesh" id="BoxMesh_7ewuq"]
 material = SubResource("ShaderMaterial_qvjrx")

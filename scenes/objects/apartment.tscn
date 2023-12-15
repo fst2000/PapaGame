@@ -244,9 +244,6 @@ environment = SubResource("Environment_56v2r")
 [node name="snow" parent="." index="20" instance=ExtResource("18_ncwty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.257404, 1.84956, -5.67462)
 
-[node name="snow2" parent="." index="21" instance=ExtResource("18_ncwty")]
-transform = Transform3D(0.402619, 0, 0.915368, 0, 1, 0, -0.915368, 0, 0.402619, 0.194672, 1.84956, -8.05368)
-
-[node name="Camera3D" type="Camera3D" parent="." index="22"]
+[node name="Camera3D" type="Camera3D" parent="." index="21"]
 transform = Transform3D(0.915663, 0, 0.401948, 0, 1, 0, -0.401948, 0, 0.915663, 0.66, 1.077, -0.295)
 fov = 45.0
