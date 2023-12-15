@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://7fcbs4c3wagb"]
+
+[ext_resource type="Texture2D" uid="uid://dhj2lefttmiul" path="res://textures/sparks.png" id="1_hsabq"]
+
+[sub_resource type="Curve" id="Curve_ivi0e"]
+max_value = 3.0
+_data = [Vector2(0, 0.505155), 0.0, 0.0, 0, 0, Vector2(1, 2.93814), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wasdx"]
+curve = SubResource("Curve_ivi0e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l08s3"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+direction = Vector3(0, 1, 0)
+spread = 75.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_wasdx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kw44h"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_hsabq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bvi5g"]
+material = SubResource("StandardMaterial3D_kw44h")
+
+[node name="sparks" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 20
+lifetime = 0.1
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_l08s3")
+draw_pass_1 = SubResource("QuadMesh_bvi5g")

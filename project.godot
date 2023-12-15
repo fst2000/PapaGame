@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Papa Game"
-run/main_scene="res://scenes/levels/level_main.tscn"
+run/main_scene="res://scenes/test/snowcat_test.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://logo_2.png"
@@ -77,6 +77,7 @@ action={
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Enemy"
+3d_physics/layer_4="Snowcat"
 
 [rendering]
 
