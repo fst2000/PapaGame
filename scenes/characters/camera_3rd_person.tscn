@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://byrjidenuveaa"]
+
+[ext_resource type="Script" path="res://code/camera.gd" id="1_seuo5"]
+[ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="2_iufly"]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 2.72, 4.70082, -10.3392)
+far = 200.0
+script = ExtResource("1_seuo5")
+
+[node name="snow" parent="." instance=ExtResource("2_iufly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-06, 1.46684, -3.92002)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]

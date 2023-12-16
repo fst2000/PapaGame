@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=11 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
-[ext_resource type="Script" path="res://code/camera.gd" id="2_2k0wg"]
 [ext_resource type="PackedScene" uid="uid://cpl174do7fh7n" path="res://scenes/characters/bully.tscn" id="2_8x5ck"]
 [ext_resource type="PackedScene" uid="uid://fffg5or0wqok" path="res://scenes/levels/level_hood.tscn" id="3_fn2n6"]
-[ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="3_rv8w5"]
+[ext_resource type="PackedScene" uid="uid://byrjidenuveaa" path="res://scenes/characters/camera_3rd_person.tscn" id="3_l6bmr"]
 [ext_resource type="PackedScene" uid="uid://bmari1xexyvf" path="res://scenes/levels/level_bridge.tscn" id="4_7efnh"]
 [ext_resource type="Environment" uid="uid://kvvqmbm8s6b5" path="res://scenes/levels/winter_night_environment.tres" id="5_dij1p"]
 [ext_resource type="Script" path="res://code/cutsceneTrigger_1.gd" id="6_4w38b"]
@@ -30,22 +29,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5996, 1.22978, 52.0273)
 [node name="bully3" parent="." instance=ExtResource("2_8x5ck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6219, 1.03495, 51.807)
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("origin")]
-transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 2.72, 3.73258, -10.3392)
-script = ExtResource("2_2k0wg")
+[node name="Camera3D" parent="." node_paths=PackedStringArray("origin") instance=ExtResource("3_l6bmr")]
 origin = NodePath("../papa")
-
-[node name="snow" parent="Camera3D" instance=ExtResource("3_rv8w5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-06, 1.46684, -3.92002)
 
 [node name="level_hood" parent="." instance=ExtResource("3_fn2n6")]
 
-[node name="CutsceneTrigger1" type="Area3D" parent="level_hood" node_paths=PackedStringArray("camera", "papa", "bullies")]
+[node name="CutsceneTrigger1" type="Area3D" parent="level_hood" node_paths=PackedStringArray("papa", "bullies")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1563, 0, 45.3582)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("6_4w38b")
-camera = NodePath("../../Camera3D")
 papa = NodePath("../../papa")
 bullies = [NodePath("../../bully"), NodePath("../../bully2"), NodePath("../../bully3")]
 
@@ -65,12 +58,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61335, 1.45476, 3.5008)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23674, 1.55571, 1.04351)
 shape = SubResource("BoxShape3D_wa1q7")
 
-[node name="CutsceneTrigger2" type="Area3D" parent="level_hood" node_paths=PackedStringArray("camera", "papa", "look_target", "camera_origin")]
+[node name="CutsceneTrigger2" type="Area3D" parent="level_hood" node_paths=PackedStringArray("papa", "look_target", "camera_origin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0893, 0, 81.6664)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("7_sbww8")
-camera = NodePath("../../Camera3D")
 papa = NodePath("../../papa")
 look_target = NodePath("LookTarget")
 camera_origin = NodePath("CameraOrigin")

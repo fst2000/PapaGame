@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://4cakhji5q62"]
+[gd_scene load_steps=16 format=3 uid="uid://4cakhji5q62"]
 
 [ext_resource type="Script" path="res://code/snowcat.gd" id="1_rebi0"]
 [ext_resource type="Texture2D" uid="uid://dug8wyty4negq" path="res://textures/snowcat.png" id="2_fnvl5"]
 [ext_resource type="PackedScene" uid="uid://7fcbs4c3wagb" path="res://scenes/particles/sparks.tscn" id="3_s3to0"]
+[ext_resource type="AudioStream" uid="uid://d4f0l8mv2esap" path="res://sounds/slide.wav" id="4_1mr8w"]
+[ext_resource type="AudioStream" uid="uid://ctctcpmavnxts" path="res://sounds/sparks.wav" id="5_unxqr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohyb5"]
 resource_name = "SnowCat"
@@ -44,6 +46,19 @@ shadow_mesh = SubResource("ArrayMesh_k6iji")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuf84"]
 albedo_texture = ExtResource("2_fnvl5")
+
+[sub_resource type="GDScript" id="GDScript_u3cnw"]
+script/source = "extends MeshInstance3D
+
+@onready var snowcat = get_parent()
+@onready var ski = $Ski
+@onready var handle = $Handle
+
+func _process(delta):
+	var input_rotation = snowcat.input * 30
+	ski.rotation_degrees.y = input_rotation
+	handle.rotation_degrees.y = input_rotation
+"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_t63tb"]
 _surfaces = [{
@@ -119,8 +134,6 @@ size = Vector3(0.744263, 0.317383, 1)
 
 [node name="snowcat" type="CharacterBody3D"]
 collision_layer = 8
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 script = ExtResource("1_rebi0")
 forward_direction = Vector3(0, 0, 1)
 
@@ -128,6 +141,7 @@ forward_direction = Vector3(0, 0, 1)
 mesh = SubResource("ArrayMesh_qdhtm")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_iuf84")
+script = SubResource("GDScript_u3cnw")
 
 [node name="Handle" type="MeshInstance3D" parent="Snowcat"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.521035, 0.254767)
@@ -152,3 +166,14 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.206
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00286865, 0.150146, 0)
 shape = SubResource("BoxShape3D_jp0a5")
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="Slide" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("4_1mr8w")
+volume_db = 1.0
+unit_size = 6.0
+max_distance = 20.0
+
+[node name="Sparks" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("5_unxqr")

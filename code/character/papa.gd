@@ -9,6 +9,7 @@ var gravity = -10
 var jumpForce = 5
 var hp = 100
 var max_target_angle = 60
+var is_active = true
 
 @onready var status = CharacterStatus.new(hp)
 @onready var animPlayer : AnimationPlayer = $AnimationPlayer
@@ -37,7 +38,9 @@ func _process(delta):
 	state = state.nextState()
 	state.update(delta)
 	if is_on_floor() && velocity.y < 0: velocity.y = 0;
-	else: velocity.y += gravity * delta
+	else:
+		if is_active:
+			velocity.y += gravity * delta
 	move_and_slide()
 	status.update(delta)
 
@@ -61,5 +64,6 @@ func forward() -> Vector3:
 	return quaternion * Vector3.BACK
 
 func set_active(value : bool):
+	is_active = value
 	set_collision_layer_value(2, value)
 	set_collision_mask_value(3, value)
