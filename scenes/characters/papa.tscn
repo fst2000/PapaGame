@@ -1,8 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://b73y6dpb8aug3"]
+[gd_scene load_steps=47 format=3 uid="uid://b73y6dpb8aug3"]
 
 [ext_resource type="Script" path="res://code/character/papa.gd" id="1_q64hr"]
 [ext_resource type="Texture2D" uid="uid://bb57inm0yifdd" path="res://textures/skin_winter.png" id="2_00kfg"]
 [ext_resource type="AudioStream" uid="uid://cinnyv4t3u0yc" path="res://sounds/jump.wav" id="2_vd512"]
+[ext_resource type="Animation" uid="uid://8entpwl2qlh1" path="res://models/characters/papa_resources/snowcat_in_animation.res" id="3_l54y2"]
+[ext_resource type="Animation" uid="uid://byelo0ywphu20" path="res://models/characters/papa_resources/snowcat_out_animation.res" id="4_g8ls3"]
 [ext_resource type="AudioStream" uid="uid://b70fjpstwkt4r" path="res://sounds/hit.wav" id="5_gc5rc"]
 [ext_resource type="AudioStream" uid="uid://ckm7iqel0hp4u" path="res://sounds/land.wav" id="5_it4mj"]
 [ext_resource type="AudioStream" uid="uid://d4f0l8mv2esap" path="res://sounds/slide.wav" id="10_xpgyh"]
@@ -2052,6 +2054,8 @@ _data = {
 "Punch2": SubResource("Animation_gg7pg"),
 "Punch3": SubResource("Animation_nycfo"),
 "Slide": SubResource("Animation_3mo0k"),
+"Snowcat_In": ExtResource("3_l54y2"),
+"Snowcat_Out": ExtResource("4_g8ls3"),
 "StandUp": SubResource("Animation_5iyom"),
 "Stun": SubResource("Animation_jyh1b"),
 "Walk": SubResource("Animation_s1bpw"),
@@ -2086,9 +2090,12 @@ radius = 2.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4gnge"]
 height = 1.53526
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_88guo"]
+radius = 0.4
+
 [node name="papa" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 platform_floor_layers = 4294967289
 script = ExtResource("1_q64hr")
 
@@ -2107,21 +2114,21 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 0.00303423, -0.999995, 0, 0.999995, 0.00303423, 0, 0, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0, 0)
-bones/1/rotation = Quaternion(0.842575, -3.40345e-17, 3.39314e-17, 0.538578)
+bones/1/rotation = Quaternion(0.842576, -3.40345e-17, 3.39314e-17, 0.538578)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "ShoulderL"
 bones/2/parent = 1
 bones/2/rest = Transform3D(-0.953176, 0.301912, -0.0173475, -0.302407, -0.951841, 0.0504834, -0.00127052, 0.0533657, 0.998574, 0.32364, 0.40903, -0.0136409)
 bones/2/enabled = true
 bones/2/position = Vector3(0.32364, 0.40903, -0.0136409)
-bones/2/rotation = Quaternion(-0.191381, 0.0114839, -0.787114, 0.586253)
+bones/2/rotation = Quaternion(0.191381, -0.0114839, 0.787114, -0.586253)
 bones/2/scale = Vector3(0.999998, 1, 1)
 bones/3/name = "ElbowL"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.97847, 0.165945, -0.12271, -0.201235, 0.899114, -0.388715, 0.0458246, 0.40504, 0.91315, -1.6455e-08, 0.308279, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(-1.6455e-08, 0.308279, 0)
-bones/3/rotation = Quaternion(0.203842, -0.043281, -0.0942948, 0.97349)
+bones/3/rotation = Quaternion(0.203842, -0.043281, -0.0942949, 0.973491)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Head"
 bones/4/parent = 1
@@ -2244,3 +2251,11 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03499, 1.04383)
 shape = SubResource("CapsuleShape3D_4gnge")
+
+[node name="ActionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.415577, 0)
+shape = SubResource("SphereShape3D_88guo")

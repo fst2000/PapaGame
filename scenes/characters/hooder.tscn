@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://dwa12wrb8vxrd"]
+[gd_scene load_steps=26 format=3 uid="uid://dwa12wrb8vxrd"]
 
 [ext_resource type="Script" path="res://code/character/hooder.gd" id="1_iy0b2"]
 [ext_resource type="Texture2D" uid="uid://un35lgyfvq3c" path="res://textures/hooder.png" id="2_ngrnb"]
+[ext_resource type="Script" path="res://code/character/stepCondition.gd" id="3_ab60c"]
 [ext_resource type="AudioStream" uid="uid://ckm7iqel0hp4u" path="res://sounds/land.wav" id="3_wqcqa"]
 [ext_resource type="AudioStream" uid="uid://c8yy5oirvccnl" path="res://sounds/hit_weak.wav" id="4_aegk5"]
 [ext_resource type="AudioStream" uid="uid://c8n7x8jyflf5d" path="res://sounds/airWave.wav" id="5_cktb7"]
@@ -1102,7 +1103,7 @@ height = 1.5616
 
 [node name="hooder" type="CharacterBody3D"]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_iy0b2")
 
 [node name="Armature" type="Node3D" parent="."]
@@ -1213,6 +1214,9 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.378784, 0.229421)
 shape = SubResource("CapsuleShape3D_n7vb8")
+
+[node name="StepCondition" type="Node3D" parent="."]
+script = ExtResource("3_ab60c")
 
 [node name="Sounds" type="Node3D" parent="."]
 

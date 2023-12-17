@@ -30,6 +30,7 @@ var is_active = true
 @onready var kickSystem := AttackSystem.new(kicks)
 @onready var fallKickSystem := AttackSystem.new(fallKicks)
 @onready var fightSystem := PapaFightSystem.new(self, punchSystem, kickSystem, fallKickSystem)
+@onready var actionSystem = AreaActionSystem.new(AreaToAreaDetector.new($ActionArea), self)
 @onready var targetDefiner = AngleTargetDefiner.new(self, AreaHitDetector.new($TargetArea), max_target_angle)
 @onready var slideCondition = IsSliding.new($GroundArea)
 @onready var stepCondition = $StepCondition
@@ -62,8 +63,10 @@ func jump():
 
 func forward() -> Vector3:
 	return quaternion * Vector3.BACK
-
 func set_active(value : bool):
 	is_active = value
 	set_collision_layer_value(2, value)
 	set_collision_mask_value(3, value)
+	set_collision_mask_value(4, value)
+	set_collision_mask_value(5, value)
+	

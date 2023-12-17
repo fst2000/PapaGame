@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" path="res://materials/ice_shader.gdshader" id="1_cbdno"]
 [ext_resource type="PackedScene" uid="uid://4cakhji5q62" path="res://scenes/objects/snowcat.tscn" id="1_yyl0y"]
-[ext_resource type="Script" path="res://code/camera.gd" id="2_777id"]
 [ext_resource type="Texture2D" uid="uid://wgv8ejkj48fu" path="res://textures/stone_fence.png" id="2_sfj3f"]
+[ext_resource type="PackedScene" uid="uid://byrjidenuveaa" path="res://scenes/characters/camera_3rd_person.tscn" id="4_h23t8"]
 
 [sub_resource type="GDScript" id="GDScript_skida"]
 script/source = "extends Node3D
@@ -116,6 +116,7 @@ volumetric_fog_temporal_reprojection_amount = 0.99
 script = SubResource("GDScript_skida")
 
 [node name="level" type="Node3D" parent="."]
+transform = Transform3D(-4.2222e-08, -0.258819, 0.965926, -1.13133e-08, 0.965926, 0.258819, -1, 0, -4.37114e-08, 0, -0.821049, 0)
 
 [node name="floor" type="MeshInstance3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 44.1556)
@@ -191,12 +192,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_kxw71")
 
 [node name="snowcat" parent="." instance=ExtResource("1_yyl0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.482522, 0.499999, -4.03387)
-
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("origin")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.482522, 1.13173, -9.83647)
-script = ExtResource("2_777id")
-origin = NodePath("../snowcat")
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 0.482522, 0.499999, -0.712785)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.612372, 0.353553, 0, -0.5, 0.866025, 0.707107, -0.612372, -0.353553, 0, 9.21872, -15.1882)
@@ -205,3 +201,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2gan7")
+
+[node name="Camera3D" parent="." node_paths=PackedStringArray("origin") instance=ExtResource("4_h23t8")]
+origin = NodePath("../snowcat")

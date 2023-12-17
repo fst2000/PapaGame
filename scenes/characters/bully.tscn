@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://cpl174do7fh7n"]
+[gd_scene load_steps=28 format=3 uid="uid://cpl174do7fh7n"]
 
 [ext_resource type="Script" path="res://code/character/bully.gd" id="2_dt7or"]
 [ext_resource type="Texture2D" uid="uid://3v51clarmja" path="res://textures/bully1.png" id="2_jgage"]
+[ext_resource type="Script" path="res://code/character/stepCondition.gd" id="3_io7tg"]
 [ext_resource type="AudioStream" uid="uid://ckm7iqel0hp4u" path="res://sounds/land.wav" id="3_ps482"]
 [ext_resource type="AudioStream" uid="uid://c8yy5oirvccnl" path="res://sounds/hit_weak.wav" id="4_e1ski"]
 [ext_resource type="AudioStream" uid="uid://c8n7x8jyflf5d" path="res://sounds/airWave.wav" id="5_f6uei"]
@@ -1244,7 +1245,7 @@ viewport_path = NodePath("SubViewport")
 
 [node name="bully" type="CharacterBody3D"]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 15
 platform_floor_layers = 4294967289
 script = ExtResource("2_dt7or")
 
@@ -1255,7 +1256,7 @@ bones/0/name = "Root"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.915545, -0.0218899)
 bones/0/enabled = true
-bones/0/position = Vector3(4.16199e-18, 0.675488, -0.129917)
+bones/0/position = Vector3(0, 0.915545, -0.0218899)
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Spine"
@@ -1263,70 +1264,70 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 0.00303423, -0.999995, 0, 0.999995, 0.00303423, 0, 0, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0, 0)
-bones/1/rotation = Quaternion(0.792429, 2.05249e-17, -2.04627e-17, 0.609964)
+bones/1/rotation = Quaternion(0.706033, 0, 0, 0.708179)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "ShoulderL"
 bones/2/parent = 1
 bones/2/rest = Transform3D(-0.933, 0.35948, -0.0169818, -0.359876, -0.93169, 0.0494369, 0.00194982, 0.0522359, 0.998633, 0.264722, 0.391635, -0.0130608)
 bones/2/enabled = true
 bones/2/position = Vector3(0.264722, 0.391635, -0.0130608)
-bones/2/rotation = Quaternion(0.0111596, -0.024137, -0.901915, 0.431094)
+bones/2/rotation = Quaternion(-0.147672, -0.0831268, 0.970307, -0.172589)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "ElbowL"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.979046, 0.141992, -0.145971, -0.188036, 0.90553, -0.38034, 0.0781763, 0.399818, 0.913255, -2.00416e-08, 0.301553, -1.39698e-09)
 bones/3/enabled = true
 bones/3/position = Vector3(-2.00416e-08, 0.301553, -1.39698e-09)
-bones/3/rotation = Quaternion(0.635461, -0.0906091, -0.0476138, 0.765319)
+bones/3/rotation = Quaternion(0.406318, -0.0744728, -0.0702202, 0.907981)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Head"
 bones/4/parent = 1
 bones/4/rest = Transform3D(1, 0, 0, 0, 0.999995, -0.00303421, 0, 0.00303421, 0.999995, 0, 0.511349, -9.31323e-10)
 bones/4/enabled = true
 bones/4/position = Vector3(0, 0.511349, -9.31323e-10)
-bones/4/rotation = Quaternion(0.13203, 4.39678e-20, -2.89826e-17, 0.991246)
+bones/4/rotation = Quaternion(0.0015171, 0, 0, 0.999999)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "ShoulderR"
 bones/5/parent = 1
 bones/5/rest = Transform3D(-0.933, -0.35948, -0.0169786, 0.357839, -0.93169, 0.062499, -0.038286, 0.0522359, 0.997901, -0.264722, 0.391635, -0.0130608)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.264722, 0.391635, -0.0130608)
-bones/5/rotation = Quaternion(-0.00525406, 0.0319775, 0.901969, 0.430584)
+bones/5/rotation = Quaternion(0.129991, -0.0799725, 0.972834, 0.174073)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "ElbowR"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0.977041, -0.156446, 0.14462, 0.200354, 0.90553, -0.373998, -0.0724474, 0.394386, 0.916084, 2.20607e-08, 0.301553, 3.25963e-09)
 bones/6/enabled = true
 bones/6/position = Vector3(2.20607e-08, 0.301553, 3.25963e-09)
-bones/6/rotation = Quaternion(0.632827, 0.0922313, 0.0545227, 0.766845)
+bones/6/rotation = Quaternion(0.403371, 0.074178, 0.0773109, 0.908742)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "HipL"
 bones/7/parent = 0
 bones/7/rest = Transform3D(-0.00816274, 0.0271217, 0.999599, -0.990183, -0.139714, -0.00429493, 0.139542, -0.989821, 0.0279958, 0.109472, 0.000379473, -0.0590723)
 bones/7/enabled = true
 bones/7/position = Vector3(0.109472, 0.000379473, -0.0590723)
-bones/7/rotation = Quaternion(-0.730232, 0.047396, -0.662041, 0.161916)
+bones/7/rotation = Quaternion(0.500123, -0.485981, 0.517594, -0.495777)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "KneeL"
 bones/8/parent = 7
 bones/8/rest = Transform3D(0.976754, -0.214323, -0.00408142, 0.214321, 0.976763, -0.00089513, 0.00417843, -4.14439e-07, 0.999991, 9.31323e-09, 0.376836, -8.90577e-09)
 bones/8/enabled = true
 bones/8/position = Vector3(9.31323e-09, 0.376836, -8.90577e-09)
-bones/8/rotation = Quaternion(0.0421684, 0.0255685, 0.717881, 0.694417)
+bones/8/rotation = Quaternion(0.000224992, -0.00207707, 0.107789, 0.994172)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "HipR"
 bones/9/parent = 0
 bones/9/rest = Transform3D(-0.00816286, -0.0271219, 0.999599, -0.990121, -0.139714, -0.0118762, 0.13998, -0.98982, -0.0257134, -0.109472, 0.000379473, -0.0590723)
 bones/9/enabled = true
 bones/9/position = Vector3(-0.109472, 0.000379473, -0.0590723)
-bones/9/rotation = Quaternion(-0.656056, 0.162298, -0.735614, 0.0460723)
+bones/9/rotation = Quaternion(0.582858, -0.414246, 0.576612, -0.395215)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "KneeR"
 bones/10/parent = 9
 bones/10/rest = Transform3D(0.976635, -0.214295, -0.0161907, 0.214323, 0.976763, 3.03742e-05, 0.015808, -0.00349972, 0.999869, 6.63567e-09, 0.376836, -4.10364e-09)
 bones/10/enabled = true
 bones/10/position = Vector3(6.63567e-09, 0.376836, -4.10364e-09)
-bones/10/rotation = Quaternion(-0.0465814, -0.0326386, 0.717608, 0.694121)
+bones/10/rotation = Quaternion(-0.00152951, -0.0138254, 0.325404, 0.945473)
 bones/10/scale = Vector3(1, 1, 1)
 
 [node name="Bully" type="MeshInstance3D" parent="Armature/Skeleton3D"]
@@ -1350,6 +1351,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 shape = SubResource("CapsuleShape3D_ohnpx")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="StepCondition" type="Node3D" parent="."]
+script = ExtResource("3_io7tg")
 
 [node name="Sounds" type="Node3D" parent="."]
 

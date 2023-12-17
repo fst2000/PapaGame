@@ -130,15 +130,15 @@ shadow_mesh = SubResource("ArrayMesh_k8yoa")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jp0a5"]
 margin = 0.01
-size = Vector3(0.744, 0.3, 1)
+size = Vector3(0.744263, 0.317383, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hjejv"]
 radius = 0.3
 
 [node name="snowcat" type="CharacterBody3D"]
 collision_layer = 8
-floor_snap_length = 0.2
 script = ExtResource("1_rebi0")
+forward_direction = Vector3(0, 0, 1)
 
 [node name="Snowcat" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_qdhtm")
@@ -167,7 +167,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.2135
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.206191, 0.149548, -0.603015)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.14, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00286865, 0.150146, 0)
 shape = SubResource("BoxShape3D_jp0a5")
 
 [node name="Sounds" type="Node3D" parent="."]
