@@ -6,6 +6,7 @@ func _init(character):
 	self.character = character
 	character.reparent(character.get_node("/root"))
 	character.animPlayer.play("Snowcat_Out")
+	character.camera.origin = character
 
 func update(delta):
 	pass

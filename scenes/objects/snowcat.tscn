@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://4cakhji5q62"]
+[gd_scene load_steps=18 format=3 uid="uid://4cakhji5q62"]
 
 [ext_resource type="Script" path="res://code/snowcat.gd" id="1_rebi0"]
 [ext_resource type="Texture2D" uid="uid://dug8wyty4negq" path="res://textures/snowcat.png" id="2_fnvl5"]
@@ -135,9 +135,13 @@ size = Vector3(0.744, 0.3, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_hjejv"]
 radius = 0.3
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qkkid"]
+radius = 0.119511
+height = 1.05814
+
 [node name="snowcat" type="CharacterBody3D"]
 collision_layer = 8
-floor_snap_length = 0.2
+floor_snap_length = 0.5
 script = ExtResource("1_rebi0")
 
 [node name="Snowcat" type="MeshInstance3D" parent="."]
@@ -159,6 +163,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_iuf84")
 
 [node name="sparks" type="Node3D" parent="."]
+visible = false
 
 [node name="sparks1" parent="sparks" instance=ExtResource("3_s3to0")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.213508, 0.149548, -0.603015)
@@ -188,3 +193,17 @@ collision_mask = 0
 
 [node name="ActionShape" type="CollisionShape3D" parent="ActionArea"]
 shape = SubResource("SphereShape3D_hjejv")
+
+[node name="GroundArea" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.279501, -0.00819938, -0.0833117)
+shape = SubResource("CapsuleShape3D_qkkid")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GroundArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.271302, -0.00819938, -0.0833117)
+shape = SubResource("CapsuleShape3D_qkkid")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.5, 0)

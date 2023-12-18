@@ -11,6 +11,7 @@ func _init(character, snowcat, exit_condition):
 	character.position = Vector3.ZERO
 	character.quaternion = Quaternion()
 	character.animPlayer.play("Snowcat_In")
+	character.camera.origin = snowcat
 func update(delta):
 	pass
 
