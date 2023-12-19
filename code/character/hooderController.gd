@@ -54,3 +54,6 @@ func shouldMove():
 			return target.status.isAlive()
 		return true
 	else: return false
+
+func shouldAct():
+	return false

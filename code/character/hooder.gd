@@ -39,7 +39,7 @@ func move(v: Vector3):
 
 func lookDir(direction : Vector3):
 	direction.y = 0
-	if direction.length() > 0:
+	if direction.length() > 0.01:
 		look_at(global_position - direction)
 
 func jump():

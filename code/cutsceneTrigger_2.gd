@@ -16,11 +16,11 @@ func _on_body_entered(body):
 				camera.origin = camera_origin
 				papa.controller.is_active = false
 				papa.lookDir(papa.global_position.direction_to(look_target.global_position)),
-				TimeCondition.new(4))
+			TimeCondition.new(4))
 		action_list.add(
 			func():
 				papa.speakSystem.say("Похоже, спуск заледенел"),
-				papa.speakSystem)
+			papa.speakSystem)
 		action_list.add(
 			func():
 				papa.speakSystem.say("")
@@ -28,7 +28,7 @@ func _on_body_entered(body):
 				camera.look_target = papa
 				camera.origin = papa
 				papa.controller.is_active = true,
-				papa.speakSystem)
+			FalseCondition.new())
 
 func _process(delta):
 	action_list.update()

@@ -1245,8 +1245,8 @@ viewport_path = NodePath("SubViewport")
 
 [node name="bully" type="CharacterBody3D"]
 collision_layer = 4
-collision_mask = 15
-platform_floor_layers = 4294967289
+collision_mask = 47
+platform_floor_layers = 4294967273
 script = ExtResource("2_dt7or")
 
 [node name="Armature" type="Node3D" parent="."]
