@@ -40,7 +40,7 @@ func shouldJump():
 	return Input.is_action_just_pressed("jump") && is_active
 
 func shouldAct():
-	return Input.is_action_just_pressed("action") && is_active
+	return is_active
 	
 func moveInput() -> Vector3:
 	return Vector3(

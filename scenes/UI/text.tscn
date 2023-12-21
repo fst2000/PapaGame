@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbg8s0g0cypld"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_stkwp"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_v56n5"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="GDScript" id="GDScript_hcrnf"]
@@ -39,7 +39,7 @@ pixel_size = 0.0015
 billboard = 1
 no_depth_test = true
 fixed_size = true
-texture = SubResource("ViewportTexture_stkwp")
+texture = SubResource("ViewportTexture_v56n5")
 script = SubResource("GDScript_hcrnf")
 
 [node name="SubViewport" type="SubViewport" parent="."]

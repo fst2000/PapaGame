@@ -10,6 +10,7 @@ var gravity = -10
 var rotation_angle = 45
 var velocity_quaternion  = Quaternion()
 var should_get_out = false
+var should_get_in = false
 
 @onready var forward_direction = quaternion * Vector3.FORWARD
 @onready var sparks = $sparks
@@ -54,8 +55,11 @@ func _process(delta):
 	move_and_slide()
 
 func area_action(actor : Node3D):
-	is_active = !is_active
-	actor.state = InSnowcatState.new(actor, self, FuncCondition.new(func(): return should_get_out))
+	if should_get_in:
+		actor.state = InSnowcatState.new(actor, self, FuncCondition.new(func(): return should_get_out))
+
+func get_out(driver):
+	driver.state = OutSnowcatState.new(driver)
 
 func forward() -> Vector3:
 	return quaternion * Vector3.BACK

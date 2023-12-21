@@ -31,7 +31,7 @@ polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Arr
 [node name="level_main" type="Node3D"]
 
 [node name="papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_wjhe6")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 248.458, -14.9419, 79.4123)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 264.266, -14.8255, 74.9857)
 floor_snap_length = 0.3
 camera = NodePath("../Camera3D")
 
@@ -101,21 +101,32 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 175.21
 [node name="level_left_coast" parent="." instance=ExtResource("9_4icev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243.431, -15, 79.65)
 
-[node name="CutsceneTrigger3" type="Area3D" parent="level_left_coast" node_paths=PackedStringArray("camera", "papa", "bullies")]
+[node name="CutsceneTrigger3" type="Area3D" parent="level_left_coast" node_paths=PackedStringArray("camera", "papa", "edgar", "bullies", "snowcat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7708, 0.793136, -2.52061)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("12_ajrwi")
 camera = NodePath("../../Camera3D")
 papa = NodePath("../../papa")
+edgar = NodePath("../edgar")
 bullies = [NodePath("../hooder"), NodePath("../bully4"), NodePath("../bully5")]
+snowcat = NodePath("../snowcat")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level_left_coast/CutsceneTrigger3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45239, -1.1994)
 shape = SubResource("BoxShape3D_7gpvx")
 
 [node name="CameraOrigin" type="Node3D" parent="level_left_coast/CutsceneTrigger3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53369, 0.759498, -0.360031)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88477, 0.759498, -3.7662)
+
+[node name="CameraOrigin2" type="Node3D" parent="level_left_coast/CutsceneTrigger3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42203, 3.37182, 0.902832)
+
+[node name="CameraOrigin3" type="Node3D" parent="level_left_coast/CutsceneTrigger3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29245, 0.220727, -0.580605)
+
+[node name="CameraOrigin4" type="Node3D" parent="level_left_coast/CutsceneTrigger3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6635, 0.220727, 1.96828)
 
 [node name="edgar" parent="level_left_coast" instance=ExtResource("11_6lquj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1048, -0.0448294, -4.72939)
@@ -142,14 +153,14 @@ transform = Transform3D(10.6997, 0, 0, 0, 1, 0, 0, 0, 5.18051, -9.75591, 0, -7.8
 visible = false
 mesh = SubResource("PlaneMesh_ihodm")
 
+[node name="snowcat" parent="level_left_coast" instance=ExtResource("10_lfr6c")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.145, -0.0439997, -3.8633)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_dij1p")
-
-[node name="snowcat" parent="." instance=ExtResource("10_lfr6c")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 278.576, -15.044, 75.7867)
 
 [connection signal="body_entered" from="level_hood/CutsceneTrigger1" to="level_hood/CutsceneTrigger1" method="_on_body_entered"]
 [connection signal="body_entered" from="level_hood/CutsceneTrigger2" to="level_hood/CutsceneTrigger2" method="_on_body_entered"]

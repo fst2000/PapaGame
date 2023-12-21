@@ -27,7 +27,7 @@ func _process(delta):
 		else: global_position = global_pos
 		look_at(look_point)
 	else:
-		global_position = lerp(global_position, origin.global_position, delta)
+		global_position = lerp(global_position, origin.global_position, 3 * delta)
 		var target_distance = global_position.distance_to(look_target.global_position)
-		var look_dir = lerp(quaternion * Vector3.FORWARD * target_distance, look_target.global_position - global_position, delta)
+		var look_dir = lerp(quaternion * Vector3.FORWARD * target_distance, look_target.global_position + Vector3.UP - global_position, 3 * delta)
 		look_at(global_position + look_dir)
