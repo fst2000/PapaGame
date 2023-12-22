@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://10qbrpb7i8h5"]
+[gd_scene load_steps=52 format=3 uid="uid://10qbrpb7i8h5"]
 
 [ext_resource type="PackedScene" uid="uid://bi5gcc2ajymlm" path="res://models/levels/apartment/apartment.blend" id="1_oxnlp"]
 [ext_resource type="Texture2D" uid="uid://c5gfyl1csqg0i" path="res://textures/floor.png" id="2_3k8i6"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://daej5kj471x7m" path="res://textures/kitchen_plate.png" id="13_sxrfn"]
 [ext_resource type="Texture2D" uid="uid://0mpsu58tcyo7" path="res://textures/book.png" id="15_ws2to"]
 [ext_resource type="PackedScene" uid="uid://cvkkf55bo1prv" path="res://scenes/particles/snow_window.tscn" id="18_ncwty"]
+[ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="19_cdump"]
+[ext_resource type="PackedScene" uid="uid://bbg8s0g0cypld" path="res://scenes/UI/text.tscn" id="20_7wmsi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5qdl"]
 albedo_texture = ExtResource("2_6mp4g")
@@ -161,6 +163,9 @@ volumetric_fog_detail_spread = 0.5
 volumetric_fog_ambient_inject = 16.0
 volumetric_fog_temporal_reprojection_amount = 0.99
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_vgs43"]
+viewport_path = NodePath("SubViewport")
+
 [node name="apartment" instance=ExtResource("1_oxnlp")]
 
 [node name="outside_wall" parent="." index="0"]
@@ -241,9 +246,12 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="19"]
 environment = SubResource("Environment_56v2r")
 
-[node name="snow" parent="." index="20" instance=ExtResource("18_ncwty")]
+[node name="snow_window" parent="." index="20" instance=ExtResource("18_ncwty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.257404, 1.84956, -5.67462)
 
-[node name="Camera3D" type="Camera3D" parent="." index="21"]
-transform = Transform3D(0.915663, 0, 0.401948, 0, 1, 0, -0.401948, 0, 0.915663, 0.66, 1.077, -0.295)
-fov = 45.0
+[node name="snow" parent="." index="21" instance=ExtResource("19_cdump")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86852, 4.71219, -14.2474)
+
+[node name="text" parent="." index="22" instance=ExtResource("20_7wmsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.502889, 1.58052, -2.17231)
+texture = SubResource("ViewportTexture_vgs43")

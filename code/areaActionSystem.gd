@@ -8,8 +8,6 @@ func _init(area_detector, actor):
 	self.actor = actor
 
 func action():
-	print("action")
 	var objects : Array = area_detector.hit_objects()
 	if objects:
-		print("action object")
 		objects.front().get_parent().area_action(actor)

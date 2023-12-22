@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://4cakhji5q62"]
+[gd_scene load_steps=19 format=3 uid="uid://4cakhji5q62"]
 
 [ext_resource type="Script" path="res://code/snowcat.gd" id="1_rebi0"]
 [ext_resource type="Texture2D" uid="uid://dug8wyty4negq" path="res://textures/snowcat.png" id="2_fnvl5"]
 [ext_resource type="PackedScene" uid="uid://7fcbs4c3wagb" path="res://scenes/particles/sparks.tscn" id="3_s3to0"]
 [ext_resource type="AudioStream" uid="uid://d4f0l8mv2esap" path="res://sounds/slide.wav" id="4_1mr8w"]
+[ext_resource type="PackedScene" uid="uid://q45evblvb7o8" path="res://scenes/particles/snow_spray.tscn" id="4_gfr3n"]
 [ext_resource type="AudioStream" uid="uid://ctctcpmavnxts" path="res://sounds/sparks.wav" id="5_unxqr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohyb5"]
@@ -130,7 +131,7 @@ shadow_mesh = SubResource("ArrayMesh_k8yoa")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jp0a5"]
 margin = 0.01
-size = Vector3(0.744, 0.3, 1)
+size = Vector3(0.744, 0.32334, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hjejv"]
 radius = 0.3
@@ -171,8 +172,17 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.2135
 [node name="sparks2" parent="sparks" instance=ExtResource("3_s3to0")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.206191, 0.149548, -0.603015)
 
+[node name="snow_sprays" type="Node3D" parent="."]
+visible = false
+
+[node name="snow_spray" parent="snow_sprays" instance=ExtResource("4_gfr3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28359, 0, 0.3716)
+
+[node name="snow_spray2" parent="snow_sprays" instance=ExtResource("4_gfr3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.273811, 0, 0.365081)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.14, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003, 0.12833, 0)
 shape = SubResource("BoxShape3D_jp0a5")
 
 [node name="Sounds" type="Node3D" parent="."]

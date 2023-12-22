@@ -1,18 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://q45evblvb7o8"]
+[gd_scene load_steps=9 format=3 uid="uid://q45evblvb7o8"]
 
 [ext_resource type="Texture2D" uid="uid://kn42otkknj62" path="res://textures/snow_particle.png" id="1_261mx"]
 
+[sub_resource type="Curve" id="Curve_dq8og"]
+max_value = 2.0
+_data = [Vector2(0.0208333, 0.907217), 0.0, 0.0, 0, 0, Vector2(1, 1.50515), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_musj1"]
+curve = SubResource("Curve_dq8og")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_06461"]
-angle_min = -90.0
-angle_max = 90.0
+angle_min = -360.0
+angle_max = 360.0
 direction = Vector3(0, 1, 0)
 initial_velocity_min = 3.0
 initial_velocity_max = 3.0
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_musj1")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 2.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dmxio"]
+noise_type = 0
+frequency = 0.0946
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u80mk"]
+width = 64
+height = 64
+as_normal_map = true
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_dmxio")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa2hj"]
 transparency = 1
+cull_mode = 2
 albedo_texture = ExtResource("1_261mx")
 metallic_specular = 0.0
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_u80mk")
 
 [sub_resource type="QuadMesh" id="QuadMesh_yfvya"]
 material = SubResource("StandardMaterial3D_aa2hj")
@@ -22,6 +50,7 @@ size = Vector2(0.5, 0.5)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 amount = 20
-transform_align = 1
+lifetime = 0.3
+transform_align = 2
 process_material = SubResource("ParticleProcessMaterial_06461")
 draw_pass_1 = SubResource("QuadMesh_yfvya")

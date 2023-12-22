@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://biv7nwylb1op2"]
+
+[ext_resource type="PackedScene" uid="uid://10qbrpb7i8h5" path="res://scenes/objects/apartment.tscn" id="1_a4bdm"]
+[ext_resource type="Script" path="res://code/cutsceneApartment.gd" id="1_dxp33"]
+[ext_resource type="Animation" uid="uid://cxhv633a8ptbh" path="res://scenes/levels/apartment_animations/CameraOrigin2.res" id="2_nymvq"]
+
+[sub_resource type="Animation" id="Animation_8acwm"]
+resource_name = "CameraOrigin1"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera_origin")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -4, 2, -8)
+
+[sub_resource type="Animation" id="Animation_04tou"]
+resource_name = "CameraLookAtWatches"
+length = 5.0
+step = 0.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera_origin")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, -0.5)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera_origin/Camera3D:rotation:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.166667, 0.0333333, 0.2, -0.5, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("camera_origin/Camera3D:rotation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5.54, 0, 0, 0.166047, 0.0233333, -5.4, -0.5, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.996282)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("camera_origin/Camera3D:rotation:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lw142"]
+_data = {
+"CameraLookAtWatches": SubResource("Animation_04tou"),
+"CameraOrigin1": SubResource("Animation_8acwm"),
+"CameraOrigin2": ExtResource("2_nymvq")
+}
+
+[node name="LevelApartment" type="Node3D"]
+script = ExtResource("1_dxp33")
+
+[node name="apartment" parent="." instance=ExtResource("1_a4bdm")]
+
+[node name="camera_origin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -0.5)
+
+[node name="Camera3D" type="Camera3D" parent="camera_origin"]
+transform = Transform3D(0.736317, 0, 0.676637, 0, 1, 0, -0.676637, 0, 0.736317, 0, 0, 0)
+fov = 40.0
+far = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lw142")
+}
+playback_default_blend_time = 1.0

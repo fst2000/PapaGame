@@ -25,7 +25,7 @@ var is_active = true
 	Attack.new("Kick1", Vector3(0, 0, 1), Vector2(1,0), 5, 0.08, false),
 	Attack.new("Kick2", Vector3(0, 0, 2), Vector2(1,0), 10, 0.15, false),
 	Attack.new("Kick3", Vector3(0, 0, 2), Vector2(8,5), 20, 0.4, true)]
-@onready var fallKicks : Array[Attack] = [Attack.new("FallKick", Vector3(0, 0, 0), Vector2(5,5), 20, 0.2, true)]
+@onready var fallKicks : Array[Attack] = [Attack.new("FallKick", Vector3(0, 0, 0), Vector2(50,5), 200, 0.2, true)]
 @onready var punchSystem := AttackSystem.new(punches)
 @onready var kickSystem := AttackSystem.new(kicks)
 @onready var fallKickSystem := AttackSystem.new(fallKicks)

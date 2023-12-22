@@ -14,6 +14,7 @@ var should_get_in = false
 
 @onready var forward_direction = quaternion * Vector3.FORWARD
 @onready var sparks = $sparks
+@onready var snow_sprays = $snow_sprays
 @onready var slide_sound = $Sounds/Slide
 @onready var sparks_sound = $Sounds/Sparks
 @onready var ground_detector = AreaHitDetector.new($GroundArea)
@@ -21,6 +22,7 @@ var should_get_in = false
 @onready var groundRay = $RayCast3D
 func _ready():
 	sparks.visible = false
+	snow_sprays.visible = false
 
 func _process(delta):
 	if is_active:
@@ -32,6 +34,7 @@ func _process(delta):
 		if on_ground_condition.check():
 			if !has_landed:
 				slide_sound.play()
+				snow_sprays.visible = true
 				has_landed = true
 			input_velocity = lerp(input_velocity, input, 5 * delta)
 			var normal = groundRay.get_collision_normal()
@@ -45,13 +48,19 @@ func _process(delta):
 		else:
 			if has_landed:
 				slide_sound.stop()
+				snow_sprays.visible = false
 				has_landed = false
 			velocity.y += gravity * delta
 	else:
 		sparks.visible = false
 		if has_activated:
 			sparks_sound.stop()
+			snow_sprays.visible = false
 			has_activated = false
+		if on_ground_condition.check():
+			velocity = lerp(velocity, Vector3.ZERO, delta * 2)
+			look_at(global_position + forward_direction)
+		else: velocity.y += gravity * delta
 	move_and_slide()
 
 func area_action(actor : Node3D):

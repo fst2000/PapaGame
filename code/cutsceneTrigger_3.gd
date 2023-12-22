@@ -54,6 +54,8 @@ func _on_body_entered(body):
 	action_list.add(
 		func():
 			camera.look_target = papa
+			for b in bullies:
+				b.lookDir(papa.global_position - b.global_position)
 			papa.speakSystem.say("Эй, красная шапочка, отвали от мальчика"),
 			papa.speakSystem)
 	
@@ -144,7 +146,39 @@ func _on_body_entered(body):
 		func():
 			camera.is_cutscene = true
 			camera.origin = $CameraOrigin4,
-			FalseCondition.new())
+			TimeCondition.new(1.0))
+		
+	action_list.add(
+		func():
+			papa.speakSystem.say("Куда нажимать?"),
+		papa.speakSystem)
 	
+	action_list.add(
+		func():
+			camera.look_target = edgar
+			papa.speakSystem.say("")
+			edgar.speakSystem.say("Там на руле кнопка"),
+		edgar.speakSystem)
+	
+	action_list.add(
+		func():
+			camera.look_target = papa
+			edgar.speakSystem.say("")
+			papa.speakSystem.say("Вот эта?"),
+		papa.speakSystem)
+	
+	action_list.add(
+		func():
+			snowcat.is_active = true
+			papa.speakSystem.say("AAAAAAAAAAA"),
+		papa.speakSystem)
+		
+	action_list.add(
+		func():
+			papa.speakSystem.say("")
+			camera.is_cutscene = false
+			camera.origin = snowcat,
+		FalseCondition.new())
+		
 func _process(delta):
 	action_list.update()

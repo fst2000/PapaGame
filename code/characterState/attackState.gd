@@ -28,7 +28,10 @@ func nextState():
 		if character.status.flyoff:
 			return FlyoffState.new(character)
 		return StunState.new(character)
-		
+	
+	if character.is_on_floor() && character.controller.shouldJump():
+		return JumpState.new(character)
+	
 	if !character.animPlayer.is_playing():
 		if character.is_on_floor():
 			return IdleFightState.new(character)

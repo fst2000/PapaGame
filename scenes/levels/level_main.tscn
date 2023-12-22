@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=21 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
 [ext_resource type="PackedScene" uid="uid://cpl174do7fh7n" path="res://scenes/characters/bully.tscn" id="2_8x5ck"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://t717pkk0vyke" path="res://scenes/characters/edgar.tscn" id="11_6lquj"]
 [ext_resource type="Script" path="res://code/cutsceneTrigger_3.gd" id="12_ajrwi"]
 [ext_resource type="PackedScene" uid="uid://dwa12wrb8vxrd" path="res://scenes/characters/hooder.tscn" id="13_qo71w"]
+[ext_resource type="Script" path="res://code/cutsceneTrigger_4.gd" id="13_vu87j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wa1q7"]
 size = Vector3(13.8658, 5.81368, 1)
@@ -28,10 +29,13 @@ polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Arr
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ihodm"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecwv1"]
+size = Vector3(1, 16.0233, 18.1816)
+
 [node name="level_main" type="Node3D"]
 
 [node name="papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_wjhe6")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 264.266, -14.8255, 74.9857)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 265.684, -13.7933, 71.8023)
 floor_snap_length = 0.3
 camera = NodePath("../Camera3D")
 
@@ -156,6 +160,22 @@ mesh = SubResource("PlaneMesh_ihodm")
 [node name="snowcat" parent="level_left_coast" instance=ExtResource("10_lfr6c")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.145, -0.0439997, -3.8633)
 
+[node name="CutsceneTrigger4" type="Area3D" parent="level_left_coast" node_paths=PackedStringArray("camera", "papa", "snowcat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.918, 20.8087, -2.06532)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("13_vu87j")
+camera = NodePath("../../Camera3D")
+papa = NodePath("../../papa")
+snowcat = NodePath("../snowcat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level_left_coast/CutsceneTrigger4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.56651, 0)
+shape = SubResource("BoxShape3D_ecwv1")
+
+[node name="CameraOrigin" type="Node3D" parent="level_left_coast/CutsceneTrigger4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0588, 1.04824, -6.00989)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 visible = false
 
@@ -165,3 +185,4 @@ environment = ExtResource("5_dij1p")
 [connection signal="body_entered" from="level_hood/CutsceneTrigger1" to="level_hood/CutsceneTrigger1" method="_on_body_entered"]
 [connection signal="body_entered" from="level_hood/CutsceneTrigger2" to="level_hood/CutsceneTrigger2" method="_on_body_entered"]
 [connection signal="body_entered" from="level_left_coast/CutsceneTrigger3" to="level_left_coast/CutsceneTrigger3" method="_on_body_entered"]
+[connection signal="body_entered" from="level_left_coast/CutsceneTrigger4" to="level_left_coast/CutsceneTrigger4" method="_on_body_entered"]

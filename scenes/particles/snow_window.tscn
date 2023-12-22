@@ -36,7 +36,7 @@ roughness = 0.25
 lightmap_size_hint = Vector2i(7, 7)
 material = SubResource("StandardMaterial3D_mmpsa")
 
-[node name="snow" type="Node3D"]
+[node name="snow_window" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 cast_shadow = 0

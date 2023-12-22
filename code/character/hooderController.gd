@@ -20,9 +20,9 @@ func set_target(target : Node3D):
 func moveDirection() -> Vector3:
 	if shouldMove():
 		navigation.target_position = target.global_position
-		var moveDirection = hooder.global_position.direction_to(navigation.get_next_path_position())
-		moveDirection.y = 0
-		return moveDirection
+		var move_direction = hooder.global_position.direction_to(navigation.get_next_path_position())
+		move_direction.y = 0
+		return lerp(hooder.forward(), move_direction, 1)
 	return Vector3.ZERO
 
 func attackDirection() -> Vector3:

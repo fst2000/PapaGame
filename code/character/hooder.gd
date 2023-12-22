@@ -21,6 +21,9 @@ var hp = 60
 @onready var stepCondition = $StepCondition
 @onready var state = IdleState.new(self)
 
+func _ready():
+	$snow_spray.visible = false
+
 func _process(delta):
 	
 	controller.set_target(target)
@@ -51,3 +54,5 @@ func forward() -> Vector3:
 func set_active(value : bool):
 	set_collision_layer_value(3, value)
 	set_collision_mask_value(2, value)
+	set_collision_mask_value(3, value)
+	set_collision_mask_value(4, value)
