@@ -16,7 +16,7 @@ var hp = 60
 @onready var hitSystem := CharacterHitSystem.new(self, AreaHitDetector.new($HitArea))
 @onready var speakSystem := TextSpeakSystem.new($text)
 @onready var attacks : Array[Attack] = [
-	Attack.new("SlideKick", Vector3(0, 0, 5), Vector2(6,3), 15, 0.15, true)]
+	Attack.new(hitSystem, "SlideKick", Vector3(0, 0, 5), Vector2(6,4), 15, 0.15, 0.9, true)]
 @onready var fightSystem := AttackSystem.new(attacks)
 @onready var stepCondition = $StepCondition
 @onready var state = IdleState.new(self)

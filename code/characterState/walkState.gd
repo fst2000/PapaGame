@@ -30,6 +30,8 @@ func nextState():
 		return AttackState.new(character)
 		
 	if !controller.shouldMove():
+		if controller.shouldFight():
+			return IdleFightState.new(character)
 		return IdleState.new(character)
 		
 	if controller.shouldJump():

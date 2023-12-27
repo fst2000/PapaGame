@@ -16,8 +16,8 @@ func _init(character):
 
 func update(delta):
 	timePassed += delta
-	if timePassed >= attack.hitTime && !character.status.hasHit:
-		character.hitSystem.hit(attack)
+	if timePassed >= attack.startHitTime && timePassed <= attack.endHitTime:
+		attack.hitSystem.hit(attack)
 	var move_vector = character.quaternion * attack.move_velocity
 	if character.is_on_floor():
 		character.move(move_vector)

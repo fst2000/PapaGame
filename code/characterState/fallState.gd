@@ -13,9 +13,7 @@ func _init(character):
 
 func update(delta : float):
 	var moveVelocity = controller.moveDirection() * character.walkSpeed
-	var fallVelocity = startVelocity + moveVelocity
-	if fallVelocity.length() > startVelocity.length():
-		fallVelocity = fallVelocity.normalized() * max(startVelocity.length(), moveVelocity.length())
+	var fallVelocity = lerp(startVelocity, startVelocity + moveVelocity, delta * 20) 
 	character.move(fallVelocity)
 	character.lookDir(lerp(character.forward(), fallVelocity, delta * 10))
 

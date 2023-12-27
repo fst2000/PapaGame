@@ -3,7 +3,6 @@ extends Area3D
 
 @export var camera : Node3D
 @export var papa : Node3D
-@export var bullies : Array[Node3D]
 @export var snowcat : Node3D
 var action_list := ActionList.new()
 
@@ -12,7 +11,6 @@ func _process(delta):
 	
 func _on_body_entered(body):
 	#var bully = bullies[0]
-	print("Cutscene 4")
 	action_list.add(
 		func():
 			$CollisionShape3D.disabled = true

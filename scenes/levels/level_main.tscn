@@ -1,12 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=24 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
 [ext_resource type="PackedScene" uid="uid://cpl174do7fh7n" path="res://scenes/characters/bully.tscn" id="2_8x5ck"]
 [ext_resource type="PackedScene" uid="uid://fffg5or0wqok" path="res://scenes/levels/level_hood.tscn" id="3_fn2n6"]
 [ext_resource type="PackedScene" uid="uid://byrjidenuveaa" path="res://scenes/characters/camera_3rd_person.tscn" id="3_l6bmr"]
 [ext_resource type="PackedScene" uid="uid://bmari1xexyvf" path="res://scenes/levels/level_bridge.tscn" id="4_7efnh"]
+[ext_resource type="Script" path="res://code/cutsceneStart.gd" id="4_pnn7p"]
 [ext_resource type="Environment" uid="uid://kvvqmbm8s6b5" path="res://scenes/levels/winter_night_environment.tres" id="5_dij1p"]
 [ext_resource type="Script" path="res://code/cutsceneTrigger_1.gd" id="6_4w38b"]
+[ext_resource type="Animation" uid="uid://cb0vg251bo8gx" path="res://scenes/levels/hood_animations/Cutscene_Hood_1.res" id="7_rwsqr"]
 [ext_resource type="Script" path="res://code/cutsceneTrigger_2.gd" id="7_sbww8"]
 [ext_resource type="PackedScene" uid="uid://dhkkw00fukjhm" path="res://scenes/levels/level_left_coast.tscn" id="9_4icev"]
 [ext_resource type="PackedScene" uid="uid://4cakhji5q62" path="res://scenes/objects/snowcat.tscn" id="10_lfr6c"]
@@ -14,6 +16,11 @@
 [ext_resource type="Script" path="res://code/cutsceneTrigger_3.gd" id="12_ajrwi"]
 [ext_resource type="PackedScene" uid="uid://dwa12wrb8vxrd" path="res://scenes/characters/hooder.tscn" id="13_qo71w"]
 [ext_resource type="Script" path="res://code/cutsceneTrigger_4.gd" id="13_vu87j"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41pjw"]
+_data = {
+"Cutscene_Hood_1": ExtResource("7_rwsqr")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wa1q7"]
 size = Vector3(13.8658, 5.81368, 1)
@@ -35,15 +42,32 @@ size = Vector3(1, 16.0233, 18.1816)
 [node name="level_main" type="Node3D"]
 
 [node name="papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_wjhe6")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 265.684, -13.7933, 71.8023)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.0375748, 1.36267, -8.86684)
 floor_snap_length = 0.3
 camera = NodePath("../Camera3D")
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("origin") instance=ExtResource("3_l6bmr")]
-near = 0.001
+transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, 12.9525, 36.297, -23.9285)
 origin = NodePath("../papa")
 
 [node name="level_hood" parent="." instance=ExtResource("3_fn2n6")]
+
+[node name="CutsceneStart" type="Node3D" parent="level_hood" node_paths=PackedStringArray("camera", "papa")]
+script = ExtResource("4_pnn7p")
+camera = NodePath("../../Camera3D")
+papa = NodePath("../../papa")
+
+[node name="CutsceneOrigin" type="Node3D" parent="level_hood/CutsceneStart"]
+transform = Transform3D(-0.366501, 0, 0.930418, 0, 1, 0, -0.930418, 0, -0.366501, 16.21, 35.98, -23.484)
+
+[node name="CutsceneLookTarget" type="Node3D" parent="level_hood/CutsceneStart/CutsceneOrigin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="level_hood/CutsceneStart"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_41pjw")
+}
 
 [node name="CutsceneTrigger1" type="Area3D" parent="level_hood" node_paths=PackedStringArray("camera", "papa", "bullies")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1563, 0, 45.3582)
@@ -113,7 +137,7 @@ script = ExtResource("12_ajrwi")
 camera = NodePath("../../Camera3D")
 papa = NodePath("../../papa")
 edgar = NodePath("../edgar")
-bullies = [NodePath("../hooder"), NodePath("../bully4"), NodePath("../bully5")]
+bullies = [NodePath("../hooder"), NodePath("../bully4"), NodePath("../bully5"), NodePath("../bully"), NodePath("../bully2")]
 snowcat = NodePath("../snowcat")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level_left_coast/CutsceneTrigger3"]
@@ -136,13 +160,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6635, 0.220727, 1.96828)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1048, -0.0448294, -4.72939)
 
 [node name="hooder" parent="level_left_coast" instance=ExtResource("13_qo71w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0543, -0.0447617, -0.637924)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 35.0543, -0.0447617, -2.3537)
+
+[node name="bully" parent="level_left_coast" instance=ExtResource("2_8x5ck")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 34.1762, -0.0438166, -1.51569)
+
+[node name="bully2" parent="level_left_coast" instance=ExtResource("2_8x5ck")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 35.8566, -0.0460892, -1.3089)
 
 [node name="bully4" parent="level_left_coast" instance=ExtResource("2_8x5ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8267, -0.0470266, -2.25617)
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 36.8267, -0.0470266, -2.25617)
 
 [node name="bully5" parent="level_left_coast" instance=ExtResource("2_8x5ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.355, -0.0425949, -2.13323)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 33.355, -0.0425949, -2.13323)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="level_left_coast"]
 navigation_mesh = SubResource("NavigationMesh_t8r0k")

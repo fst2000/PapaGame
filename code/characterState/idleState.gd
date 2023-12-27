@@ -35,7 +35,7 @@ func nextState():
 	if controller.shouldJump():
 		return JumpState.new(character)
 	
-	if character.target is CharacterBody3D && controller.is_active:
+	if controller.shouldFight():
 		return IdleFightState.new(character)
 	
 	return self

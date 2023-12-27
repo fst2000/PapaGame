@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var next_scene : Resource
 @onready var papa_anim_player = $apartment/AnimationPlayer
 @onready var anim_player = $AnimationPlayer
 @onready var camera = $camera_origin/Camera3D
@@ -14,6 +15,8 @@ func start_cutscene():
 		func():
 			anim_player.play("CameraOrigin2"),
 		FuncCondition.new(func(): return anim_player.is_playing()))
+	
+	action_list.add(func():pass, TimeCondition.new(2.0))
 	
 	action_list.add(
 		func():
@@ -49,6 +52,8 @@ func start_cutscene():
 		TimeCondition.new(2.0))
 	
 	action_list.add(func():text.write(""), TimeCondition.new(0.5))
+	
+	action_list.add(func():get_tree().change_scene_to_packed(next_scene), FalseCondition.new())
 	
 func  _process(delta):
 	action_list.update()

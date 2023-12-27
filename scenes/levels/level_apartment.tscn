@@ -1,22 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://biv7nwylb1op2"]
+[gd_scene load_steps=8 format=3 uid="uid://biv7nwylb1op2"]
 
 [ext_resource type="PackedScene" uid="uid://10qbrpb7i8h5" path="res://scenes/objects/apartment.tscn" id="1_a4bdm"]
 [ext_resource type="Script" path="res://code/cutsceneApartment.gd" id="1_dxp33"]
+[ext_resource type="PackedScene" uid="uid://ctv7ucnk4g2ey" path="res://scenes/levels/level_main.tscn" id="2_3umes"]
 [ext_resource type="Animation" uid="uid://cxhv633a8ptbh" path="res://scenes/levels/apartment_animations/CameraOrigin2.res" id="2_nymvq"]
-
-[sub_resource type="Animation" id="Animation_8acwm"]
-resource_name = "CameraOrigin1"
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("camera_origin")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -4, 2, -8)
 
 [sub_resource type="Animation" id="Animation_04tou"]
 resource_name = "CameraLookAtWatches"
-length = 5.0
+length = 2.0
 step = 0.0
 tracks/0/type = "position_3d"
 tracks/0/imported = false
@@ -59,6 +50,16 @@ tracks/3/keys = {
 "times": PackedFloat32Array()
 }
 
+[sub_resource type="Animation" id="Animation_8acwm"]
+resource_name = "CameraOrigin1"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera_origin")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -4, 2, -8)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lw142"]
 _data = {
 "CameraLookAtWatches": SubResource("Animation_04tou"),
@@ -68,14 +69,15 @@ _data = {
 
 [node name="LevelApartment" type="Node3D"]
 script = ExtResource("1_dxp33")
+next_scene = ExtResource("2_3umes")
 
 [node name="apartment" parent="." instance=ExtResource("1_a4bdm")]
 
 [node name="camera_origin" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76, 1.779, -15)
 
 [node name="Camera3D" type="Camera3D" parent="camera_origin"]
-transform = Transform3D(0.736317, 0, 0.676637, 0, 1, 0, -0.676637, 0, 0.736317, 0, 0, 0)
+transform = Transform3D(-0.691962, 0, -0.721934, 0, 1, 0, 0.721934, 0, -0.691962, 0, 0, 0)
 fov = 40.0
 far = 100.0
 

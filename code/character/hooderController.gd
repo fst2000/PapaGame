@@ -3,8 +3,8 @@ class_name HooderController
 var is_active = true
 var minDistance = 0.5
 var stopDistance = 2.5
-var attackDistance = 3.0
-var attack_time_interval = 2.5
+var attackDistance = 3.5
+var attack_time_interval = 1.0
 var hooder
 var navigation
 var target
@@ -54,6 +54,11 @@ func shouldMove():
 			return target.status.isAlive()
 		return true
 	else: return false
+
+func shouldFight():
+	if target is Papa:
+		return target.status.isAlive()
+	return false
 
 func shouldAct():
 	return false

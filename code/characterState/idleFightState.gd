@@ -2,7 +2,6 @@ class_name IdleFightState
 
 var character
 var controller
-var time_condition = TimeCondition.new(2)
 
 func _init(character):
 	self.character = character
@@ -33,8 +32,8 @@ func nextState():
 		
 	if character.controller.shouldJump():
 		return JumpState.new(character)
-	
-	if !time_condition.check():
+		
+	if !character.controller.shouldFight():
 		return IdleState.new(character)
 		
 	return self

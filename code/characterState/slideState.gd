@@ -10,13 +10,15 @@ func _init(character):
 	
 func update(delta : float):
 	var normal = character.get_floor_normal()
-	var slide_inertion = 5.0
+	var slide_inertion = 2.0
 	var max_velocity = 10
 	var slope_direction = Vector3(normal.x, 0, normal.z).normalized()
 	var slope_direction_rotated = slope_direction.rotated(Vector3.UP.cross(normal).normalized(), Vector3.UP.angle_to(normal))
-	character.velocity += slope_direction_rotated * slide_inertion * delta
-	if character.velocity.length() > max_velocity:
-		character.velocity = character.velocity.normalized() * max_velocity
+	var direction_right = slope_direction_rotated.cross(Vector3.UP)
+	var move_direction = character.controller.moveDirection()
+	var input_vector = move_direction * abs(direction_right.dot(move_direction)) * 5
+	var slope_velocity = slope_direction_rotated * max_velocity + input_vector
+	character.velocity = lerp(character.velocity, slope_velocity, slide_inertion * delta)
 	var look_direction = lerp(character.forward(), character.velocity, delta * 10)
 	character.look_at(character.global_position - look_direction)
 	

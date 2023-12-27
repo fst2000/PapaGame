@@ -20,12 +20,11 @@ func _on_body_entered(body):
 			papa.controller.is_active = false,
 		FalseCondition.new())
 	action_list.add(
-		func():
-			bully.speakSystem.say("Эй!"),
+		func(): pass,
 		AreMoving.new(bullies))
 	action_list.add(
 		func():
-			bully.speakSystem.say("А вот и мы, давай сюда деньги")
+			bully.speakSystem.say("Проход тут платный, гони бабло")
 			papa.lookDir(bully.global_position - papa.global_position)
 			for b in bullies:
 				b.lookDir(papa.global_position - bully.global_position),
