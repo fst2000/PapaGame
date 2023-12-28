@@ -28,10 +28,11 @@ var is_active = true
 	Attack.new(middleHitSystem, "Kick2", Vector3(0, 0, 2), Vector2(1,0), 10, 0.15, 0.25, false),
 	Attack.new(middleHitSystem, "Kick3", Vector3(0, 0, 2), Vector2(8,5), 20, 0.4, 0.5, true)]
 @onready var fallKicks : Array[Attack] = [Attack.new(lowHitSystem, "FallKick", Vector3(0, 0, 0), Vector2(5,4), 15, 0.2, 0.3, true)]
+@onready var dodgePunch := Attack.new(middleHitSystem, "DodgePunch", Vector3(0,0,1), Vector2(2, 6), 15, 0.15, 0.32, true)
 @onready var punchSystem := AttackSystem.new(punches)
 @onready var kickSystem := AttackSystem.new(kicks)
 @onready var fallKickSystem := AttackSystem.new(fallKicks)
-@onready var fightSystem := PapaFightSystem.new(self, punchSystem, kickSystem, fallKickSystem)
+@onready var fightSystem := PapaFightSystem.new(self, punchSystem, kickSystem, fallKickSystem, dodgePunch)
 @onready var actionSystem = AreaActionSystem.new(AreaToAreaDetector.new($ActionArea), self)
 @onready var targetDefiner = AngleTargetDefiner.new(self, AreaHitDetector.new($TargetArea), max_target_angle)
 @onready var slideCondition = IsSliding.new($GroundArea)
@@ -68,6 +69,14 @@ func jump():
 
 func forward() -> Vector3:
 	return quaternion * Vector3.BACK
+
+func dodge():
+	$CollisionShape3D.disabled = true
+	$DodgeShape.disabled = false
+	
+func undodge():
+	$CollisionShape3D.disabled = false
+	$DodgeShape.disabled = true
 
 func set_active(value : bool):
 	is_active = value

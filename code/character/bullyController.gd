@@ -58,8 +58,9 @@ func shouldFight():
 		return target.status.isAlive()
 	return false
 
-func shouldAct():
-	return false
-	
+func shouldAct(): return false
+
+func shouldDodge(): return false
+
 func fightCondition():
 	return FuncCondition.new(func(): return shouldFight())

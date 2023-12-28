@@ -4,18 +4,28 @@ var papa : Papa
 var punchSystem
 var kickSystem
 var fallKickSystem
+var dodgePunch
 
-func _init(papa : Papa, punchSystem : AttackSystem, kickSystem : AttackSystem, fallKickSystem : AttackSystem):
+func _init(
+	papa : Papa,
+	punchSystem : AttackSystem,
+	kickSystem : AttackSystem,
+	fallKickSystem : AttackSystem,
+	dodgePunch : Attack):
+
 	self.papa = papa
 	self.punchSystem = punchSystem
 	self.kickSystem = kickSystem
 	self.fallKickSystem = fallKickSystem
+	self.dodgePunch = dodgePunch
 	
 func attack() -> Attack:
 	var controller = papa.controller
 	var attack
 	if controller.shouldPunch():
-		attack = punchSystem.attack()
+		if papa.state is DodgeState:
+			attack = dodgePunch
+		else: attack = punchSystem.attack()
 		
 	if controller.shouldKick():
 		if papa.is_on_floor():

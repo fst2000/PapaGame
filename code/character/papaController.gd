@@ -42,6 +42,9 @@ func shouldAttack():
 func shouldJump():
 	return Input.is_action_just_pressed("jump") && is_active
 
+func shouldDodge():
+	return Input.is_action_just_pressed("dodge") && is_active
+
 func shouldAct():
 	return is_active
 	

@@ -37,7 +37,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 target = NodePath("../papa")
 
 [node name="hooder" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_k7sas")]
-transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 4.55042, -0.5, 5.32568)
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 4.55042, -0.5, 16.8417)
 target = NodePath("../papa")
 
 [node name="gopnik" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_mqfcb")]

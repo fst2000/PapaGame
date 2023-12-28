@@ -19,7 +19,9 @@ func _on_body_entered(body):
 			camera.origin = $CameraOrigin
 			camera.is_cutscene = true
 			camera.look_target = bully
-			papa.controller.is_active = false,
+			papa.controller.is_active = false
+			for b in bullies:
+				b.lookDir(edgar.global_position - b.global_position),
 		FalseCondition.new())
 	
 	action_list.add(

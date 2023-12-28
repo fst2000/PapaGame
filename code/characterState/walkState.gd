@@ -28,7 +28,10 @@ func nextState():
 	
 	if character.controller.shouldAttack():
 		return AttackState.new(character)
-		
+	
+	if controller.shouldDodge():
+		return DodgeState.new(character)
+	
 	if !controller.shouldMove():
 		if controller.shouldFight():
 			return IdleFightState.new(character)

@@ -63,5 +63,7 @@ func shouldFight():
 func shouldAct():
 	return false
 
+func shouldDodge(): return false
+
 func fightCondition():
 	return FuncCondition.new(func(): return shouldFight())

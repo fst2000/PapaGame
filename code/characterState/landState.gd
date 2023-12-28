@@ -2,7 +2,7 @@ class_name  LandState
 
 var character
 var controller
-var inretion = 8.0
+var inertion = 8.0
 func _init(character):
 	self.character = character
 	self.controller = character.controller
@@ -11,7 +11,7 @@ func _init(character):
 	
 func update(delta : float):
 	var moveSpeed = 1
-	character.velocity = lerp(character.velocity, Vector3.ZERO, inretion * delta)
+	character.velocity = lerp(character.velocity, Vector3.ZERO, inertion * delta)
 	
 func nextState():
 	if character.status.slide:

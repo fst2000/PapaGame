@@ -31,7 +31,10 @@ func nextState():
 		
 	if character.controller.shouldMove():
 		return WalkState.new(character)
-		
+	
+	if controller.shouldDodge():
+		return DodgeState.new(character)
+	
 	if character.controller.shouldJump():
 		return JumpState.new(character)
 		
