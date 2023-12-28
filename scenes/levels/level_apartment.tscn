@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://biv7nwylb1op2"]
 
 [ext_resource type="PackedScene" uid="uid://10qbrpb7i8h5" path="res://scenes/objects/apartment.tscn" id="1_a4bdm"]
-[ext_resource type="Script" path="res://code/cutsceneApartment.gd" id="1_dxp33"]
+[ext_resource type="Script" path="res://code/cutscene/cutsceneApartment.gd" id="1_dxp33"]
 [ext_resource type="PackedScene" uid="uid://ctv7ucnk4g2ey" path="res://scenes/levels/level_main.tscn" id="2_3umes"]
 [ext_resource type="Animation" uid="uid://cxhv633a8ptbh" path="res://scenes/levels/apartment_animations/CameraOrigin2.res" id="2_nymvq"]
 

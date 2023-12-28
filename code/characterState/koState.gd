@@ -7,7 +7,9 @@ func _init(character):
 	character.sounds.get_node("Land").play()
 	character.move(Vector3.ZERO)
 	character.set_active(false)
-	
+	if character.koAction:
+		character.koAction.call()
+
 func update(delta):
 	character.move(Vector3.ZERO)
 func nextState():

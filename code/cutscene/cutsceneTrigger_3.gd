@@ -9,7 +9,7 @@ var action_list := ActionList.new()
 
 func _ready():
 	for b in bullies:
-		b.lookDir(b.global_position - edgar.global_position)
+		b.lookDir(edgar.global_position - b.global_position)
 
 func _on_body_entered(body):
 	var bully = bullies[0]

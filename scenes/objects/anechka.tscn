@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfe0jlmqmgqx"]
+
+[ext_resource type="PackedScene" uid="uid://dgnhdfe2m6kqh" path="res://models/levels/left_coast/anechka.blend" id="1_ngoch"]
+[ext_resource type="Texture2D" uid="uid://bwy8eoigdh0eu" path="res://textures/anechka.png" id="2_0geoh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1sts3"]
+albedo_texture = ExtResource("2_0geoh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dmss"]
+emission_enabled = true
+emission = Color(0.886275, 0.878431, 0.776471, 1)
+
+[node name="anechka" instance=ExtResource("1_ngoch")]
+
+[node name="Anechka" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1sts3")
+surface_material_override/1 = SubResource("StandardMaterial3D_7dmss")
+
+[node name="Text" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7dmss")

@@ -3,6 +3,7 @@ class_name Bully
 extends CharacterBody3D
 
 var walkSpeed = 2
+var jumpSpeed = 2
 var gravity = -10
 var jumpForce = 5
 var hp = 60
@@ -21,7 +22,8 @@ var hp = 60
 	Attack.new(middleHitSystem, "Punch2", Vector3(0, 0, 1), Vector2(2,0), 5, 0.4, 0.45, false),
 	Attack.new(lowHitSystem, "Kick1", Vector3(0, 0, 1), Vector2(2,0), 10, 0.4, 0.45, false)]
 @onready var fightSystem := AttackSystem.new(attacks)
-@onready var stepCondition = $StepCondition
+@onready var stepCondition = FalseCondition.new()
+@onready var koAction
 @onready var state = IdleState.new(self)
 
 func _process(delta):

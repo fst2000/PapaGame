@@ -3,6 +3,7 @@ class_name Hooder
 extends CharacterBody3D
 
 var walkSpeed = 2
+var jumpSpeed = 2
 var gravity = -10
 var jumpForce = 5
 var hp = 60
@@ -18,7 +19,8 @@ var hp = 60
 @onready var attacks : Array[Attack] = [
 	Attack.new(hitSystem, "SlideKick", Vector3(0, 0, 5), Vector2(6,4), 15, 0.15, 0.9, true)]
 @onready var fightSystem := AttackSystem.new(attacks)
-@onready var stepCondition = $StepCondition
+@onready var stepCondition = FalseCondition.new()
+@onready var koAction
 @onready var state = IdleState.new(self)
 
 func _ready():

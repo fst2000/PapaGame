@@ -2,10 +2,12 @@ class_name IdleFightState
 
 var character
 var controller
+var condition
 
 func _init(character):
 	self.character = character
 	self.controller = character.controller
+	condition = controller.fightCondition()
 	character.animPlayer.play("IdleFight")
 	character.move(Vector3.ZERO)
 	
@@ -33,7 +35,7 @@ func nextState():
 	if character.controller.shouldJump():
 		return JumpState.new(character)
 		
-	if !character.controller.shouldFight():
+	if !condition.check():
 		return IdleState.new(character)
 		
 	return self

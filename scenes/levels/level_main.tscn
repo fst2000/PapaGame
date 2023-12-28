@@ -1,21 +1,31 @@
-[gd_scene load_steps=24 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=29 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
 [ext_resource type="PackedScene" uid="uid://cpl174do7fh7n" path="res://scenes/characters/bully.tscn" id="2_8x5ck"]
 [ext_resource type="PackedScene" uid="uid://fffg5or0wqok" path="res://scenes/levels/level_hood.tscn" id="3_fn2n6"]
 [ext_resource type="PackedScene" uid="uid://byrjidenuveaa" path="res://scenes/characters/camera_3rd_person.tscn" id="3_l6bmr"]
 [ext_resource type="PackedScene" uid="uid://bmari1xexyvf" path="res://scenes/levels/level_bridge.tscn" id="4_7efnh"]
-[ext_resource type="Script" path="res://code/cutsceneStart.gd" id="4_pnn7p"]
+[ext_resource type="Script" path="res://code/cutscene/cutsceneStart.gd" id="4_pnn7p"]
 [ext_resource type="Environment" uid="uid://kvvqmbm8s6b5" path="res://scenes/levels/winter_night_environment.tres" id="5_dij1p"]
-[ext_resource type="Script" path="res://code/cutsceneTrigger_1.gd" id="6_4w38b"]
+[ext_resource type="Script" path="res://code/cutscene/cutsceneTrigger_1.gd" id="6_4w38b"]
 [ext_resource type="Animation" uid="uid://cb0vg251bo8gx" path="res://scenes/levels/hood_animations/Cutscene_Hood_1.res" id="7_rwsqr"]
-[ext_resource type="Script" path="res://code/cutsceneTrigger_2.gd" id="7_sbww8"]
+[ext_resource type="Script" path="res://code/cutscene/cutsceneTrigger_2.gd" id="7_sbww8"]
 [ext_resource type="PackedScene" uid="uid://dhkkw00fukjhm" path="res://scenes/levels/level_left_coast.tscn" id="9_4icev"]
 [ext_resource type="PackedScene" uid="uid://4cakhji5q62" path="res://scenes/objects/snowcat.tscn" id="10_lfr6c"]
 [ext_resource type="PackedScene" uid="uid://t717pkk0vyke" path="res://scenes/characters/edgar.tscn" id="11_6lquj"]
-[ext_resource type="Script" path="res://code/cutsceneTrigger_3.gd" id="12_ajrwi"]
+[ext_resource type="Script" path="res://code/cutscene/cutsceneTrigger_3.gd" id="12_ajrwi"]
 [ext_resource type="PackedScene" uid="uid://dwa12wrb8vxrd" path="res://scenes/characters/hooder.tscn" id="13_qo71w"]
-[ext_resource type="Script" path="res://code/cutsceneTrigger_4.gd" id="13_vu87j"]
+[ext_resource type="Script" path="res://code/cutscene/cutsceneTrigger_4.gd" id="13_vu87j"]
+
+[sub_resource type="GDScript" id="GDScript_6g4pk"]
+script/source = "extends Node3D
+
+var game = ResourceLoader.load(\"res://save.tres\")
+@export var player : CharacterBody3D
+func _ready():
+	player.position = game.spawn_position
+	player.lookDir(game.spawn_direction)
+"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_41pjw"]
 _data = {
@@ -24,6 +34,38 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wa1q7"]
 size = Vector3(13.8658, 5.81368, 1)
+
+[sub_resource type="GDScript" id="GDScript_33nmu"]
+script/source = "extends Area3D
+
+var game = ResourceLoader.load(\"res://save.tres\")
+
+func _on_body_entered(body):
+	print(\"checkpoint 1\")
+	game.checkpoint_id = 1
+	game.spawn_position = global_position
+	game.spawn_direction = Vector3(1,0,0)
+	$CollisionShape3D.disabled = true
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eea51"]
+size = Vector3(30.7227, 9.19727, 1)
+
+[sub_resource type="GDScript" id="GDScript_5y2rm"]
+script/source = "extends Area3D
+
+var game = ResourceLoader.load(\"res://save.tres\")
+
+func _on_body_entered(body):
+	print(\"checkpoint 2\")
+	game.checkpoint_id = 2
+	game.spawn_position = global_position
+	game.spawn_direction = Vector3(1,0,0)
+	$CollisionShape3D.disabled = true
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d18n4"]
+size = Vector3(1, 5.96436, 12.417)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7gpvx"]
 size = Vector3(1, 5.90479, 19.7115)
@@ -39,10 +81,12 @@ polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Arr
 [sub_resource type="BoxShape3D" id="BoxShape3D_ecwv1"]
 size = Vector3(1, 16.0233, 18.1816)
 
-[node name="level_main" type="Node3D"]
+[node name="level_main" type="Node3D" node_paths=PackedStringArray("player")]
+script = SubResource("GDScript_6g4pk")
+player = NodePath("papa")
 
 [node name="papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_wjhe6")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.0375748, 1.36267, -8.86684)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 1, -8)
 floor_snap_length = 0.3
 camera = NodePath("../Camera3D")
 
@@ -126,8 +170,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6219, 1.03495, 51.807)
 [node name="level_bridge" parent="." instance=ExtResource("4_7efnh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 175.211, -25.7702, 71.6865)
 
+[node name="Checkpoint1" type="Area3D" parent="level_bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7751, 7.37805)
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_33nmu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level_bridge/Checkpoint1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.09863, 0)
+shape = SubResource("BoxShape3D_eea51")
+
 [node name="level_left_coast" parent="." instance=ExtResource("9_4icev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 243.431, -15, 79.65)
+
+[node name="Checkpoint2" type="Area3D" parent="level_left_coast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.16, 0, -7.58999)
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_5y2rm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level_left_coast/Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48218, 0)
+shape = SubResource("BoxShape3D_d18n4")
 
 [node name="CutsceneTrigger3" type="Area3D" parent="level_left_coast" node_paths=PackedStringArray("camera", "papa", "edgar", "bullies", "snowcat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7708, 0.793136, -2.52061)
@@ -214,5 +278,7 @@ environment = ExtResource("5_dij1p")
 
 [connection signal="body_entered" from="level_hood/CutsceneTrigger1" to="level_hood/CutsceneTrigger1" method="_on_body_entered"]
 [connection signal="body_entered" from="level_hood/CutsceneTrigger2" to="level_hood/CutsceneTrigger2" method="_on_body_entered"]
+[connection signal="body_entered" from="level_bridge/Checkpoint1" to="level_bridge/Checkpoint1" method="_on_body_entered"]
+[connection signal="body_entered" from="level_left_coast/Checkpoint2" to="level_left_coast/Checkpoint2" method="_on_body_entered"]
 [connection signal="body_entered" from="level_left_coast/CutsceneTrigger3" to="level_left_coast/CutsceneTrigger3" method="_on_body_entered"]
 [connection signal="body_entered" from="level_left_coast/CutsceneTrigger4" to="level_left_coast/CutsceneTrigger4" method="_on_body_entered"]

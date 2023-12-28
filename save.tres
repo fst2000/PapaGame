@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Game" load_steps=2 format=3 uid="uid://d2586o4p5uyn3"]
+
+[ext_resource type="Script" path="res://code/game.gd" id="1_2e23o"]
+
+[resource]
+script = ExtResource("1_2e23o")
+game_started = false
+spawn_position = Vector3(0, 1, -9)
+spawn_direction = Vector3(0, 0, -1)
+checkpoint_id = 0

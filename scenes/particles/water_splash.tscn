@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddkp6l6gy3dd6"]
+
+[ext_resource type="Texture2D" uid="uid://kn42otkknj62" path="res://textures/snow_particle.png" id="1_5x840"]
+[ext_resource type="AudioStream" uid="uid://dssrrtu256e3" path="res://sounds/slap.wav" id="2_dv35t"]
+
+[sub_resource type="GDScript" id="GDScript_760nr"]
+script/source = "extends Node3D
+
+func _ready():
+	$AudioStreamPlayer3D.play()
+"
+
+[sub_resource type="Curve" id="Curve_dq8og"]
+max_value = 2.0
+_data = [Vector2(0.0208333, 0.907217), 0.0, 0.0, 0, 0, Vector2(1, 1.50515), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_musj1"]
+curve = SubResource("Curve_dq8og")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fawxr"]
+angle_min = -360.0
+angle_max = 360.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 7.0
+scale_min = 1.6
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_musj1")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 2.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dmxio"]
+noise_type = 0
+frequency = 0.0946
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u80mk"]
+width = 64
+height = 64
+as_normal_map = true
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_dmxio")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swb4c"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_5x840")
+metallic = 0.18
+metallic_specular = 1.0
+roughness = 0.13
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_u80mk")
+
+[sub_resource type="QuadMesh" id="QuadMesh_udhxg"]
+material = SubResource("StandardMaterial3D_swb4c")
+flip_faces = true
+size = Vector2(0.5, 0.5)
+
+[node name="water_splash" type="Node3D"]
+script = SubResource("GDScript_760nr")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.3
+one_shot = true
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_fawxr")
+draw_pass_1 = SubResource("QuadMesh_udhxg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_dv35t")

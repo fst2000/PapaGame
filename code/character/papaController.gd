@@ -3,6 +3,7 @@ class_name PapaController
 var papa
 var is_active = true;
 var move_input = Vector3.ZERO
+var fight_time = 1.0
 
 func _init(papa):
 	self.papa = papa
@@ -49,6 +50,9 @@ func moveInput() -> Vector3:
 		Input.get_axis("right", "left"),
 		0,
 		Input.get_axis("down", "up"))
+
+func fightCondition():
+	return TimeCondition.new(fight_time)
 
 func update(delta):
 	move_input = lerp(move_input, moveInput(), delta * 20)

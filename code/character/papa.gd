@@ -36,6 +36,7 @@ var is_active = true
 @onready var targetDefiner = AngleTargetDefiner.new(self, AreaHitDetector.new($TargetArea), max_target_angle)
 @onready var slideCondition = IsSliding.new($GroundArea)
 @onready var stepCondition = $StepCondition
+@onready var koAction = func(): get_tree().reload_current_scene()
 @onready var state = IdleState.new(self)
 func _process(delta):
 	controller.update(delta)
@@ -67,6 +68,7 @@ func jump():
 
 func forward() -> Vector3:
 	return quaternion * Vector3.BACK
+
 func set_active(value : bool):
 	is_active = value
 	set_collision_layer_value(2, value)

@@ -76,3 +76,6 @@ func shouldAct():
 	
 func update(delta):
 	self.delta = delta
+
+func fightCondition():
+	return FuncCondition.new(func(): return shouldFight())

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://code/character/gopnik.gd" id="2_3qcjq"]
 [ext_resource type="Texture2D" uid="uid://wmpbr5s04k6p" path="res://textures/gopnic.png" id="2_c42qp"]
-[ext_resource type="Script" path="res://code/character/stepCondition.gd" id="3_x47av"]
 [ext_resource type="Animation" uid="uid://devc7wipcidq7" path="res://models/characters/gopnik_resources/gopnik_jump_animation.res" id="3_yy0mf"]
 [ext_resource type="AudioStream" uid="uid://ckm7iqel0hp4u" path="res://sounds/land.wav" id="4_cnta5"]
+[ext_resource type="Animation" uid="uid://kt7al40xajdj" path="res://models/characters/gopnik_resources/gopnik_ko_animation.res" id="4_os7n4"]
 [ext_resource type="AudioStream" uid="uid://c8yy5oirvccnl" path="res://sounds/hit_weak.wav" id="5_ruotx"]
 [ext_resource type="AudioStream" uid="uid://c8n7x8jyflf5d" path="res://sounds/airWave.wav" id="6_t0uxb"]
 [ext_resource type="PackedScene" uid="uid://bbg8s0g0cypld" path="res://scenes/UI/text.tscn" id="7_oxw71"]
@@ -1101,6 +1101,7 @@ _data = {
 "Idle": SubResource("Animation_30a0k"),
 "IdleFight": SubResource("Animation_wtsw3"),
 "Jump": ExtResource("3_yy0mf"),
+"KO": ExtResource("4_os7n4"),
 "Kick_1": SubResource("Animation_ewbs3"),
 "Land": SubResource("Animation_eox3g"),
 "StandUp": SubResource("Animation_hb7oo"),
@@ -1143,14 +1144,14 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(-0.894655, 0.44646, -0.0162841, -0.446704, -0.893401, 0.0478564, 0.00681777, 0.0500892, 0.998721, 0.221612, 0.391635, -0.0130608)
 bones/2/enabled = true
 bones/2/position = Vector3(0.221612, 0.391635, -0.0130608)
-bones/2/rotation = Quaternion(0.348588, 0.00596889, 0.909145, -0.227831)
+bones/2/rotation = Quaternion(0.334072, -0.330489, 0.783468, -0.406633)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "ElbowL"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.963952, 0.194674, -0.181377, -0.249889, 0.8965, -0.365845, 0.0913842, 0.397982, 0.91283, -9.8793e-08, 0.314477, 2.32831e-09)
 bones/3/enabled = true
 bones/3/position = Vector3(-9.8793e-08, 0.314477, 2.32831e-09)
-bones/3/rotation = Quaternion(0.756137, 0.119116, -0.252446, 0.591894)
+bones/3/rotation = Quaternion(0.216097, -0.382294, -0.045526, 0.897263)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Head"
 bones/4/parent = 1
@@ -1164,7 +1165,7 @@ bones/5/parent = 1
 bones/5/rest = Transform3D(-0.894655, -0.44646, -0.0162806, 0.444667, -0.893401, 0.064079, -0.0431537, 0.0500892, 0.997812, -0.221612, 0.391635, -0.0130608)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.221612, 0.391635, -0.0130608)
-bones/5/rotation = Quaternion(0.642234, 0.52823, 0.384854, 0.400494)
+bones/5/rotation = Quaternion(-0.492129, 0.124519, 0.717084, 0.477592)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "ElbowR"
 bones/6/parent = 5
@@ -1178,7 +1179,7 @@ bones/7/parent = 0
 bones/7/rest = Transform3D(-0.00816274, 0.0271218, 0.999599, -0.990183, -0.139714, -0.00429505, 0.139542, -0.989821, 0.0279959, 0.109472, 0.000379473, -0.0590723)
 bones/7/enabled = true
 bones/7/position = Vector3(0.105876, -0.0056257, -0.0862427)
-bones/7/rotation = Quaternion(0.380222, -0.0237001, 0.916542, 0.12174)
+bones/7/rotation = Quaternion(0.56955, -0.109366, 0.810994, 0.077078)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "KneeL"
 bones/8/parent = 7
@@ -1192,7 +1193,7 @@ bones/9/parent = 0
 bones/9/rest = Transform3D(-0.00816286, -0.0271219, 0.999599, -0.990121, -0.139714, -0.0118762, 0.13998, -0.98982, -0.0257134, -0.109472, 0.000379473, -0.0590723)
 bones/9/enabled = true
 bones/9/position = Vector3(-0.105876, 0.00638461, -0.031902)
-bones/9/rotation = Quaternion(-0.0769808, -0.523823, 0.840981, -0.111506)
+bones/9/rotation = Quaternion(0.0695366, -0.626173, 0.776573, -0.00233604)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "KneeR"
 bones/10/parent = 9
@@ -1216,21 +1217,18 @@ playback_default_blend_time = 0.1
 [node name="MiddleHitRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36743, 0)
 target_position = Vector3(0, 0, 1.2)
-collision_mask = 2
+collision_mask = 6
 
 [node name="LowHitRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.481962, 0)
 target_position = Vector3(0, 0, 1.2)
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 shape = SubResource("CapsuleShape3D_vh0qf")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-
-[node name="StepCondition" type="Node3D" parent="."]
-script = ExtResource("3_x47av")
 
 [node name="Sounds" type="Node3D" parent="."]
 
