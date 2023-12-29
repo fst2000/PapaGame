@@ -5,6 +5,7 @@
 
 [node name="Camera3D" type="Camera3D"]
 transform = Transform3D(-1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 2.72, 4.70082, -10.3392)
+fov = 60.0
 far = 200.0
 script = ExtResource("1_seuo5")
 

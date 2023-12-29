@@ -33,7 +33,7 @@ navigation_mesh = SubResource("NavigationMesh_m6tva")
 environment = SubResource("Environment_h3j2e")
 
 [node name="bully" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_5eiyh")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5.59656)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 16.8849)
 target = NodePath("../papa")
 
 [node name="hooder" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_k7sas")]
@@ -41,5 +41,5 @@ transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819
 target = NodePath("../papa")
 
 [node name="gopnik" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_mqfcb")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.92554, -0.5, 5.4718)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.92554, -0.5, 16.7601)
 target = NodePath("../papa")

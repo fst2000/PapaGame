@@ -6,10 +6,10 @@ func _init(character):
 	self.character = character
 	character.animPlayer.play("Dodge")
 	character.dodge()
+	character.move(character.controller.attackDirection())
 
 func update(delta):
-	var inertion = 2
-	character.velocity = lerp(character.velocity, Vector3.ZERO, inertion * delta)
+	character.move(lerp(character.velocity, Vector3.ZERO, 4 * delta))
 	
 func nextState():
 	if !character.animPlayer.is_playing():

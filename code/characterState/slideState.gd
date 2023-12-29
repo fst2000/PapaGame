@@ -36,9 +36,9 @@ func nextState():
 		exit()
 		return FallState.new(character)
 
-	if character.controller.shouldJump():
-		exit()
-		return JumpState.new(character)
+	#if character.controller.shouldJump():
+		#exit()
+		#return JumpState.new(character)
 	
 	if !character.status.slide:
 		exit()

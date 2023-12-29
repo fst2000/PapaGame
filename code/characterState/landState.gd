@@ -19,7 +19,10 @@ func nextState():
 		
 	if character.status.hasDamaged:
 		return StunState.new(character)
-		
+	
+	if controller.shouldDodge():
+		return DodgeState.new(character)
+	
 	if !character.animPlayer.is_playing():
 		if controller.shouldFight():
 			return IdleFightState.new(character)

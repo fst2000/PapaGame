@@ -24,7 +24,10 @@ func nextState():
 		if character.status.flyoff:
 			return FlyoffState.new(character)
 		return StunState.new(character)
-
+	
+	if controller.shouldAttack():
+		return AttackState.new(character)
+	
 	if !animPlayer.is_playing():
 		return FallState.new(character)
 	else: return self
