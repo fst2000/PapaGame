@@ -37,8 +37,9 @@ var is_active = true
 @onready var targetDefiner = AngleTargetDefiner.new(self, AreaHitDetector.new($TargetArea), max_target_angle)
 @onready var slideCondition = IsSliding.new($GroundArea)
 @onready var stepCondition = $StepCondition
-@onready var koAction = func(): get_tree().reload_current_scene()
+@onready var koAction = func(): get_tree().current_scene.restart()
 @onready var state = IdleState.new(self)
+
 func _process(delta):
 	controller.update(delta)
 	state = state.nextState()

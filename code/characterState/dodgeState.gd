@@ -17,6 +17,7 @@ func nextState():
 		return IdleFightState.new(character)
 	
 	if character.controller.shouldAttack():
+		character.undodge()
 		return AttackState.new(character)
 	
 	if character.controller.shouldJump():

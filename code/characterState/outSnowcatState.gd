@@ -6,7 +6,8 @@ func _init(character):
 	self.character = character
 	character.reparent(character.get_node("/root"))
 	character.animPlayer.play("Snowcat_Out")
-
+	character.camera.camera_height = 2.2
+	
 func update(delta):
 	pass
 

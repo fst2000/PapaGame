@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=30 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
 [ext_resource type="PackedScene" uid="uid://cpl174do7fh7n" path="res://scenes/characters/bully.tscn" id="2_8x5ck"]
+[ext_resource type="PackedScene" uid="uid://b1vy7614he21l" path="res://scenes/UI/black_screen.tscn" id="3_afad2"]
 [ext_resource type="PackedScene" uid="uid://fffg5or0wqok" path="res://scenes/levels/level_hood.tscn" id="3_fn2n6"]
 [ext_resource type="PackedScene" uid="uid://byrjidenuveaa" path="res://scenes/characters/camera_3rd_person.tscn" id="3_l6bmr"]
 [ext_resource type="PackedScene" uid="uid://bmari1xexyvf" path="res://scenes/levels/level_bridge.tscn" id="4_7efnh"]
@@ -22,9 +23,16 @@ script/source = "extends Node3D
 
 var game = ResourceLoader.load(\"res://save.tres\")
 @export var player : CharacterBody3D
+@onready var black_screen = $CanvasLayer/BlackScreen
+
 func _ready():
+	black_screen.fade()
 	player.position = game.spawn_position
 	player.lookDir(game.spawn_direction)
+
+func restart():
+	black_screen.transition_action = func(): get_tree().reload_current_scene()
+	black_screen.appear()
 "
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_41pjw"]
@@ -84,6 +92,10 @@ size = Vector3(1, 16.0233, 18.1816)
 [node name="level_main" type="Node3D" node_paths=PackedStringArray("player")]
 script = SubResource("GDScript_6g4pk")
 player = NodePath("papa")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackScreen" parent="CanvasLayer" instance=ExtResource("3_afad2")]
 
 [node name="papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_wjhe6")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 1, -8)

@@ -17,7 +17,8 @@ func _ready():
 		
 		action_list.add(
 			func():
-				anim_player.play("Cutscene_Hood_1"),
+				anim_player.play("Cutscene_Hood_1")
+				papa.lookDir(Vector3(0,0,1)),
 			FuncCondition.new(func(): return anim_player.is_playing()))
 		
 		action_list.add(func(): pass, TimeCondition.new(1.0))
