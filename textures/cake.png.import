@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb57inm0yifdd"
-path.bptc="res://.godot/imported/skin_winter.png-cabfaed94ab27488f8ade049800ec9b8.bptc.ctex"
-path.astc="res://.godot/imported/skin_winter.png-cabfaed94ab27488f8ade049800ec9b8.astc.ctex"
+uid="uid://cgjfwbpb8b4y5"
+path.bptc="res://.godot/imported/cake.png-d50f47c8801232acaf1b348919e6df99.bptc.ctex"
+path.astc="res://.godot/imported/cake.png-d50f47c8801232acaf1b348919e6df99.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/skin_winter.png"
-dest_files=["res://.godot/imported/skin_winter.png-cabfaed94ab27488f8ade049800ec9b8.bptc.ctex", "res://.godot/imported/skin_winter.png-cabfaed94ab27488f8ade049800ec9b8.astc.ctex"]
+source_file="res://textures/cake.png"
+dest_files=["res://.godot/imported/cake.png-d50f47c8801232acaf1b348919e6df99.bptc.ctex", "res://.godot/imported/cake.png-d50f47c8801232acaf1b348919e6df99.astc.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

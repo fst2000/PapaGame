@@ -32,8 +32,6 @@ func nextState():
 	if character.is_on_floor():
 		if character.controller.shouldJump():
 			return JumpState.new(character)
-		if character.controller.shouldDodge():
-			return DodgeState.new(character)
 	
 	if !character.animPlayer.is_playing():
 		if character.is_on_floor():

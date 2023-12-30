@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0a78gjvwlu8m"]
+
+[ext_resource type="PackedScene" uid="uid://tb2bh31tk78p" path="res://models/characters/papa_winter_cake.blend" id="1_pcbwf"]
+[ext_resource type="Texture2D" uid="uid://cgjfwbpb8b4y5" path="res://textures/cake.png" id="2_6s5g1"]
+[ext_resource type="Texture2D" uid="uid://bb57inm0yifdd" path="res://textures/skin_winter.png" id="3_omh1j"]
+[ext_resource type="PackedScene" uid="uid://bbg8s0g0cypld" path="res://scenes/UI/text.tscn" id="4_0glqc"]
+
+[sub_resource type="GDScript" id="GDScript_lxyl5"]
+script/source = "extends Node3D
+
+
+@onready var speakSystem = TextSpeakSystem.new($text)
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6km4e"]
+albedo_texture = ExtResource("2_6s5g1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3r0x"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.513726)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eaa80"]
+albedo_texture = ExtResource("3_omh1j")
+metallic_specular = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jqirf"]
+viewport_path = NodePath("SubViewport")
+
+[node name="papa_winter_cake" instance=ExtResource("1_pcbwf")]
+script = SubResource("GDScript_lxyl5")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(-0.00471163, 0.0262809, 0.987876, -0.152934)
+bones/4/rotation = Quaternion(0.00137993, -0.415548, -0.000630437, 0.90957)
+bones/5/rotation = Quaternion(-0.0310612, -0.0957762, 0.955283, 0.278023)
+bones/6/rotation = Quaternion(0.109861, -0.00493484, 0.0966901, 0.989221)
+bones/8/rotation = Quaternion(0.580589, -0.3859, 0.476324, -0.53583)
+bones/10/rotation = Quaternion(0.471567, -0.538963, 0.584459, -0.381512)
+
+[node name="Cake" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(-0.956878, 0.264502, 0.120091, 0.290467, 0.866434, 0.406104, 0.00336474, 0.423475, -0.905901, -0.664732, 0.941687, -0.280035)
+
+[node name="Cake" parent="Armature/Skeleton3D/Cake" index="0"]
+transform = Transform3D(0.952006, 0.285388, -0.110636, -0.305959, 0.876989, -0.370514, -0.00871428, 0.386582, 0.922215, -0.154634, -0.0216247, -0.226871)
+surface_material_override/0 = SubResource("StandardMaterial3D_6km4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_s3r0x")
+
+[node name="Papa" parent="Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_eaa80")
+
+[node name="text" parent="." index="2" instance=ExtResource("4_0glqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36285, 0)
+texture = SubResource("ViewportTexture_jqirf")

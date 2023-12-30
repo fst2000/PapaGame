@@ -89,6 +89,15 @@ transform = Transform3D(0.486945, 0, -0.873432, 0, 1, 0, 0.873432, 0, 0.486945, 
 [node name="lamp_entrance3" parent="NavigationRegion3D/Lights" instance=ExtResource("3_f8udy")]
 transform = Transform3D(0.386824, 0, -0.922154, 0, 1, 0, 0.922154, 0, 0.386824, -12.6308, 8.17406, -5.40653)
 
+[node name="lamp_post9" parent="NavigationRegion3D/Lights" instance=ExtResource("3_hjfqj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -96.6176, 0, 42.8044)
+
+[node name="lamp_post10" parent="NavigationRegion3D/Lights" instance=ExtResource("3_hjfqj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -96.7276, 0, 8.57497)
+
+[node name="lamp_post11" parent="NavigationRegion3D/Lights" instance=ExtResource("3_hjfqj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -62.704, 0, 28.2606)
+
 [node name="Trees" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="maple" parent="NavigationRegion3D/Trees" instance=ExtResource("4_cw1op")]
@@ -117,6 +126,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.634, 0.638654, 73.8946)
 
 [node name="maple9" parent="NavigationRegion3D/Trees" instance=ExtResource("4_cw1op")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0742, 0.999999, 56.7578)
+
+[node name="maple10" parent="NavigationRegion3D/Trees" instance=ExtResource("4_cw1op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.8276, 0.536435, 64.1243)
+
+[node name="maple11" parent="NavigationRegion3D/Trees" instance=ExtResource("4_cw1op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.485, 0.490816, 43.2142)
+
+[node name="maple12" parent="NavigationRegion3D/Trees" instance=ExtResource("4_cw1op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.2087, 0.600896, 20.8378)
+
+[node name="maple13" parent="NavigationRegion3D/Trees" instance=ExtResource("4_cw1op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.1649, -0.323882, 33.1172)
 
 [node name="walls" type="StaticBody3D" parent="NavigationRegion3D"]
 collision_mask = 7
@@ -186,3 +207,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5691, -2.85972, 77.5312)
 
 [node name="heart3" parent="." instance=ExtResource("9_hkp2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.4138, -7.46855, 79.994)
+
+[node name="maple5" parent="." instance=ExtResource("4_cw1op")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.8324, -2.38419e-06, 1.76222)

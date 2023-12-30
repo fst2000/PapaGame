@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3jrmjanu4pxr"]
+
+[ext_resource type="PackedScene" uid="uid://ciohgejs5y7t" path="res://models/items/cake.blend" id="1_kaaso"]
+[ext_resource type="Texture2D" uid="uid://cgjfwbpb8b4y5" path="res://textures/cake.png" id="2_kw50w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2vga"]
+albedo_texture = ExtResource("2_kw50w")
+
+[node name="cake" instance=ExtResource("1_kaaso")]
+
+[node name="Cake" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_n2vga")

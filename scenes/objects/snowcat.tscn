@@ -198,8 +198,8 @@ stream = ExtResource("5_unxqr")
 
 [node name="ActionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.707031, 0.200596, 0)
-collision_layer = 16
-collision_mask = 0
+collision_layer = 0
+collision_mask = 16
 
 [node name="ActionShape" type="CollisionShape3D" parent="ActionArea"]
 shape = SubResource("SphereShape3D_hjejv")
@@ -217,3 +217,5 @@ shape = SubResource("CapsuleShape3D_qkkid")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, -0.5, 0)
+
+[connection signal="area_entered" from="ActionArea" to="." method="_on_action_area_area_entered"]

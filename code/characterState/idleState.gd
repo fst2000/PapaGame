@@ -11,8 +11,7 @@ func _init(character):
 	character.animPlayer.play("Idle")
 	
 func update(delta : float):
-	if controller.shouldAct():
-		character.actionSystem.action()
+	pass
 
 func nextState():
 	if character.status.hasDamaged:

@@ -7,6 +7,7 @@ extends Node3D
 @onready var action_list := ActionList.new()
 @onready var text = $apartment/text
 func _ready():
+	$CanvasLayer/BlackScreen.fade()
 	anim_player.play("CameraOrigin1")
 	start_cutscene()
 

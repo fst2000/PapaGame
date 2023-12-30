@@ -4,7 +4,7 @@ var is_active = true
 var minDistance = 0.5
 var stopDistance = 2.5
 var attackDistance = 3.5
-var attack_time_interval = 1.0
+var attack_time_interval = 1.5
 var hooder
 var navigation
 var target

@@ -19,6 +19,7 @@ var should_get_in = false
 @onready var ground_detector = AreaHitDetector.new($GroundArea)
 @onready var on_ground_condition = FuncCondition.new(func(): return ground_detector.hit_objects().size() > 0)
 @onready var groundRay = $RayCast3D
+
 func _ready():
 	sparks.visible = false
 	snow_sprays.visible = false
@@ -62,13 +63,18 @@ func _process(delta):
 		else: velocity.y += gravity * delta
 	move_and_slide()
 
-func area_action(actor : Node3D):
-	if should_get_in:
-		actor.state = InSnowcatState.new(actor, self)
-		$ActionArea/ActionShape.disabled = true
+
 
 func get_out(driver):
 	driver.state = OutSnowcatState.new(driver)
 
 func forward() -> Vector3:
 	return quaternion * Vector3.BACK
+
+
+func _on_action_area_area_entered(area):
+	if should_get_in:
+		var actor = area.get_parent()
+		actor.velocity = Vector3.ZERO
+		actor.state = InSnowcatState.new(actor, self)
+		$ActionArea/ActionShape.disabled = true

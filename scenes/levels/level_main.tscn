@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=47 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
 [ext_resource type="PackedScene" uid="uid://ciudfcrx217xy" path="res://scenes/UI/health_bar.tscn" id="2_8udpm"]
@@ -20,6 +20,9 @@
 [ext_resource type="Script" path="res://code/cutscene/cutsceneTrigger_4.gd" id="13_vu87j"]
 [ext_resource type="Script" path="res://code/cutscene/CutsceneTrigger_5.gd" id="18_rvgs0"]
 [ext_resource type="PackedScene" uid="uid://dby7ogh5i7hwt" path="res://scenes/characters/gopnik.tscn" id="19_sg2t7"]
+[ext_resource type="Script" path="res://code/cutscene/CutsceneTriggerLast.gd" id="21_ga7bn"]
+[ext_resource type="PackedScene" uid="uid://1hmc4rs4ehcm" path="res://scenes/objects/train.tscn" id="21_o7lel"]
+[ext_resource type="PackedScene" uid="uid://b0a78gjvwlu8m" path="res://scenes/characters/papa_winter_cake.tscn" id="23_n2j7c"]
 
 [sub_resource type="GDScript" id="GDScript_6g4pk"]
 script/source = "extends Node3D
@@ -128,10 +131,118 @@ size = Vector3(1, 5.96436, 17.3057)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ecwv1"]
 size = Vector3(1, 16.0233, 18.1816)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6t4m"]
+size = Vector3(16.9746, 6.50146, 1)
+
+[sub_resource type="Animation" id="Animation_5a6w6"]
+resource_name = "TrainStart"
+length = 3.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("train")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 30, 0, -45, 3, 1, 0, 0, -45)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("train:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.57, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraOrigin")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0.1, 1, 0, 2.5, -11)
+
+[sub_resource type="Animation" id="Animation_0aqou"]
+resource_name = "TrainEnd"
+length = 10.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("train")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.1, 1, -620, -5.17, 0, 10, 1, -620, -5.17, 140)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("train:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 9.8)
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraOrigin")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -630, -3, 150)
+
+[sub_resource type="Animation" id="Animation_k11xk"]
+resource_name = "TrainStart_2"
+length = 10.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("train")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -45, 10, 1, -100, 0, -45)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("train:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.57, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraOrigin")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -10, 2, -60)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pwh6c"]
+_data = {
+"TrainEnd": SubResource("Animation_0aqou"),
+"TrainStart": SubResource("Animation_5a6w6"),
+"TrainStart2": SubResource("Animation_k11xk")
+}
+
+[sub_resource type="GDScript" id="GDScript_eufxc"]
+script/source = "extends Node3D
+
+func _ready():
+	print(\"checkpoint 4\")
+
+func spawn_position(): return global_position
+
+func spawn_direction(): return Vector3(0,0,1)
+"
+
 [node name="level_main" type="Node3D" node_paths=PackedStringArray("player", "checkpoints")]
 script = SubResource("GDScript_6g4pk")
 player = NodePath("papa")
-checkpoints = [NodePath("level_hood/Checkpoint0"), NodePath("level_bridge/Checkpoint1"), NodePath("level_left_coast/Checkpoint2"), NodePath("level_left_coast/Checkpoint3")]
+checkpoints = [NodePath("level_hood/Checkpoint0"), NodePath("level_bridge/Checkpoint1"), NodePath("level_left_coast/Checkpoint2"), NodePath("level_left_coast/Checkpoint3"), NodePath("Checkpoint4")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -383,6 +494,48 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_dij1p")
 
+[node name="CutsceneTriggerLast" type="Area3D" parent="." node_paths=PackedStringArray("papa", "papa_cake", "camera", "black_screen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 542.934, 5.12714, -75.7202)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("21_ga7bn")
+papa = NodePath("../papa")
+papa_cake = NodePath("papa_winter_cake")
+camera = NodePath("../Camera3D")
+black_screen = NodePath("../CanvasLayer/BlackScreen")
+
+[node name="train" parent="CutsceneTriggerLast" instance=ExtResource("21_o7lel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -620, -5.17, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CutsceneTriggerLast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75073, 0)
+shape = SubResource("BoxShape3D_k6t4m")
+
+[node name="TrainAnimation" type="AnimationPlayer" parent="CutsceneTriggerLast"]
+libraries = {
+"": SubResource("AnimationLibrary_pwh6c")
+}
+
+[node name="CameraOrigin" type="Node3D" parent="CutsceneTriggerLast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -630, -3, 150)
+
+[node name="CameraOrigin1" type="Node3D" parent="CutsceneTriggerLast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20795, 4.1997, -5.71221)
+
+[node name="CameraOrigin2" type="Node3D" parent="CutsceneTriggerLast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73212, 3.78691, -6.22921)
+
+[node name="CameraTarget" type="Node3D" parent="CutsceneTriggerLast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09564, 1.06456, -10.4364)
+
+[node name="papa_winter_cake" parent="CutsceneTriggerLast" instance=ExtResource("23_n2j7c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.64191, 0, -13.3199)
+visible = false
+
+[node name="Checkpoint4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 542.81, 5.19184, -71.8035)
+script = SubResource("GDScript_eufxc")
+
 [connection signal="body_entered" from="level_hood/CutsceneTrigger1" to="level_hood/CutsceneTrigger1" method="_on_body_entered"]
 [connection signal="body_entered" from="level_hood/CutsceneTrigger2" to="level_hood/CutsceneTrigger2" method="_on_body_entered"]
 [connection signal="body_entered" from="level_bridge/Checkpoint1" to="level_bridge/Checkpoint1" method="_on_body_entered"]
@@ -391,3 +544,4 @@ environment = ExtResource("5_dij1p")
 [connection signal="body_entered" from="level_left_coast/Checkpoint3" to="level_left_coast/Checkpoint3" method="_on_body_entered"]
 [connection signal="body_entered" from="level_left_coast/CutsceneTrigger4" to="level_left_coast/CutsceneTrigger4" method="_on_body_entered"]
 [connection signal="body_entered" from="level_left_coast/CutsceneTrigger5" to="level_left_coast/CutsceneTrigger5" method="_on_body_entered"]
+[connection signal="body_entered" from="CutsceneTriggerLast" to="CutsceneTriggerLast" method="_on_body_entered"]
