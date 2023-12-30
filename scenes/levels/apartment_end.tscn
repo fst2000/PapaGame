@@ -1,0 +1,381 @@
+[gd_scene load_steps=69 format=3 uid="uid://bptlc0mertwjg"]
+
+[ext_resource type="PackedScene" uid="uid://dcekndfh657hx" path="res://models/levels/apartment/apartment_end.blend" id="1_01tlg"]
+[ext_resource type="Script" path="res://code/cutscene/cutsceneApartmentEnd.gd" id="2_coin1"]
+[ext_resource type="Texture2D" uid="uid://cqcbxue6ti0ke" path="res://textures/16th_floor_240_windows_1.png" id="2_n6ste"]
+[ext_resource type="Texture2D" uid="uid://b4qg4ulufb6wc" path="res://textures/16th_floor_240_windows_2.png" id="3_hrqwa"]
+[ext_resource type="Texture2D" uid="uid://dsgtf730no8sd" path="res://textures/kitchen_wall.png" id="4_pgwoh"]
+[ext_resource type="Texture2D" uid="uid://c6eek0ei2nodw" path="res://textures/kitchen_floor.png" id="5_hmnfj"]
+[ext_resource type="Texture2D" uid="uid://6x42o8qxrwcy" path="res://textures/me.png" id="5_hvvn7"]
+[ext_resource type="Texture2D" uid="uid://bgmy50cplfstw" path="res://textures/skin_home.png" id="6_f4iua"]
+[ext_resource type="Texture2D" uid="uid://cmhgjltgqxjxk" path="res://textures/kitchen_ceiling.png" id="6_p7l4e"]
+[ext_resource type="Texture2D" uid="uid://c5gfyl1csqg0i" path="res://textures/floor.png" id="7_5rmci"]
+[ext_resource type="Texture2D" uid="uid://dddrfx76ka1r8" path="res://textures/kitchen_locker_1.png" id="7_uapx6"]
+[ext_resource type="Texture2D" uid="uid://v02bvyg2nlgs" path="res://textures/kitchen_locker_2.png" id="8_dix1l"]
+[ext_resource type="PackedScene" uid="uid://cvkkf55bo1prv" path="res://scenes/particles/snow_window.tscn" id="8_lcoi7"]
+[ext_resource type="Animation" uid="uid://d2hyy3n004ck4" path="res://models/levels/apartment/end_animations/TqCake.res" id="9_db5qn"]
+[ext_resource type="Texture2D" uid="uid://b80mwgvvt6yor" path="res://textures/kitchen_locker_3.png" id="9_lgssh"]
+[ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="9_n00c1"]
+[ext_resource type="Texture2D" uid="uid://cyhlk5j33056u" path="res://textures/washing_machine.png" id="10_abkwe"]
+[ext_resource type="Texture2D" uid="uid://daej5kj471x7m" path="res://textures/kitchen_plate.png" id="11_eyf45"]
+[ext_resource type="Texture2D" uid="uid://bggotxxjreiem" path="res://textures/sugar_bowl.png" id="12_5v1rg"]
+[ext_resource type="Texture2D" uid="uid://cwfncpmltr3a8" path="res://textures/kitchen_door.png" id="13_hnutd"]
+[ext_resource type="Texture2D" uid="uid://cgjfwbpb8b4y5" path="res://textures/cake.png" id="14_f1xp4"]
+[ext_resource type="Animation" uid="uid://c4a5qghojcoks" path="res://models/levels/apartment/end_animations/MeHide.res" id="21_v5yk2"]
+[ext_resource type="Animation" uid="uid://c8d6o7jvphcu3" path="res://models/levels/apartment/end_animations/TqHide.res" id="22_mhiuo"]
+[ext_resource type="Animation" uid="uid://n77tmru37qur" path="res://models/levels/apartment/end_animations/PapaCake1.res" id="24_2ssv4"]
+[ext_resource type="Animation" uid="uid://bxtosn1trhf2m" path="res://models/levels/apartment/end_animations/PapaCake2.res" id="25_bi2mq"]
+[ext_resource type="Animation" uid="uid://bwu74u7yhcbx6" path="res://models/levels/apartment/end_animations/Camera1.res" id="26_hr54t"]
+[ext_resource type="Animation" uid="uid://cn61wjk8bp2n5" path="res://models/levels/apartment/end_animations/Camera2.res" id="27_au63r"]
+[ext_resource type="Animation" uid="uid://dqv6bi22jn2nn" path="res://models/levels/apartment/end_animations/MeCake.res" id="28_6an52"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf4nx"]
+albedo_texture = ExtResource("2_n6ste")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vp1ou"]
+albedo_texture = ExtResource("3_hrqwa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkwdn"]
+albedo_texture = ExtResource("5_hvvn7")
+metallic_specular = 0.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6hkbd"]
+_data = {
+"MeCake": ExtResource("28_6an52"),
+"MeHide": ExtResource("21_v5yk2")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqw8i"]
+albedo_texture = ExtResource("5_hvvn7")
+metallic_specular = 0.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4qden"]
+_data = {
+"TqCake": ExtResource("9_db5qn"),
+"TqHide": ExtResource("22_mhiuo")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nf6ib"]
+albedo_texture = ExtResource("6_f4iua")
+metallic_specular = 0.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5b7b"]
+_data = {
+"PapaCake1": ExtResource("24_2ssv4"),
+"PapaCake2": ExtResource("25_bi2mq")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sc1dx"]
+_data = {
+"Camera1": ExtResource("26_hr54t"),
+"Camera2": ExtResource("27_au63r")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14qnt"]
+albedo_texture = ExtResource("4_pgwoh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lxei"]
+albedo_texture = ExtResource("5_hmnfj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2ohb"]
+albedo_color = Color(0.392157, 0.27451, 0.105882, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abd24"]
+albedo_texture = ExtResource("6_p7l4e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wx8ky"]
+albedo_color = Color(0.392157, 0.27451, 0.105882, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3swxb"]
+transparency = 4
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 0.0156863)
+roughness = 0.18
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qj8q7"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("7_uapx6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_264fj"]
+albedo_texture = ExtResource("8_dix1l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ny0t"]
+albedo_texture = ExtResource("9_lgssh")
+
+[sub_resource type="Gradient" id="Gradient_rj42n"]
+colors = PackedColorArray(0.724643, 0.724643, 0.724643, 1, 0.950212, 0.941242, 0.933559, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nnmaa"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hyppi"]
+width = 128
+height = 128
+seamless = true
+color_ramp = SubResource("Gradient_rj42n")
+noise = SubResource("FastNoiseLite_nnmaa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tofts"]
+albedo_texture = SubResource("NoiseTexture2D_hyppi")
+roughness = 0.31
+uv1_scale = Vector3(1, 5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8ee5"]
+transparency = 1
+albedo_texture = ExtResource("10_abkwe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejl8c"]
+albedo_color = Color(0.686275, 0.686275, 0.686275, 1)
+metallic = 0.8
+metallic_specular = 0.0
+roughness = 0.52
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jiu82"]
+albedo_texture = ExtResource("11_eyf45")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8ioo"]
+albedo_color = Color(0.784314, 0.611765, 0.384314, 1)
+roughness = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjenf"]
+albedo_color = Color(0.784314, 0.784314, 0.784314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trxik"]
+albedo_texture = ExtResource("12_5v1rg")
+roughness = 0.21
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnixr"]
+albedo_texture = ExtResource("12_5v1rg")
+roughness = 0.21
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wq61"]
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 0.705882)
+roughness = 0.29
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1kva"]
+transparency = 4
+albedo_color = Color(0.447059, 0.309804, 0.0941176, 0.792157)
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nb4yo"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("13_hnutd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgpwq"]
+albedo_texture = ExtResource("14_f1xp4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovhgg"]
+albedo_texture = ExtResource("14_f1xp4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6id62"]
+albedo_texture = ExtResource("7_5rmci")
+roughness = 0.26
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxdsi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wg5p"]
+albedo_texture = ExtResource("14_f1xp4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42g6u"]
+albedo_texture = ExtResource("14_f1xp4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2spf1"]
+albedo_texture = ExtResource("14_f1xp4")
+
+[sub_resource type="Environment" id="Environment_6kx0s"]
+background_mode = 1
+background_color = Color(0.364706, 0.341176, 0.305882, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.819608, 0.752941, 0.643137, 1)
+ambient_light_energy = 0.5
+reflected_light_source = 1
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_intensity = 1.0
+glow_blend_mode = 1
+glow_hdr_threshold = 0.98
+glow_hdr_scale = 0.62
+fog_light_color = Color(0.419608, 0.419608, 0.419608, 1)
+fog_density = 0.03
+volumetric_fog_density = 0.1
+volumetric_fog_emission = Color(0.376471, 0.376471, 0.376471, 1)
+volumetric_fog_gi_inject = 2.47
+volumetric_fog_anisotropy = 0.9
+volumetric_fog_detail_spread = 0.5
+volumetric_fog_ambient_inject = 16.0
+volumetric_fog_temporal_reprojection_amount = 0.99
+
+[node name="ApartmentEnd" instance=ExtResource("1_01tlg")]
+script = ExtResource("2_coin1")
+
+[node name="outside_wall" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xf4nx")
+surface_material_override/1 = SubResource("StandardMaterial3D_vp1ou")
+
+[node name="Skeleton3D" parent="Me" index="0"]
+bones/0/position = Vector3(0.117582, 0.496082, -1.04973)
+bones/0/rotation = Quaternion(-0.33844, -0.620853, -0.620853, 0.33844)
+bones/1/rotation = Quaternion(0.704097, 0.0555574, -0.0282289, 0.707364)
+bones/2/rotation = Quaternion(0.00388247, -0.222321, 0.963239, -0.150757)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.371408, -0.0496865, -0.0576953, 0.925343)
+bones/4/rotation = Quaternion(-0.0455991, 0.0596636, -0.158905, 0.984434)
+bones/5/rotation = Quaternion(-0.0227749, -0.0524276, 0.997497, 0.0416185)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.0453556, 0.0450464, 0.0659035, 0.995776)
+bones/7/position = Vector3(0.0868925, -0.0159218, -0.0253391)
+bones/7/rotation = Quaternion(0.683645, -0.026808, 0.729175, -0.0146181)
+bones/8/rotation = Quaternion(-0.0102933, 0.000365442, 0.0982129, 0.995112)
+bones/9/position = Vector3(-0.0868936, -0.0126056, -0.0239594)
+bones/9/rotation = Quaternion(0.728597, -0.0284933, 0.684225, -0.0130775)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.00117888, -0.0142575, 0.691087, 0.72263)
+
+[node name="Mi" parent="Me/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_gkwdn")
+
+[node name="MeAnim" type="AnimationPlayer" parent="Me" index="1"]
+root_node = NodePath("../..")
+libraries = {
+"MeAnim": SubResource("AnimationLibrary_6hkbd")
+}
+
+[node name="Skeleton3D" parent="Taqmuraz" index="0"]
+bones/0/position = Vector3(-0.594145, 0.482832, -0.757256)
+bones/0/rotation = Quaternion(-5.33851e-08, -0.707107, -0.707107, 5.33851e-08)
+bones/2/rotation = Quaternion(0.00322433, 0.000551617, 0.956243, -0.292556)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.875394, -0.0793122, 0.00665853, 0.476814)
+bones/4/rotation = Quaternion(-0.0428182, 2.77811e-17, -1.02087e-08, 0.999083)
+bones/5/rotation = Quaternion(-0.020625, 0.00587516, 0.956026, 0.292497)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.867092, 0.0797694, -0.00304883, 0.491711)
+bones/7/rotation = Quaternion(0.703102, -0.0585281, 0.707702, -0.0371526)
+bones/8/rotation = Quaternion(-0.0147584, -0.0178546, 0.559652, 0.828404)
+bones/9/rotation = Quaternion(0.702467, -0.0432717, 0.708526, -0.0515623)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0104617, 0.00128654, 0.559982, 0.828438)
+
+[node name="Mi_001" parent="Taqmuraz/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_oqw8i")
+
+[node name="TqAnim" type="AnimationPlayer" parent="Taqmuraz" index="1"]
+root_node = NodePath("../..")
+libraries = {
+"TqAnim": SubResource("AnimationLibrary_4qden")
+}
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/2/rotation = Quaternion(-0.00471163, 0.0262809, 0.987876, -0.152934)
+bones/2/scale = Vector3(0.999998, 1, 1)
+bones/3/rotation = Quaternion(0.203842, -0.043281, -0.0942948, 0.97349)
+bones/4/rotation = Quaternion(0.00151713, 0, 0, 0.999999)
+bones/5/rotation = Quaternion(-0.0132649, 0.0290594, 0.987798, 0.15243)
+bones/5/scale = Vector3(0.999998, 1, 1)
+bones/6/rotation = Quaternion(0.200466, 0.0414603, 0.101275, 0.97357)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.525251, -0.458381, 0.542188, -0.469073)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.000224999, -0.00207707, 0.107789, 0.994172)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.537881, -0.472801, 0.529661, -0.454535)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.000887735, -0.00804685, 0.107786, 0.994141)
+
+[node name="Papa" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nf6ib")
+
+[node name="PapaAnim" type="AnimationPlayer" parent="Armature" index="1"]
+root_node = NodePath("../..")
+libraries = {
+"PapaAnim": SubResource("AnimationLibrary_g5b7b")
+}
+
+[node name="CameraAnim" type="AnimationPlayer" parent="Camera" index="1"]
+root_node = NodePath("../..")
+libraries = {
+"CameraAnim": SubResource("AnimationLibrary_sc1dx")
+}
+
+[node name="kitchen" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_14qnt")
+surface_material_override/1 = SubResource("StandardMaterial3D_0lxei")
+surface_material_override/2 = SubResource("StandardMaterial3D_s2ohb")
+surface_material_override/3 = SubResource("StandardMaterial3D_abd24")
+surface_material_override/4 = SubResource("StandardMaterial3D_wx8ky")
+surface_material_override/5 = SubResource("StandardMaterial3D_3swxb")
+
+[node name="kitchen_locker" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qj8q7")
+surface_material_override/1 = SubResource("StandardMaterial3D_264fj")
+surface_material_override/2 = SubResource("StandardMaterial3D_7ny0t")
+surface_material_override/3 = SubResource("StandardMaterial3D_tofts")
+surface_material_override/4 = SubResource("StandardMaterial3D_n8ee5")
+surface_material_override/5 = SubResource("StandardMaterial3D_ejl8c")
+
+[node name="kitchen_plate" parent="." index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_jiu82")
+
+[node name="kitchen_table" parent="." index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_x8ioo")
+surface_material_override/1 = SubResource("StandardMaterial3D_rjenf")
+
+[node name="sugar_bowl" parent="." index="11"]
+surface_material_override/0 = SubResource("StandardMaterial3D_trxik")
+
+[node name="sugar_bowl_001" parent="." index="13"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tnixr")
+
+[node name="cup" parent="." index="14"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2wq61")
+surface_material_override/1 = SubResource("StandardMaterial3D_x1kva")
+
+[node name="door" parent="." index="16"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nb4yo")
+
+[node name="Cake" parent="." index="17"]
+surface_material_override/0 = SubResource("StandardMaterial3D_lgpwq")
+
+[node name="Cake_sliced" parent="." index="20"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_ovhgg")
+
+[node name="Parket" parent="." index="21"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6id62")
+surface_material_override/1 = SubResource("StandardMaterial3D_jxdsi")
+
+[node name="Cake_001" parent="." index="23"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_5wg5p")
+
+[node name="Cake_002" parent="." index="24"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_42g6u")
+
+[node name="Cake_003" parent="." index="25"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_2spf1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="27"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.270281, 2.49983, -1.07874)
+light_color = Color(0.921569, 0.890196, 0.866667, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="28"]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="29"]
+environment = SubResource("Environment_6kx0s")
+
+[node name="snow_window" parent="." index="30" instance=ExtResource("8_lcoi7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.257404, 1.84956, -5.67462)
+
+[node name="snow" parent="." index="31" instance=ExtResource("9_n00c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86852, 4.71219, -14.2474)
