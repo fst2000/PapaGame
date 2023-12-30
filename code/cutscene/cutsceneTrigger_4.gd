@@ -23,8 +23,7 @@ func _on_body_entered(body):
 	
 	action_list.add(
 		func():
-			papa.state = OutSnowcatState.new(papa)
-			snowcat.should_get_in = false,
+			papa.state = OutSnowcatState.new(papa),
 		TimeCondition.new(1.0))
 	
 	action_list.add(

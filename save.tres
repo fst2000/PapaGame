@@ -7,4 +7,4 @@ script = ExtResource("1_2e23o")
 game_started = false
 spawn_position = Vector3(0, 1, -9)
 spawn_direction = Vector3(0, 0, -1)
-checkpoint_id = 0
+checkpoint_id = 1

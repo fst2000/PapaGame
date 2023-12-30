@@ -85,5 +85,5 @@ func set_active(value : bool):
 	set_collision_mask_value(1, value)
 	set_collision_mask_value(3, value)
 	set_collision_mask_value(4, value)
-	set_collision_mask_value(5, value)
+	set_collision_mask_value(6, value)
 	

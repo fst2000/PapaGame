@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dhkkw00fukjhm"]
+[gd_scene load_steps=34 format=3 uid="uid://dhkkw00fukjhm"]
 
 [ext_resource type="PackedScene" uid="uid://dfe0jlmqmgqx" path="res://scenes/objects/anechka.tscn" id="1_3rjgg"]
 [ext_resource type="PackedScene" uid="uid://b4xwev78wsm38" path="res://scenes/objects/left_coast.tscn" id="1_c3d6t"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://materials/snow_shader.gdshader" id="3_q7m8v"]
 [ext_resource type="Texture2D" uid="uid://dhefvwjt4agxi" path="res://textures/snow_height_map.tres" id="4_syxq4"]
 [ext_resource type="PackedScene" uid="uid://ck8u6whprksmu" path="res://scenes/objects/maple.tscn" id="6_imfc1"]
+[ext_resource type="PackedScene" uid="uid://dky0jx8g01sni" path="res://scenes/objects/heart.tscn" id="8_4d8h5"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0v3gd"]
 frequency = 0.0877
@@ -112,6 +113,21 @@ size = Vector3(8.271, 13.9194, 2.1792)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gx1n7"]
 size = Vector3(1, 3.54143, 16.708)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gh26x"]
+size = Vector3(1, 16.1934, 120.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jdlpx"]
+size = Vector3(1, 16.1934, 105.852)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nu37t"]
+size = Vector3(1, 16.1934, 75.2946)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h86fc"]
+size = Vector3(2.01123, 16.1934, 15.8066)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqjxp"]
+size = Vector3(2.01123, 16.1934, 19.4257)
 
 [node name="level_left_coast" type="Node3D"]
 
@@ -227,6 +243,30 @@ shape = SubResource("BoxShape3D_alqjy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.735, 21.5555, -1.68863)
 shape = SubResource("BoxShape3D_gx1n7")
 
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310.265, 27.8815, -69.7174)
+shape = SubResource("BoxShape3D_gh26x")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.329, 27.8815, -63.9585)
+shape = SubResource("BoxShape3D_jdlpx")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 251.986, 27.8815, -11.2445)
+shape = SubResource("BoxShape3D_nu37t")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 251.986, 27.8815, 7.4506)
+shape = SubResource("BoxShape3D_nu37t")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 308.155, 27.8815, -1.79165)
+shape = SubResource("BoxShape3D_h86fc")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 299.419, 27.8815, 6.42878)
+shape = SubResource("BoxShape3D_lqjxp")
+
 [node name="trees" type="Node3D" parent="."]
 
 [node name="maple" parent="trees" instance=ExtResource("6_imfc1")]
@@ -282,3 +322,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.903, 20, -23.729)
 
 [node name="left_coast" parent="." instance=ExtResource("1_c3d6t")]
 transform = Transform3D(-4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, 0, 0, 0)
+
+[node name="heart" parent="." instance=ExtResource("8_4d8h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.57, 8.79799, 0.961105)
+
+[node name="heart2" parent="." instance=ExtResource("8_4d8h5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.025, 17.1512, -4.47647)

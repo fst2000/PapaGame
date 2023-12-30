@@ -16,8 +16,8 @@ var hp = 60
 @onready var controller = GopnikController.new(self, target, $NavigationAgent3D)
 @onready var middleHitSystem := CharacterHitSystem.new(self, RayHitDetector.new($MiddleHitRay))
 @onready var speakSystem := TextSpeakSystem.new($text)
-@onready var ground_attack = Attack.new(middleHitSystem, "Kick_1",  Vector3(0,0,1), Vector2(4,4), 10, 0.55, 0.6, true)
-@onready var fall_attack = Attack.new(middleHitSystem, "Fall_Kick",  Vector3(0,0,1), Vector2(6,2), 10, 0.25, 1.0, true)
+@onready var ground_attack = Attack.new(middleHitSystem, "Kick_1",  Vector3(0,0,1), Vector2(4,4), 30, 0.55, 0.6, true)
+@onready var fall_attack = Attack.new(middleHitSystem, "Fall_Kick",  Vector3(0,0,1), Vector2(6,2), 20, 0.25, 1.0, true)
 @onready var fightSystem := GopnikFightSystem.new(self, ground_attack, fall_attack)
 @onready var stepCondition = FalseCondition.new()
 @onready var koAction

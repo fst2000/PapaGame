@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=38 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
+[ext_resource type="PackedScene" uid="uid://ciudfcrx217xy" path="res://scenes/UI/health_bar.tscn" id="2_8udpm"]
 [ext_resource type="PackedScene" uid="uid://cpl174do7fh7n" path="res://scenes/characters/bully.tscn" id="2_8x5ck"]
 [ext_resource type="PackedScene" uid="uid://b1vy7614he21l" path="res://scenes/UI/black_screen.tscn" id="3_afad2"]
 [ext_resource type="PackedScene" uid="uid://fffg5or0wqok" path="res://scenes/levels/level_hood.tscn" id="3_fn2n6"]
@@ -17,18 +18,22 @@
 [ext_resource type="Script" path="res://code/cutscene/cutsceneTrigger_3.gd" id="12_ajrwi"]
 [ext_resource type="PackedScene" uid="uid://dwa12wrb8vxrd" path="res://scenes/characters/hooder.tscn" id="13_qo71w"]
 [ext_resource type="Script" path="res://code/cutscene/cutsceneTrigger_4.gd" id="13_vu87j"]
+[ext_resource type="Script" path="res://code/cutscene/CutsceneTrigger_5.gd" id="18_rvgs0"]
+[ext_resource type="PackedScene" uid="uid://dby7ogh5i7hwt" path="res://scenes/characters/gopnik.tscn" id="19_sg2t7"]
 
 [sub_resource type="GDScript" id="GDScript_6g4pk"]
 script/source = "extends Node3D
 
 var game = ResourceLoader.load(\"res://save.tres\")
 @export var player : CharacterBody3D
+@export var checkpoints : Array[Node3D]
 @onready var black_screen = $CanvasLayer/BlackScreen
 
 func _ready():
 	black_screen.fade()
-	player.position = game.spawn_position
-	player.lookDir(game.spawn_direction)
+	var checkpoint = checkpoints[game.checkpoint_id]
+	player.position = checkpoint.spawn_position()
+	player.lookDir(checkpoint.spawn_direction())
 
 func restart():
 	black_screen.transition_action = func(): get_tree().reload_current_scene()
@@ -39,6 +44,14 @@ func restart():
 _data = {
 "Cutscene_Hood_1": ExtResource("7_rwsqr")
 }
+
+[sub_resource type="GDScript" id="GDScript_4k6d2"]
+script/source = "extends Node3D
+
+func spawn_position(): return global_position
+
+func spawn_direction(): return Vector3(0,0,1)
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wa1q7"]
 size = Vector3(13.8658, 5.81368, 1)
@@ -51,9 +64,11 @@ var game = ResourceLoader.load(\"res://save.tres\")
 func _on_body_entered(body):
 	print(\"checkpoint 1\")
 	game.checkpoint_id = 1
-	game.spawn_position = global_position
-	game.spawn_direction = Vector3(1,0,0)
 	$CollisionShape3D.disabled = true
+
+func spawn_position(): return global_position
+
+func spawn_direction(): return Vector3(-1,0,0)
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eea51"]
@@ -67,9 +82,11 @@ var game = ResourceLoader.load(\"res://save.tres\")
 func _on_body_entered(body):
 	print(\"checkpoint 2\")
 	game.checkpoint_id = 2
-	game.spawn_position = global_position
-	game.spawn_direction = Vector3(1,0,0)
 	$CollisionShape3D.disabled = true
+
+func spawn_position(): return global_position
+
+func spawn_direction(): return Vector3(-1,0,0)
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d18n4"]
@@ -79,23 +96,49 @@ size = Vector3(1, 5.96436, 12.417)
 size = Vector3(1, 5.90479, 19.7115)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_t8r0k"]
-vertices = PackedVector3Array(-1.39772, 0.5, -12.5626, -1.39772, 0.5, -3.06255, 0.852282, 0.5, -2.81255, 0.852282, 0.5, -12.8126, 0.852282, 0.5, -2.81255, 66.6023, 0.5, 5.93745, 66.6023, 0.5, -15.3126, 0.852282, 0.5, -12.8126, 66.6023, 0.5, -15.3126, 0.852282, 0.5, -15.3126, 0.852282, 0.5, -12.8126, 0.852282, 0.5, -2.81255, 0.852282, 0.5, 5.93745, 66.6023, 0.5, 5.93745, -1.39772, 0.5, -3.06255, -1.39772, 0.5, -12.5626, -20.3977, 0.5, -12.5626, -20.3977, 0.5, -3.06255)
-polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(13, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15)]
+vertices = PackedVector3Array(291.794, 20.5, -9.59189, 305.544, 20.5, -9.34189, 305.794, 20.5, -10.0919, 306.794, 20.5, -129.342, 291.794, 20.5, -129.342, 305.794, 20.5, -10.0919, 306.794, 20.5, -10.0919, 306.794, 20.5, -129.342, -1.4556, 0.5, -12.5919, -1.4556, 0.5, -3.09189, 0.794395, 0.5, -2.84189, 0.794395, 0.5, -12.8419, 0.794395, 0.5, -2.84189, 66.7944, 0.5, 5.90811, 66.7944, 0.5, -15.3419, 0.794395, 0.5, -12.8419, 66.7944, 0.5, -15.3419, 0.794395, 0.5, -15.3419, 0.794395, 0.5, -12.8419, 0.794395, 0.5, -2.84189, 0.794395, 0.5, 5.90811, 66.7944, 0.5, 5.90811, -1.4556, 0.5, -3.09189, -1.4556, 0.5, -12.5919, -19.9556, 0.5, -12.5919, -19.9556, 0.5, -3.09189, 305.544, 20.5, -9.34189, 291.794, 20.5, -9.59189, 291.544, 20.5, -9.09189, 289.544, 20.5, 5.90811, 305.544, 20.5, 5.90811, 291.544, 20.5, -9.09189, 289.544, 20.5, -9.09189, 289.544, 20.5, 5.90811, 289.544, 20.5, 5.90811, 289.544, 20.5, -9.09189, 207.544, 20.5, -9.09189, 207.544, 20.5, 5.90811)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(7, 6, 5), PackedInt32Array(8, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(18, 17, 16), PackedInt32Array(21, 20, 19), PackedInt32Array(25, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 30), PackedInt32Array(28, 30, 29), PackedInt32Array(33, 32, 31), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35)]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0q4jd"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ihodm"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_6kp3v"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dx661"]
+
+[sub_resource type="GDScript" id="GDScript_0gr3d"]
+script/source = "extends Area3D
+
+var game = ResourceLoader.load(\"res://save.tres\")
+
+func _on_body_entered(body):
+	print(\"checkpoint 3\")
+	game.checkpoint_id = 3
+	$CollisionShape3D.disabled = true
+
+func spawn_position(): return global_position
+
+func spawn_direction(): return Vector3(-1,0,0)
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2iq5"]
+size = Vector3(1, 5.96436, 17.3057)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ecwv1"]
 size = Vector3(1, 16.0233, 18.1816)
 
-[node name="level_main" type="Node3D" node_paths=PackedStringArray("player")]
+[node name="level_main" type="Node3D" node_paths=PackedStringArray("player", "checkpoints")]
 script = SubResource("GDScript_6g4pk")
 player = NodePath("papa")
+checkpoints = [NodePath("level_hood/Checkpoint0"), NodePath("level_bridge/Checkpoint1"), NodePath("level_left_coast/Checkpoint2"), NodePath("level_left_coast/Checkpoint3")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BlackScreen" parent="CanvasLayer" instance=ExtResource("3_afad2")]
+
+[node name="HealthBar" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_8udpm")]
+player = NodePath("../../papa")
 
 [node name="papa" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_wjhe6")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 1, -8)
@@ -124,6 +167,10 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_41pjw")
 }
+
+[node name="Checkpoint0" type="Node3D" parent="level_hood"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.00157607, 1.06734, -8.0075)
+script = SubResource("GDScript_4k6d2")
 
 [node name="CutsceneTrigger1" type="Area3D" parent="level_hood" node_paths=PackedStringArray("camera", "papa", "bullies")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1563, 0, 45.3582)
@@ -263,8 +310,28 @@ transform = Transform3D(10.6997, 0, 0, 0, 1, 0, 0, 0, 5.18051, -9.75591, 0, -7.8
 visible = false
 mesh = SubResource("PlaneMesh_ihodm")
 
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="level_left_coast/NavigationRegion3D"]
+transform = Transform3D(49.328, 0, 0, 0, 1, 0, 0, 0, 7.88738, 256.604, 20.0888, -1.55724)
+visible = false
+mesh = SubResource("PlaneMesh_6kp3v")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="level_left_coast/NavigationRegion3D"]
+transform = Transform3D(-2.62487e-06, 0, -7.88738, 0, 1, 0, 60.0501, 0, -3.44768e-07, 299.314, 20.0888, -69.7917)
+visible = false
+mesh = SubResource("PlaneMesh_dx661")
+
 [node name="snowcat" parent="level_left_coast" instance=ExtResource("10_lfr6c")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.145, -0.0439997, -3.8633)
+
+[node name="Checkpoint3" type="Area3D" parent="level_left_coast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 245.173, 20.0752, -1.78983)
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_0gr3d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level_left_coast/Checkpoint3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48218, 0)
+shape = SubResource("BoxShape3D_o2iq5")
 
 [node name="CutsceneTrigger4" type="Area3D" parent="level_left_coast" node_paths=PackedStringArray("camera", "papa", "snowcat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.918, 20.8087, -2.06532)
@@ -282,6 +349,34 @@ shape = SubResource("BoxShape3D_ecwv1")
 [node name="CameraOrigin" type="Node3D" parent="level_left_coast/CutsceneTrigger4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0588, 1.04824, -6.00989)
 
+[node name="CutsceneTrigger5" type="Area3D" parent="level_left_coast" node_paths=PackedStringArray("camera", "papa", "enemies")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282.682, 20.8087, -2.06532)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("18_rvgs0")
+camera = NodePath("../../Camera3D")
+papa = NodePath("../../papa")
+enemies = [NodePath("../../gopnik"), NodePath("../../gopnik2"), NodePath("../../gopnik3")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level_left_coast/CutsceneTrigger5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.56651, 0)
+shape = SubResource("BoxShape3D_ecwv1")
+
+[node name="CameraOrigin" type="Node3D" parent="level_left_coast/CutsceneTrigger5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97815, 0.606646, 0.748642)
+
+[node name="CameraOrigin2" type="Node3D" parent="level_left_coast/CutsceneTrigger5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3382, 2.38572, -1.08709)
+
+[node name="gopnik" parent="." instance=ExtResource("19_sg2t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 534.421, 5.05169, 81.8739)
+
+[node name="gopnik2" parent="." instance=ExtResource("19_sg2t7")]
+transform = Transform3D(0.622474, 0, -0.782641, 0, 1, 0, 0.782641, 0, 0.622474, 532.015, 5.05169, 80.7926)
+
+[node name="gopnik3" parent="." instance=ExtResource("19_sg2t7")]
+transform = Transform3D(0.827267, 0, 0.561809, 0, 1, 0, -0.561809, 0, 0.827267, 534.388, 5.05169, 79.213)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 visible = false
 
@@ -293,4 +388,6 @@ environment = ExtResource("5_dij1p")
 [connection signal="body_entered" from="level_bridge/Checkpoint1" to="level_bridge/Checkpoint1" method="_on_body_entered"]
 [connection signal="body_entered" from="level_left_coast/Checkpoint2" to="level_left_coast/Checkpoint2" method="_on_body_entered"]
 [connection signal="body_entered" from="level_left_coast/CutsceneTrigger3" to="level_left_coast/CutsceneTrigger3" method="_on_body_entered"]
+[connection signal="body_entered" from="level_left_coast/Checkpoint3" to="level_left_coast/Checkpoint3" method="_on_body_entered"]
 [connection signal="body_entered" from="level_left_coast/CutsceneTrigger4" to="level_left_coast/CutsceneTrigger4" method="_on_body_entered"]
+[connection signal="body_entered" from="level_left_coast/CutsceneTrigger5" to="level_left_coast/CutsceneTrigger5" method="_on_body_entered"]

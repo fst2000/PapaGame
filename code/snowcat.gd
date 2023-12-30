@@ -9,7 +9,6 @@ var move_speed = 15
 var gravity = -10
 var rotation_angle = 45
 var velocity_quaternion  = Quaternion()
-var should_get_out = false
 var should_get_in = false
 
 @onready var forward_direction = quaternion * Vector3.FORWARD
@@ -65,7 +64,8 @@ func _process(delta):
 
 func area_action(actor : Node3D):
 	if should_get_in:
-		actor.state = InSnowcatState.new(actor, self, FuncCondition.new(func(): return should_get_out))
+		actor.state = InSnowcatState.new(actor, self)
+		$ActionArea/ActionShape.disabled = true
 
 func get_out(driver):
 	driver.state = OutSnowcatState.new(driver)

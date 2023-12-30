@@ -53,7 +53,13 @@ func start_cutscene():
 	
 	action_list.add(func():text.write(""), TimeCondition.new(0.5))
 	
-	action_list.add(func():get_tree().change_scene_to_packed(next_scene), FalseCondition.new())
+	action_list.add(
+		func():
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			$CanvasLayer/BlackScreen.transition_action = func():
+				get_tree().change_scene_to_packed(next_scene)
+			$CanvasLayer/BlackScreen.appear(),
+		FalseCondition.new())
 	
 func  _process(delta):
 	action_list.update()

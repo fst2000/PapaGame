@@ -1,10 +1,8 @@
 class_name InSnowcatState
 
-var exit_condition
 var character
 
-func _init(character, snowcat, exit_condition):
-	self.exit_condition = exit_condition
+func _init(character, snowcat):
 	self.character = character
 	character.reparent(snowcat)
 	character.set_active(false)
@@ -13,11 +11,10 @@ func _init(character, snowcat, exit_condition):
 	character.animPlayer.play("Snowcat_In")
 	character.camera.origin = snowcat
 	character.camera.camera_height = 1
+	snowcat.should_get_in = false
 
 func update(delta):
 	pass
 
 func nextState():
-	if exit_condition.check():
-		return OutSnowcatState.new(character)
 	return self

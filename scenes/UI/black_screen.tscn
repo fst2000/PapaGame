@@ -5,10 +5,6 @@ script/source = "extends Control
 
 @onready var rect = $ColorRect
 var transition_action : Callable
-
-func _ready():
-	var size = get_viewport_rect().size
-	rect.scale = size
 	
 func appear():
 	$AnimationPlayer.play(\"Appear\")
@@ -83,10 +79,10 @@ tracks/1/path = NodePath("ColorRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kaf8j"]
@@ -105,9 +101,12 @@ grow_vertical = 2
 script = SubResource("GDScript_bo5yf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -51.0
+offset_top = -57.0
+offset_right = 1424.0
+offset_bottom = 815.0
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dky0jx8g01sni"]
+
+[ext_resource type="PackedScene" uid="uid://cne4e4rofjivw" path="res://models/items/heart.blend" id="1_3l85g"]
+[ext_resource type="Script" path="res://code/heart.gd" id="2_xslsx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rswde"]
+albedo_color = Color(0.733333, 0, 0, 1)
+metallic_specular = 0.6
+roughness = 0.32
+emission_enabled = true
+emission = Color(1, 0.196078, 0.145098, 1)
+emission_energy_multiplier = 0.00384479
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2081f"]
+
+[node name="heart" instance=ExtResource("1_3l85g")]
+script = ExtResource("2_xslsx")
+
+[node name="Heart" parent="." index="0"]
+transform = Transform3D(1.00683, 0, 0.0404016, 0, 1.00764, 0, -0.0404016, 0, 1.00683, 0, 0.000775719, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_rswde")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.510344, 0)
+shape = SubResource("SphereShape3D_2081f")

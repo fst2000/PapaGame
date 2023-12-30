@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b4xwev78wsm38"]
+[gd_scene load_steps=68 format=3 uid="uid://b4xwev78wsm38"]
 
 [ext_resource type="PackedScene" uid="uid://0hqlhbmvpbfo" path="res://models/levels/left_coast/left_coast.blend" id="1_oxnrk"]
 [ext_resource type="Shader" path="res://materials/snow_shader.gdshader" id="2_ik7a0"]
@@ -19,6 +19,17 @@
 [ext_resource type="Texture2D" uid="uid://cmb2v3qjrqk74" path="res://textures/wall_fence_2.png" id="13_nja17"]
 [ext_resource type="Texture2D" uid="uid://briwbbl1ev4d0" path="res://textures/wall_fence_3.png" id="14_u4gln"]
 [ext_resource type="Texture2D" uid="uid://doc14bm4oox7r" path="res://textures/wall_fence_4.png" id="15_doi88"]
+[ext_resource type="Texture2D" uid="uid://c5pv4at58hjbk" path="res://textures/khrushevka_windows_1.png" id="20_c44yh"]
+[ext_resource type="Texture2D" uid="uid://butwbrtvdsqib" path="res://textures/hood_khrushevka_windows_1_light_map.png" id="21_pmaey"]
+[ext_resource type="Texture2D" uid="uid://cok13vpvfidp7" path="res://textures/khrushevka_windows_1_glass_map.png" id="22_ceq0r"]
+[ext_resource type="Material" uid="uid://bhl8sg582ucic" path="res://materials/snow_material.tres" id="23_qrrdj"]
+[ext_resource type="Texture2D" uid="uid://cf47pbo0qikot" path="res://textures/khrushevka_windows_2.png" id="24_b3ma6"]
+[ext_resource type="Texture2D" uid="uid://dbfdvmdcvxlc5" path="res://textures/hood_khrushevka_windows_2_light_map.png" id="25_4p2v5"]
+[ext_resource type="Texture2D" uid="uid://b6jqfo5qnsv85" path="res://textures/khrushevka_windows_2_glass_map.png" id="26_uinss"]
+[ext_resource type="Texture2D" uid="uid://bsjvg7hxcdtco" path="res://textures/khrushevka_tile.png" id="27_186uc"]
+[ext_resource type="Texture2D" uid="uid://ckd5rlq5gixl4" path="res://textures/entrance_door_1.png" id="28_jl0v1"]
+[ext_resource type="Texture2D" uid="uid://cmlitkwo0yd6p" path="res://textures/entrance_stairs_1.png" id="29_j1lp8"]
+[ext_resource type="Texture2D" uid="uid://b37vlyhh6l6ki" path="res://textures/shifer.png" id="30_53d22"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0v3gd"]
 frequency = 0.0877
@@ -168,6 +179,38 @@ friction = 0.0
 margin = 0.001
 data = PackedVector3Array(0.5488, -0.0086, -6.7345, -0.9502, 2, -19.1712, 0.5488, 2, -19.1712, 0.5488, -0.0086, -6.7345, -0.9502, -0.0086, -6.7345, -0.9502, 2, -19.1712)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6j06"]
+albedo_texture = ExtResource("20_c44yh")
+roughness_texture = ExtResource("22_ceq0r")
+emission_enabled = true
+emission_on_uv2 = true
+emission_texture = ExtResource("21_pmaey")
+uv2_scale = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpnxx"]
+albedo_texture = ExtResource("24_b3ma6")
+roughness_texture = ExtResource("26_uinss")
+emission_enabled = true
+emission_on_uv2 = true
+emission_texture = ExtResource("25_4p2v5")
+uv2_scale = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_543ms"]
+albedo_texture = ExtResource("27_186uc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3e5k4"]
+albedo_texture = ExtResource("28_jl0v1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5eg86"]
+albedo_texture = ExtResource("29_j1lp8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j26aa"]
+albedo_texture = ExtResource("30_53d22")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1g2n"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
 [node name="left_coast" instance=ExtResource("1_oxnrk")]
 
 [node name="LeftCoast" parent="." index="0"]
@@ -227,3 +270,14 @@ physics_material_override = SubResource("PhysicsMaterial_td8fp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ice/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_2p7im")
+
+[node name="entrance" parent="." index="5"]
+transform = Transform3D(8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, -26.9979, 2, -21.4511)
+surface_material_override/0 = SubResource("StandardMaterial3D_l6j06")
+surface_material_override/1 = ExtResource("23_qrrdj")
+surface_material_override/2 = SubResource("StandardMaterial3D_xpnxx")
+surface_material_override/3 = SubResource("StandardMaterial3D_543ms")
+surface_material_override/4 = SubResource("StandardMaterial3D_3e5k4")
+surface_material_override/5 = SubResource("StandardMaterial3D_5eg86")
+surface_material_override/6 = SubResource("StandardMaterial3D_j26aa")
+surface_material_override/7 = SubResource("StandardMaterial3D_y1g2n")

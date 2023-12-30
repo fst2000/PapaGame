@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://biv7nwylb1op2"]
+[gd_scene load_steps=9 format=3 uid="uid://biv7nwylb1op2"]
 
 [ext_resource type="PackedScene" uid="uid://10qbrpb7i8h5" path="res://scenes/objects/apartment.tscn" id="1_a4bdm"]
 [ext_resource type="Script" path="res://code/cutscene/cutsceneApartment.gd" id="1_dxp33"]
 [ext_resource type="PackedScene" uid="uid://ctv7ucnk4g2ey" path="res://scenes/levels/level_main.tscn" id="2_3umes"]
 [ext_resource type="Animation" uid="uid://cxhv633a8ptbh" path="res://scenes/levels/apartment_animations/CameraOrigin2.res" id="2_nymvq"]
+[ext_resource type="PackedScene" uid="uid://b1vy7614he21l" path="res://scenes/UI/black_screen.tscn" id="5_cerwi"]
 
 [sub_resource type="Animation" id="Animation_04tou"]
 resource_name = "CameraLookAtWatches"
@@ -86,3 +87,7 @@ libraries = {
 "": SubResource("AnimationLibrary_lw142")
 }
 playback_default_blend_time = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackScreen" parent="CanvasLayer" instance=ExtResource("5_cerwi")]
