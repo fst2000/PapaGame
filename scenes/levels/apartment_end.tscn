@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bptlc0mertwjg"]
+[gd_scene load_steps=75 format=3 uid="uid://bptlc0mertwjg"]
 
 [ext_resource type="PackedScene" uid="uid://dcekndfh657hx" path="res://models/levels/apartment/apartment_end.blend" id="1_01tlg"]
 [ext_resource type="Script" path="res://code/cutscene/cutsceneApartmentEnd.gd" id="2_coin1"]
@@ -27,7 +27,11 @@
 [ext_resource type="Animation" uid="uid://bxtosn1trhf2m" path="res://models/levels/apartment/end_animations/PapaCake2.res" id="25_bi2mq"]
 [ext_resource type="Animation" uid="uid://bwu74u7yhcbx6" path="res://models/levels/apartment/end_animations/Camera1.res" id="26_hr54t"]
 [ext_resource type="Animation" uid="uid://cn61wjk8bp2n5" path="res://models/levels/apartment/end_animations/Camera2.res" id="27_au63r"]
+[ext_resource type="Texture2D" uid="uid://v5jglsi6svoe" path="res://textures/watches.png" id="27_ixxox"]
 [ext_resource type="Animation" uid="uid://dqv6bi22jn2nn" path="res://models/levels/apartment/end_animations/MeCake.res" id="28_6an52"]
+[ext_resource type="PackedScene" uid="uid://b1vy7614he21l" path="res://scenes/UI/black_screen.tscn" id="29_8p83v"]
+[ext_resource type="PackedScene" uid="uid://dkxrccyp7hm4d" path="res://scenes/UI/credits.tscn" id="30_3lgcb"]
+[ext_resource type="AudioStream" uid="uid://b6lbp86rbyghd" path="res://music/cristmastree_end.wav" id="32_2fu3w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf4nx"]
 albedo_texture = ExtResource("2_n6ste")
@@ -178,6 +182,13 @@ roughness = 0.26
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxdsi"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4vqy"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("27_ixxox")
+roughness = 0.27
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wg5p"]
 albedo_texture = ExtResource("14_f1xp4")
 
@@ -209,6 +220,9 @@ volumetric_fog_anisotropy = 0.9
 volumetric_fog_detail_spread = 0.5
 volumetric_fog_ambient_inject = 16.0
 volumetric_fog_temporal_reprojection_amount = 0.99
+
+[sub_resource type="LabelSettings" id="LabelSettings_bsg0p"]
+font_size = 24
 
 [node name="ApartmentEnd" instance=ExtResource("1_01tlg")]
 script = ExtResource("2_coin1")
@@ -297,6 +311,9 @@ libraries = {
 "PapaAnim": SubResource("AnimationLibrary_g5b7b")
 }
 
+[node name="Camera" parent="." index="4"]
+transform = Transform3D(-0.903319, 0.113483, -0.413686, 3.35276e-08, 0.964373, 0.264548, 0.428969, 0.238971, -0.871136, -0.921907, 1.25691, -2.36382)
+
 [node name="CameraAnim" type="AnimationPlayer" parent="Camera" index="1"]
 root_node = NodePath("../..")
 libraries = {
@@ -350,6 +367,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ovhgg")
 surface_material_override/0 = SubResource("StandardMaterial3D_6id62")
 surface_material_override/1 = SubResource("StandardMaterial3D_jxdsi")
 
+[node name="watches" parent="." index="22"]
+surface_material_override/0 = SubResource("StandardMaterial3D_p4vqy")
+
 [node name="Cake_001" parent="." index="23"]
 visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_5wg5p")
@@ -379,3 +399,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.257404, 1.84956, -5.67462)
 
 [node name="snow" parent="." index="31" instance=ExtResource("9_n00c1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86852, 4.71219, -14.2474)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="32"]
+
+[node name="BlackScreen" parent="CanvasLayer" index="0" instance=ExtResource("29_8p83v")]
+
+[node name="Credits" parent="CanvasLayer" index="1" instance=ExtResource("30_3lgcb")]
+
+[node name="Label" type="Label" parent="CanvasLayer" index="2"]
+z_index = 3
+offset_left = 26.0
+offset_top = 706.0
+offset_right = 345.0
+offset_bottom = 740.0
+text = "чтобы выйти нажмите Esc"
+label_settings = SubResource("LabelSettings_bsg0p")
+
+[node name="CristmasTreeEnd" type="AudioStreamPlayer" parent="." index="33"]
+stream = ExtResource("32_2fu3w")

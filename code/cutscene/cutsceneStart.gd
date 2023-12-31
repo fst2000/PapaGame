@@ -7,9 +7,11 @@ var game = ResourceLoader.load("res://save.tres")
 @onready var anim_player = $AnimationPlayer
 @export var camera : Camera3D
 @export var papa : Node3D
+@export var music : AudioStreamPlayer
 
 func _ready():
 	if game.checkpoint_id == 0:
+		music.play()
 		camera.is_cutscene = true
 		camera.origin = origin
 		camera.look_target = look_target

@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkxrccyp7hm4d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7xu3f"]
+font_size = 32
+
+[node name="Credits" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1375.0
+offset_bottom = 780.0
+text = "Автор игры:
+Сергей Фардзинов
+
+Музыкальные исполнители:
+Таймураз Фардзинов
+Георгий Пономарев
+
+Главный тестировщик:
+Стелла Галаванова"
+label_settings = SubResource("LabelSettings_7xu3f")
+horizontal_alignment = 1
+vertical_alignment = 1
+language = "ru"

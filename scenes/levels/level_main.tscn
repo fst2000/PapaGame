@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ctv7ucnk4g2ey"]
+[gd_scene load_steps=49 format=3 uid="uid://ctv7ucnk4g2ey"]
 
 [ext_resource type="PackedScene" uid="uid://b73y6dpb8aug3" path="res://scenes/characters/papa.tscn" id="1_wjhe6"]
 [ext_resource type="PackedScene" uid="uid://ciudfcrx217xy" path="res://scenes/UI/health_bar.tscn" id="2_8udpm"]
@@ -23,6 +23,8 @@
 [ext_resource type="Script" path="res://code/cutscene/CutsceneTriggerLast.gd" id="21_ga7bn"]
 [ext_resource type="PackedScene" uid="uid://1hmc4rs4ehcm" path="res://scenes/objects/train.tscn" id="21_o7lel"]
 [ext_resource type="PackedScene" uid="uid://b0a78gjvwlu8m" path="res://scenes/characters/papa_winter_cake.tscn" id="23_n2j7c"]
+[ext_resource type="AudioStream" uid="uid://bdfuc1lasl8xa" path="res://sounds/train.wav" id="23_vqhmv"]
+[ext_resource type="AudioStream" uid="uid://df0fddgwx2g2y" path="res://music/cristmastree_start.wav" id="24_wr4vy"]
 
 [sub_resource type="GDScript" id="GDScript_6g4pk"]
 script/source = "extends Node3D
@@ -162,6 +164,20 @@ tracks/2/path = NodePath("CameraOrigin")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0, 1, -630, -3, 150)
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("train/TrainSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_5a6w6"]
 resource_name = "TrainStart"
@@ -191,6 +207,20 @@ tracks/2/path = NodePath("CameraOrigin")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0.1, 1, 0, 2.5, -11)
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("train/TrainSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_k11xk"]
 resource_name = "TrainStart_2"
@@ -220,6 +250,20 @@ tracks/2/path = NodePath("CameraOrigin")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0, 1, -10, 2, -60)
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("train/TrainSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pwh6c"]
 _data = {
@@ -262,10 +306,11 @@ origin = NodePath("../papa")
 
 [node name="level_hood" parent="." instance=ExtResource("3_fn2n6")]
 
-[node name="CutsceneStart" type="Node3D" parent="level_hood" node_paths=PackedStringArray("camera", "papa")]
+[node name="CutsceneStart" type="Node3D" parent="level_hood" node_paths=PackedStringArray("camera", "papa", "music")]
 script = ExtResource("4_pnn7p")
 camera = NodePath("../../Camera3D")
 papa = NodePath("../../papa")
+music = NodePath("../../CristmasTreeStart")
 
 [node name="CutsceneOrigin" type="Node3D" parent="level_hood/CutsceneStart"]
 transform = Transform3D(-0.366501, 0, 0.930418, 0, 1, 0, -0.930418, 0, -0.366501, 16.21, 35.98, -23.484)
@@ -494,7 +539,7 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_dij1p")
 
-[node name="CutsceneTriggerLast" type="Area3D" parent="." node_paths=PackedStringArray("papa", "papa_cake", "camera", "black_screen")]
+[node name="CutsceneTriggerLast" type="Area3D" parent="." node_paths=PackedStringArray("papa", "papa_cake", "camera", "black_screen", "health_bar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 542.934, 5.12714, -75.7202)
 collision_layer = 0
 collision_mask = 2
@@ -503,9 +548,13 @@ papa = NodePath("../papa")
 papa_cake = NodePath("papa_winter_cake")
 camera = NodePath("../Camera3D")
 black_screen = NodePath("../CanvasLayer/BlackScreen")
+health_bar = NodePath("../CanvasLayer/HealthBar")
 
 [node name="train" parent="CutsceneTriggerLast" instance=ExtResource("21_o7lel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -620, -5.17, 0)
+
+[node name="TrainSound" type="AudioStreamPlayer3D" parent="CutsceneTriggerLast/train"]
+stream = ExtResource("23_vqhmv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CutsceneTriggerLast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75073, 0)
@@ -535,6 +584,9 @@ visible = false
 [node name="Checkpoint4" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 542.81, 5.19184, -71.8035)
 script = SubResource("GDScript_eufxc")
+
+[node name="CristmasTreeStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_wr4vy")
 
 [connection signal="body_entered" from="level_hood/CutsceneTrigger1" to="level_hood/CutsceneTrigger1" method="_on_body_entered"]
 [connection signal="body_entered" from="level_hood/CutsceneTrigger2" to="level_hood/CutsceneTrigger2" method="_on_body_entered"]

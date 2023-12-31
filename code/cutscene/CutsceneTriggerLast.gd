@@ -4,6 +4,7 @@ extends Area3D
 @export var papa_cake : Node3D
 @export var camera : Node3D
 @export var black_screen : Control
+@export var health_bar : Control
 @onready var origin = $CameraOrigin
 @onready var origin_1 = $CameraOrigin1
 @onready var origin_2 = $CameraOrigin2
@@ -16,6 +17,7 @@ func _process(delta):
 func _on_body_entered(body):
 	action_list.add(
 		func():
+			health_bar.queue_free()
 			papa.controller.is_active = false
 			camera.is_cutscene = true
 			camera.origin = origin_1
@@ -31,7 +33,7 @@ func _on_body_entered(body):
 	action_list.add(
 		func():
 			camera.look_target = papa
-			papa.speakSystem.say("Надеюсь, мой любимый тортик еще есть"),
+			papa.speakSystem.say("Надеюсь, тортик еще есть"),
 			papa.speakSystem)
 			
 	action_list.add(
@@ -45,7 +47,7 @@ func _on_body_entered(body):
 	action_list.add(
 		func():
 			camera.look_target = papa_cake
-			papa.visible = false
+			papa.queue_free()
 			papa_cake.visible = true,
 		TimeCondition.new(1.0))
 	
@@ -101,11 +103,6 @@ func _on_body_entered(body):
 	
 	action_list.add(
 		func():
-			black_screen.transition_action = func(): get_tree().reload_current_scene()
+			black_screen.transition_action = func(): get_tree().change_scene_to_file("res://scenes/levels/apartment_end.tscn")
 			black_screen.appear(),
 		TimeCondition.new(1.0))
-	
-	action_list.add(
-		func():
-			get_tree().change_scene_to_file("res://scenes/levels/level_apartment.tscn"),
-		FalseCondition.new())

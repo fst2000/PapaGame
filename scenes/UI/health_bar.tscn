@@ -10,8 +10,8 @@ var status : CharacterStatus
 @onready var bar = $TextureProgressBar
 	
 func _process(delta):
-	bar.max_value = player.status.fullHP 
-	bar.value = player.status.hp
+		bar.max_value = player.status.fullHP 
+		bar.value = player.status.hp
 "
 
 [node name="HealthBar" type="Control"]
