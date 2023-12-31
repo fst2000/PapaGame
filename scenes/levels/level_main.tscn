@@ -289,6 +289,7 @@ player = NodePath("papa")
 checkpoints = [NodePath("level_hood/Checkpoint0"), NodePath("level_bridge/Checkpoint1"), NodePath("level_left_coast/Checkpoint2"), NodePath("level_left_coast/Checkpoint3"), NodePath("Checkpoint4")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="BlackScreen" parent="CanvasLayer" instance=ExtResource("3_afad2")]
 
@@ -302,6 +303,7 @@ camera = NodePath("../Camera3D")
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("origin") instance=ExtResource("3_l6bmr")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, 12.9525, 36.297, -23.9285)
+far = 150.0
 origin = NodePath("../papa")
 
 [node name="level_hood" parent="." instance=ExtResource("3_fn2n6")]
