@@ -26,7 +26,6 @@ light_color = Color(0.972549, 0.709804, 0.34902, 1)
 light_energy = 7.0
 light_bake_mode = 1
 shadow_enabled = true
-distance_fade_enabled = true
 spot_range = 23.2745
 spot_angle = 59.48
 

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr8omu53mryky"]
+
+[ext_resource type="PackedScene" uid="uid://q4ped3qvxaq7" path="res://models/levels/title.blend" id="1_d85ia"]
+[ext_resource type="Material" uid="uid://bhl8sg582ucic" path="res://materials/snow_material.tres" id="2_bi6ut"]
+[ext_resource type="Script" path="res://code/cutscene/title_script.gd" id="2_um2el"]
+
+[sub_resource type="Gradient" id="Gradient_7qmkd"]
+colors = PackedColorArray(1, 0.809639, 0.661076, 1, 1, 0.110598, 0.289228, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8eki5"]
+gradient = SubResource("Gradient_7qmkd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lumb8"]
+shading_mode = 0
+albedo_color = Color(0.82606, 0.82606, 0.82606, 1)
+albedo_texture = SubResource("GradientTexture1D_8eki5")
+
+[node name="title" instance=ExtResource("1_d85ia")]
+script = ExtResource("2_um2el")
+
+[node name="Text" parent="." index="0"]
+layers = 2
+surface_material_override/0 = SubResource("StandardMaterial3D_lumb8")
+
+[node name="Text|Sphere|Dupli|10" parent="Text" index="0"]
+layers = 2
+surface_material_override/0 = ExtResource("2_bi6ut")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.60278e-08, 0, -0.640883)
+light_color = Color(1, 0.796589, 0.583565, 1)
+light_energy = 0.2
+spot_range = 1.14566

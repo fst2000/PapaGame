@@ -39,9 +39,11 @@ func _ready():
 	var checkpoint = checkpoints[game.checkpoint_id]
 	player.position = checkpoint.spawn_position()
 	player.lookDir(checkpoint.spawn_direction())
-
+	$Camera3D.look_at($Camera3D.global_position + checkpoint.spawn_direction())
 func restart():
-	black_screen.transition_action = func(): get_tree().reload_current_scene()
+	black_screen.transition_action = func():
+		player.queue_free()
+		get_tree().reload_current_scene()
 	black_screen.appear()
 "
 
@@ -73,7 +75,7 @@ func _on_body_entered(body):
 
 func spawn_position(): return global_position
 
-func spawn_direction(): return Vector3(-1,0,0)
+func spawn_direction(): return Vector3(1,0,0)
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eea51"]
@@ -91,7 +93,7 @@ func _on_body_entered(body):
 
 func spawn_position(): return global_position
 
-func spawn_direction(): return Vector3(-1,0,0)
+func spawn_direction(): return Vector3(1,0,0)
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d18n4"]
@@ -124,7 +126,7 @@ func _on_body_entered(body):
 
 func spawn_position(): return global_position
 
-func spawn_direction(): return Vector3(-1,0,0)
+func spawn_direction(): return Vector3(1,0,0)
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2iq5"]

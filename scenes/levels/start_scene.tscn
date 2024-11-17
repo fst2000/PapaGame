@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://by3bmffet54hy"]
+
+[ext_resource type="Script" path="res://code/cutscene/start_scene_script.gd" id="1_xhehb"]
+[ext_resource type="Environment" uid="uid://kvvqmbm8s6b5" path="res://scenes/levels/winter_night_environment.tres" id="2_qn8es"]
+[ext_resource type="PackedScene" uid="uid://fffg5or0wqok" path="res://scenes/levels/level_hood.tscn" id="3_0tiol"]
+[ext_resource type="PackedScene" uid="uid://bqjlk0177h6ya" path="res://scenes/particles/snow.tscn" id="4_dgc7c"]
+[ext_resource type="PackedScene" uid="uid://dr8omu53mryky" path="res://scenes/objects/title.tscn" id="5_ymci2"]
+
+[sub_resource type="Curve3D" id="Curve3D_bym33"]
+_data = {
+"points": PackedVector3Array(3.07531, -1.28093, 9.1222, -3.07531, 1.28093, -9.1222, -9.0123, 3.05176e-05, -15.1458, -2.53588, -1.81108, 7.35952, 2.53588, 1.81108, -7.35952, -13.6721, 11.6763, -37.6245, -6.53336, 7.64671, -1.76061, 6.53336, -7.64671, 1.76061, 8.18915, 4.37605, -45.7999, 2.38052, -0.923792, -3.48157, -2.38052, 0.923792, 3.48157, 23.7483, 3.05176e-05, -26.2421, 4.80072, 3.7125, -9.45646, -4.80072, -3.7125, 9.45646, 7.47662, -4.31033, -1.88149, 4.30111, -0.187918, -19.6857, -4.30111, 0.187918, 19.6857, 27.3414, -10.7704, 28.921, 11.559, -4.04963, -13.6147, -11.559, 4.04963, 13.6147, 31.2478, -9.81524, 62.9319, 25.5909, -0.151123, -1.95081, -25.5909, 0.151123, 1.95081, 10.2264, 26.1325, 130.865, -3.39243, -5.20692, 17.8699, 3.39243, 5.20692, -17.8699, -20.8226, 3.05176e-05, 67.4249, 0.973541, 2.77477, 8.5379, -0.973541, -2.77477, -8.5379, -21.2189, 3.05176e-05, 32.5507, -5.69876, -2.18701, 2.60065, 5.69876, 2.18701, -2.60065, -16.0302, -7.00041, 10.4667, -4.25219, 0.112753, 11.4077, 4.25219, -0.112753, -11.4077, 0.388719, -15.0135, 2.01545, 5.52624, -2.4804, 9.08533, -5.52624, 2.4804, -9.08533, -9.0123, 3.05176e-05, -15.1458),
+"tilts": PackedFloat32Array(0, 0, 0.109433, 0, 0, -1.31097, -1.09676, 1.1842, 0, 0, -2.62569, 0, 0)
+}
+point_count = 13
+
+[node name="StartScene" type="Node3D"]
+script = ExtResource("1_xhehb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_qn8es")
+
+[node name="level_hood" parent="." instance=ExtResource("3_0tiol")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+fov = 50.0
+far = 200.0
+
+[node name="snow" parent="Camera3D" instance=ExtResource("4_dgc7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.970063, -8.5816)
+
+[node name="title" parent="Camera3D" instance=ExtResource("5_ymci2")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.052, -0.244)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.796, 0)
+curve = SubResource("Curve3D_bym33")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.738787, 0.63864, -0.215214, -0.673915, 0.701918, -0.230506, 0.00385215, 0.315333, 0.948967, 1.28849, -14.7091, -0.904706)
+progress = 444.98
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 426.0
+offset_top = 696.0
+offset_right = -386.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Нажмите Enter чтобы начать игру"
+horizontal_alignment = 1
+
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
